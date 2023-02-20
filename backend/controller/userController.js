@@ -73,8 +73,6 @@ const loginUser = asyncHandler(async (req, res) => {
         res.status(401);
         throw new Error('Invalid Credentials');
     }
-
-    res.send('Login Route')
 })
 
 // @desc    Get current User

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {useNavigate} from "react-router-dom";
 import {toast} from 'react-toastify';
 import {useSelector, useDispatch} from 'react-redux';
-import { register } from '../features/auth/authSlice';
+import { register, reset } from '../features/auth/authSlice';
 
 const Register = () => {
 
@@ -15,8 +16,22 @@ const Register = () => {
     const {name, email, password, userType} = formData;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {user, isError, isSuccess, isLoading, message} = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if(isError){
+            toast.error(message);
+        }
+
+        // Redirect to Home page when logged in
+        if(isSuccess || user){
+            navigate('/');
+        }
+
+        dispatch(reset());
+    }, [isError, isSuccess, user, message, navigate, dispatch]);
 
     const onChange = (e) => {
         setFormData((prevState) => ({
