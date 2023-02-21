@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout, reset} from '../features/auth/authSlice';
+import logo from "../Images/LCName.png";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -15,25 +16,28 @@ const Header = () => {
     }
 
     return (
-        <div style={{backgroundColor: '#01244C', color: 'white', padding: '1rem'}}>
-            <Link style={{color: 'white'}} to='/'>CJPD</Link>
-            <ul>
+        <div className='navMainContainer'>
+            <div>
                 {
                     user ? (
                         <>
-                            <li><Link style={{color: 'white'}} to='/'>Home</Link></li>
-                            <li><Link style={{color: 'white'}} to='/reportPage'>Investigation Forms</Link></li>
-                            {user.userType === 'Admin' && <li><Link style={{color: 'white'}} to='/reportPage'>Manage Data</Link></li>}
-                            <li><Link style={{color: 'white'}} to='/profile'>{user.name}</Link></li>
-                            <li><button onClick={onLogout}>Logout</button></li>
+                            <div className='navElementContainer'>
+                                <img className='navElement1' src={logo} alt="Logo" height={70} />
+                                <Link className='navElement2' to='/'>C.J.P.D.</Link>
+                                <Link className='navElement3' to='/'>Home</Link>
+                                <Link className='navElement4' to='/reportPage'>Investigation Forms</Link>
+                                {user.userType === 'Admin' && <Link className='navElement5' to='/reportPage'>Manage Data</Link>}
+                                <Link className='navElement6' to='/profile'>{user.name}</Link>
+                                <button className='navElement7' onClick={onLogout}>Logout</button>
+                            </div>
                         </>
                     ) : (
                         <>
-                            <li><Link style={{color: 'white'}} to='/login'>Login</Link></li>
-                            <li><Link style={{color: 'white'}} to='/register'>Register</Link></li>
+                            <Link className='navElement8' to='/login'>Login</Link>
+                            <Link className='navElement9' to='/register'>Register</Link>
                         </>
                     )}
-            </ul>
+            </div>
         </div>
     )
 }

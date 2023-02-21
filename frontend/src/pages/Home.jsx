@@ -67,42 +67,41 @@ const Home = () => {
         }
     ]
 
-  const {user} = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+    const {user} = useSelector((state) => state.auth);
+    const navigate = useNavigate();
 
-  useEffect(() => {
+    useEffect(() => {
+        if(!user){
+            navigate('/login');
+        }
+    }, [user, navigate]);
+
     if(!user){
-      navigate('/login');
-    }
-  }, [user, navigate]);
-
-  if(!user){
-    return <h3>hmm... You are not logged in...</h3>
-  }else {
-    return (
-        <div>
-            <h3 style={{marginBottom: '2rem'}}>Home</h3>
-            <div style={{display: 'flex'}}>
-                <div>
-                    <Link style={{backgroundColor: '#DDBA2C', color: '#01244C', padding: '1rem 2rem', margin: '1rem'}} to='/fastFind/person'>Fast Find</Link>
-                    <ul style={{margin: '2rem'}}>
-                        {fastFindChoicesList.map((item, index) => {
-                            return (<li key={index}><Link key={index} to={`/fastFind/${item.value}`}>{item.name}</Link></li>);
-                        })}
-                    </ul>
-                </div>
-                <div>
-                    <Link style={{backgroundColor: '#01244C', color: '#DDBA2C', padding: '1rem 2rem', margin: '1rem'}} to='/detailedFind/person'>Detailed Find</Link>
-                    <ul style={{margin: '2rem'}}>
-                        {detailedFindChoicesList.map((item, index) => {
-                            return (<li key={index}><Link key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link></li>);
-                        })}
-                    </ul>
+        return <h3>hmm... You are not logged in...</h3>
+    }else {
+        return (
+            <div className='contentContainer'>
+                <div style={{display: 'flex'}}>
+                    <div>
+                        <Link style={{backgroundColor: '#DDBA2C', color: '#01244C', padding: '1rem 2rem', margin: '1rem'}} to='/fastFind/person'>Fast Find</Link>
+                        <ul style={{margin: '2rem'}}>
+                            {fastFindChoicesList.map((item, index) => {
+                                return (<li key={index}><Link key={index} to={`/fastFind/${item.value}`}>{item.name}</Link></li>);
+                            })}
+                        </ul>
+                    </div>
+                    <div>
+                        <Link style={{backgroundColor: '#01244C', color: '#DDBA2C', padding: '1rem 2rem', margin: '1rem'}} to='/detailedFind/person'>Detailed Find</Link>
+                        <ul style={{margin: '2rem'}}>
+                            {detailedFindChoicesList.map((item, index) => {
+                                return (<li key={index}><Link key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link></li>);
+                            })}
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-  }
+        )
+    }
 }
 
 export default Home

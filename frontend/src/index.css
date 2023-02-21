@@ -1,7 +1,147 @@
-/*Donny was here*/
-/*HEY*/
+/*This is the one-stop shop for all stylization of the web page*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 *{
     margin: 0;
     padding: 0;
+}
+
+
+/*Web Wide Styles*/
+html
+{
+    background-color: #E5F2FF;
+    font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+
+
+/*Navigation Bar*/
+.navMainContainer
+{
+    background-color: #01244C;
+    color: white;
+    padding: 0 10px 0 10px;
+    margin-bottom: 50px;
+}
+
+.navElementContainer
+{
+    display: flex;
+    margin: auto;
+    width: 100%;
+    align-items: center;
+}
+
+.navElement1
+{
+    height: 70;
+}
+
+.navElement2
+{
+    color: white;
+    padding: 1vw;
+    margin-right: auto;
+    text-decoration: none;
+}
+
+.navElement3
+{
+    color: white;
+    padding: 1vw;
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.navElement3:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement4
+{
+    color: white;
+    padding: 1vw;
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.navElement4:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement5
+{
+    color: white;
+    padding: 1vw;
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.navElement5:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement6
+{
+    color: white;
+    padding: 1vw;
+    margin-left: auto;
+    text-decoration: none;
+}
+
+.navElement6:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement7
+{
+    font-weight: 700;
+    padding: 3px;
+    border: 2px solid black;
+}
+
+.navElement7:hover
+{
+    background-color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement8
+{
+    color: white;
+    padding: 1vw;
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.navElement8:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+
+.navElement9
+{
+    color: white;
+    padding: 1vw;
+    margin: 1vw;
+    text-decoration: none;
+}
+
+.navElement9:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
 }
