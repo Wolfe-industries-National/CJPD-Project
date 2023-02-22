@@ -14,16 +14,18 @@ const busOrgSchema = mongoose.Schema({
         required: [true, "Please add a type of Business or Organization"]
     },
     address: {
-        type: String,
-        required: [true, "Please add a name"]
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Address'
     },
     alarmCompany: {
         type: String,
         required: [true, "Please add an alarm company"]
     },
     telephoneNumber: {
-        type: String,
-        required: [true, "Please add an alarm company"]
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Telephone'
     },
 }, {
     timestamps: true

@@ -15,6 +15,10 @@ const Header = () => {
         navigate('/login');
     }
 
+    if(!user){
+        return <></>
+    }
+
     return (
         <div className='navMainContainer'>
             <div>

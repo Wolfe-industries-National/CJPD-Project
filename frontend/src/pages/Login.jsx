@@ -50,15 +50,17 @@ const Login = () => {
             </div>
             <div className='loginFormContainer'>
                 <form onSubmit={onSubmit}>
-                    <label htmlFor="email">
-                        Email:
-                        <input type="email" id='email' name='email' value={email} onChange={onChange} />
+                    <label className='loginLabel' htmlFor="email">
+                        LC Email
+                        <input className='loginTextFields' type="email" id='email' name='email' value={email} onChange={onChange} />
                     </label><br />
-                    <label htmlFor="password">
-                        Password:
-                        <input type="password" id='password' name='password' value={password} onChange={onChange} />
+                    <label className='loginLabel' htmlFor="password">
+                        Password
+                        <input className='loginTextFields' type="password" id='password' name='password' value={password} onChange={onChange} />
                     </label><br />
-                    <button>Submit</button>
+                    <div className='loginButtonContainer'>
+                        <button className='loginButton'>Login</button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -32,12 +32,15 @@ app.use('/api/v1/address', require('./routes/addressRoutes'));
 // vehicle api routes
 app.use('/api/v1/vehicle', require('./routes/vehicleRoutes'));
 // property api routes
+app.use('/api/v1/property', require('./routes/propertyRoutes'));
 // BusOrg api routes
+app.use('/api/v1/bus-org', require('./routes/busOrgRoutes'));
 // Occurrence api routes
+app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 // Person api routes
-
+// app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 // Forms Data Api Routes
-
+// app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 
 
 // Middleware
