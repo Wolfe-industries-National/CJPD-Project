@@ -25,10 +25,6 @@ const vehicleSchema = mongoose.Schema({
         type: String,
         required: [true, "Please add a VIN"],
     },
-    typeOfBuilding: {
-        type: String,
-        required: [true, "Please add a type of building"],
-    },
     plateOfVehicle: {
         type: String,
         required: [true, "Please add a Plate"],

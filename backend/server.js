@@ -19,7 +19,25 @@ app.get('/', (req, res) => {
 })
 
 // Routes
+// user api routes
 app.use('/api/v1/users', require('./routes/userRoutes'));
+
+// Synthetic Data Api Routes
+// officerUnit api routes
+app.use('/api/v1/officerUnit', require('./routes/officerUnitRoutes'));
+// telephone api routes
+app.use('/api/v1/telephone', require('./routes/telephoneRoutes'));
+// address api routes
+app.use('/api/v1/address', require('./routes/addressRoutes'));
+// vehicle api routes
+app.use('/api/v1/vehicle', require('./routes/vehicleRoutes'));
+// property api routes
+// BusOrg api routes
+// Occurrence api routes
+// Person api routes
+
+// Forms Data Api Routes
+
 
 
 // Middleware

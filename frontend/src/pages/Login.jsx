@@ -44,18 +44,23 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="email">
-                    Email
-                    <input type="email" id='email' name='email' value={email} onChange={onChange} />
-                </label><br />
-                <label htmlFor="password">
-                    Password
-                    <input type="password" id='password' name='password' value={password} onChange={onChange} />
-                </label><br />
-                <button>Submit</button>
-            </form>
+        <div className='loginContainer'>
+            <div className='loginTextContainer'>
+                <p className='loginMainText'>Criminal Justice Profiling Database<br/>(C.J.P.D.)</p>
+            </div>
+            <div className='loginFormContainer'>
+                <form onSubmit={onSubmit}>
+                    <label htmlFor="email">
+                        Email:
+                        <input type="email" id='email' name='email' value={email} onChange={onChange} />
+                    </label><br />
+                    <label htmlFor="password">
+                        Password:
+                        <input type="password" id='password' name='password' value={password} onChange={onChange} />
+                    </label><br />
+                    <button>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

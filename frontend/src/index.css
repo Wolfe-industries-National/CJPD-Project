@@ -1,13 +1,10 @@
-/*This is the one-stop shop for all stylization of the web page*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/*Web Wide Styles*/
 *{
     margin: 0;
     padding: 0;
 }
-
-
-/*Web Wide Styles*/
 html
 {
     background-color: #E5F2FF;
@@ -18,16 +15,14 @@ html
 
 
 
-
 /*Navigation Bar*/
 .navMainContainer
 {
     background-color: #01244C;
     color: white;
     padding: 0 10px 0 10px;
-    margin-bottom: 50px;
+    margin-bottom: 12px;
 }
-
 .navElementContainer
 {
     display: flex;
@@ -35,12 +30,10 @@ html
     width: 100%;
     align-items: center;
 }
-
 .navElement1
 {
-    height: 70;
-}
 
+}
 .navElement2
 {
     color: white;
@@ -48,7 +41,6 @@ html
     margin-right: auto;
     text-decoration: none;
 }
-
 .navElement3
 {
     color: white;
@@ -56,13 +48,11 @@ html
     margin: 1vw;
     text-decoration: none;
 }
-
 .navElement3:focus
 {
     color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement4
 {
     color: white;
@@ -70,13 +60,11 @@ html
     margin: 1vw;
     text-decoration: none;
 }
-
 .navElement4:focus
 {
     color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement5
 {
     color: white;
@@ -84,13 +72,11 @@ html
     margin: 1vw;
     text-decoration: none;
 }
-
 .navElement5:focus
 {
     color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement6
 {
     color: white;
@@ -98,26 +84,22 @@ html
     margin-left: auto;
     text-decoration: none;
 }
-
 .navElement6:focus
 {
     color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement7
 {
     font-weight: 700;
     padding: 3px;
     border: 2px solid black;
 }
-
 .navElement7:hover
 {
     background-color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement8
 {
     color: white;
@@ -125,13 +107,11 @@ html
     margin: 1vw;
     text-decoration: none;
 }
-
 .navElement8:focus
 {
     color: #DDBA2C;
     font-weight: 800;
 }
-
 .navElement9
 {
     color: white;
@@ -139,9 +119,190 @@ html
     margin: 1vw;
     text-decoration: none;
 }
-
 .navElement9:focus
 {
     color: #DDBA2C;
     font-weight: 800;
+}
+
+
+
+/* Home Page */
+.homeContentContainer
+{
+    display: flex;
+    margin: auto;
+    width: 100%;
+
+}
+.homeLeftContainer
+{
+    display: flex;
+    float: left;
+    width: 25%;
+    margin-left: 1%;
+}
+.homeFFColumn
+{
+    width: 30%;
+    text-align: center;
+}
+.homeFFButton
+{
+    background-color: #DDBA2C;
+    color: #01244C;
+    border: 2px solid #01244C;
+    border-radius: 5px;
+    padding: 1vw 1vw;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+.homeFFButton:hover
+{
+    background-color: #01244C;
+    color: #DDBA2C;
+    border: 2px solid #DDBA2C;
+}
+.homeDFColumn
+{
+    width: 30%;
+    text-align: center;
+    margin-left: 11%;
+}
+.homeDFButton
+{
+    background-color: #01244C;
+    color: #DDBA2C;
+    border: 2px solid #DDBA2C;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1vw 1vw;
+    display: block;
+    text-decoration: none;
+}
+.homeDFButton:hover
+{
+    background-color: #DDBA2C;
+    color: #01244C;
+    border: 2px solid #01244C;
+}
+.homeButtonMargin
+{
+    margin: 15px 0px;
+    list-style-type: none;
+}
+.homeList
+{
+    margin: 15px 0px;
+}
+.homeListLeft
+{
+    text-decoration: none;
+    background-color: #01244C;
+    color: #DDBA2C;
+    border: 2px solid #DDBA2C;
+    border-radius: 5px;
+    padding: 1vw 1vw;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+.homeListLeft:hover
+{
+    background-color: #DDBA2C;
+    color: #01244C;
+    border: 2px solid #01244C;
+}
+.homeListRight
+{
+    text-decoration: none;
+    background-color: #DDBA2C;
+    color: #01244C;
+    border: 2px solid #01244C;
+    border-radius: 5px;
+    padding: 1vw 1vw;
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+}
+.homeListRight:hover
+{
+    background-color: #01244C;
+    color: #DDBA2C;
+    border: 2px solid #DDBA2C;
+}
+.homeRightContainer
+{
+    width: 69%;
+    float: center;
+}
+.homeMainText
+{
+    text-align: center;
+    font-size: 3vw;
+    font-weight: 800;
+    color: #01244C;
+}
+
+
+
+/* Login Page */
+.loginContainer
+{
+    color: white;
+    position: absolute;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    padding-top: 30px;
+}
+.loginTextContainer
+{
+    align-items: flex-start;
+    justify-content: center;
+}
+.loginMainText
+{
+    font-size: 3.5vw;
+    text-align: center;
+    color: #01244C;
+    font-weight: 800;
+}
+.loginFormContainer
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+/* Profile Page */
+.profileContainer
+{
+    position: flex;
+    margin: auto;
+    width: 100%;
+    height: 80%;
+    padding-top: 30px;
+    justify-content: center;
+}
+.profileLeftColumn
+{
+    display: block;
+    height: 100%;
+    width: 25%;
+    padding: 10vw;
+    float: left;
+    background-color: #FFFFFF;
+}
+.profileRightColumn
+{
+    display: block;
+    height: 100%;
+    width: 25%;
+    padding: 10vw;
+    float: left;
+    background-color: #FFFFFF;
 }
