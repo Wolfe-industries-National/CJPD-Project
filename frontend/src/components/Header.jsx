@@ -30,7 +30,7 @@ const Header = () => {
                                 <Link className='navElement2' to='/'>C.J.P.D.</Link>
                                 <Link className='navElement3' to='/'>Home</Link>
                                 <Link className='navElement4' to='/reportPage'>Investigation Forms</Link>
-                                {user.userType === 'Admin' && <Link className='navElement5' to='/reportPage'>Manage Data</Link>}
+                                {user.userType === 'Admin' && <Link className='navElement5' to='/manageData'>Manage Data</Link>}
                                 <Link className='navElement6' to='/profile'>{user.name}</Link>
                                 <button className='navElement7' onClick={onLogout}>Logout</button>
                             </div>

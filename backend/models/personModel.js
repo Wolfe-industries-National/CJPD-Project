@@ -9,10 +9,50 @@ const personSchema = mongoose.Schema({
         type: Date,
         required: [true, "Please add a Date of Birth"],
     },
-    flags: {
+    telephone: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Telephone'
+    },
+    address: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Address'
+    },
+    fps: {
         type: String,
-
-    }
+    },
+    height: {
+        type: String,
+    },
+    weight: {
+        type: String,
+    },
+    aliases: {
+        type: [String],
+    },
+    associatedVehicles: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Vehicle'
+    },
+    associates: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Person'
+    },
+    flags: {
+        type: [String],
+    },
+    tattoos: {
+        type: [String],
+    },
+    hairColour: {
+        type: String,
+    },
+    eyeColour: {
+        type: String,
+    },
 }, {
     timestamps: true
 });

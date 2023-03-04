@@ -11,6 +11,7 @@ import QueryResultPage from "./pages/QueryResultPage";
 import ReportPage from "./pages/ReportPage";
 import Profile from "./pages/Profile";
 import DownloadReportPage from "./pages/DownloadReportPage";
+import ManageData from "./pages/ManageData";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
             <Route path='/detailedFind' element={<DetailedFind/>} />
 
             <Route path='/queryResultPage' element={<QueryResultPage/>} />
+
+            <Route path='/manageData' element={<ManageData/>} />
 
             <Route path='/reportPage' element={<ReportPage/>} />
             <Route path='/downloadReportPage' element={<DownloadReportPage/>} />

@@ -2,9 +2,6 @@ const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 
 const BusOrg = require('../models/busOrgModel');
-const Address = require('../models/addressModel');
-const Telephone = require('../models/telephoneModel');
-
 
 // @desc    Create new BusOrg
 // @route   POST /api/v1/bus-org/

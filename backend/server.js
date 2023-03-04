@@ -38,7 +38,7 @@ app.use('/api/v1/bus-org', require('./routes/busOrgRoutes'));
 // Occurrence api routes
 app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 // Person api routes
-// app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
+app.use('/api/v1/person', require('./routes/personRoutes'));
 // Forms Data Api Routes
 // app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 

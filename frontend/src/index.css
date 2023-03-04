@@ -5,12 +5,14 @@
     margin: 0;
     padding: 0;
 }
-html
+body, html
 {
     background-color: #E5F2FF;
     font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
     font-style: normal;
     font-weight: 500;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -98,7 +100,6 @@ html
 .navElement7:hover
 {
     background-color: #DDBA2C;
-    font-weight: 800;
 }
 .navElement8
 {
@@ -162,7 +163,7 @@ html
 {
     background-color: #01244C;
     color: #DDBA2C;
-    border: 2px solid #DDBA2C;
+    border: 2px solid #01244C;
 }
 .homeDFColumn
 {
@@ -174,7 +175,7 @@ html
 {
     background-color: #01244C;
     color: #DDBA2C;
-    border: 2px solid #DDBA2C;
+    border: 2px solid #01244C;
     border-radius: 5px;
     width: 100%;
     padding: 1vw 1vw;
@@ -201,7 +202,7 @@ html
     text-decoration: none;
     background-color: #01244C;
     color: #DDBA2C;
-    border: 2px solid #DDBA2C;
+    border: 2px solid #01244C;
     border-radius: 5px;
     padding: 1vw 1vw;
     margin-top: 15px;
@@ -230,7 +231,7 @@ html
 {
     background-color: #01244C;
     color: #DDBA2C;
-    border: 2px solid #DDBA2C;
+    border: 2px solid #01244C;
 }
 .homeRightContainer
 {
@@ -324,28 +325,187 @@ html
 /* Profile Page */
 .profileContainer
 {
-    position: flex;
+    display: inline-flex;
+    position: absolute;
     margin: auto;
     width: 100%;
-    height: 80%;
-    padding-top: 30px;
+    height: 30%;
+    padding-top: 50px;
     justify-content: center;
 }
 .profileLeftColumn
 {
-    display: block;
+    position: relative;
+    display: flex;
     height: 100%;
     width: 25%;
     padding: 10vw;
     float: left;
+    margin-right: 20px;
+    border: 2px solid #01244C;
+    border-radius: 40px;
     background-color: #FFFFFF;
+}
+.profileLE1
+{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 59%;
+    transform: translate(-59%, 0);
+}
+.profileLE1 img
+{
+    max-width: 75%;
+    height: auto;
+    align-items: center;
+}
+.profileLE2
+{
+    position: absolute;
+    display: block;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    font-size: 2vw;
+    text-align: center;
+}
+.profileLE3
+{
+    position: absolute;
+    display: block;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    font-size: 2vw;
+    text-align: center;
 }
 .profileRightColumn
 {
-    display: block;
+    position: relative;
+    display: flex;
     height: 100%;
     width: 25%;
     padding: 10vw;
     float: left;
+    margin-left: 20px;
+    border-radius: 40px;
+    background-color: #01244C;
+}
+.profileRightColumn h1
+{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -10%);
+    color: #DDBA2C;
+    font-size: 3vw;
+}
+.profileRightColumn h3
+{
+    position: relative;
+    display: flex;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    color: #FFFFFF;
+    font-size: 1.3vw;
+}
+
+
+
+/* Detailed Find Page */
+.DFOuterContainer
+{
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    height: 80vh;
+    text-decoration: none;
+}
+.DFInnerContainer
+{
+    display: block;
+    margin: auto;
+    margin-top: 0.5vw;
+    text-decoration: none;
+}
+.DFLeftColumn
+{
+    position: relative;
+    display: block;
+    float: left;
+    margin-right: 2vw;
+    padding: 3vw 0;
+    width: 25vw;
+    height: auto;
+    border: 2px solid #01244C;
+    border-radius: 15px;
     background-color: #FFFFFF;
+    text-align: center;
+    text-decoration: none;
+}
+.DFLeftColumn p
+{
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 1.5vw;
+    font-weight: 700;
+    color: #01244C;
+    margin-bottom: 2vw;
+}
+.DFLeftColumn span
+{
+    margin: auto;
+    position: relative;
+}
+.DFLeftButtons
+{
+    position: relative;
+    display: flex;
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: #DDBA2C;
+    background-color: #01244C;
+    border: 2px solid #01244C;
+    height: 3.5vw;
+    margin: 0 1vw;
+    border-radius: 8px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.DFLeftButtons:focus
+{
+    color: #01244C;
+    background-color: #DDBA2C;
+    border: 2px solid #01244C;
+}
+.DFLeftButtons:hover
+{
+    color: #01244C;
+    background-color: #DDBA2C;
+}
+.DFRightColumn
+{
+    position: relative;
+    display: block;
+    float: right;
+    width: 70vw;
+    height: 80vh;
+    border: 2px solid #01244C;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+.DFBottomBar
+{
+    display: block;
+    margin: auto;
+    max-width: 100%;
+    justify-content: right;
+}
+.DFBottomBar span
+{
+    position: relative;
 }

@@ -9,15 +9,28 @@ const Profile = () => {
     const {user} = useSelector((state) => state.auth);
 
     return (
+
         <div className='profileContainer'>
+
             <div className='profileLeftColumn'>
-                <img src={Unknown} alt="Unknown Person" height={70} />
-                <p>{user.name}</p>
-                <p>{user.email}</p>
+                <div className='profileLE1'>
+                    <img src={Unknown} alt="Unknown Person"/>
+                </div>
+                <div className='profileLE2'>
+                    <h3>Name</h3>
+                    <p>{user.name}</p>
+                </div>
+                <div className='profileLE3'>
+                    <h3>Email</h3>
+                    <p>{user.email}</p>
+                </div>
             </div>
+
             <div className='profileRightColumn'>
-                <h3>Forms Saved:</h3>
+                <h1>Saved Forms</h1>
+                <h3>Investigative Form Name Here</h3>
             </div>
+
         </div>
 
     )
