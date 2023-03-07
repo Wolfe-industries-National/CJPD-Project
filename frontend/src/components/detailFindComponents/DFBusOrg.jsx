@@ -5,52 +5,56 @@ import {Link, useNavigate} from 'react-router-dom';
 const DFBusOrg = () => {
 
     return (
-        <div>
-            <h3>DFBusOrg</h3>
-            <div>
-                <tr>
-                    <td>
+        <div class='DFUniversalContainer'>
+            <h3 class='DFUniversalTitle'>Detailed Find Business / Organization</h3>
+            <form class='DFUniversalForm'>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Name of Owner<br/>
-                            <input type="text" id="DFBusOrgCOwnerName" name="OwnerName" placeholder="John Boyega"/>
+                            <div class='DFUniversalInnerTitle'>Name of Owner<br/></div>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Business Name<br/>
-                            <input type="text" id="DFBusOrgCBusinessName" name="BusinessName" placeholder="Random Industries"/>
+                            <div class='DFUniversalInnerTitle'>Name of Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="Bus/name" placeholder="Random Incorporated ltd."/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Business Type<br/>
-                            <input type="text" id="DFBusOrgCBusinessType" name="BusinessType" placeholder="Convenience Store"/>
+                            <div class='DFUniversalInnerTitle'>Business Type<br/></div>
+                            <input class='DFUniversalFields' type="text" name="typeOfBusOrg" placeholder="Convenience Store"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Address<br/>
-                            <input type="select" id="DFBusOrgCAddress" name="Address"/>
+                            <div class='DFUniversalInnerTitle'>Address<br/></div>
+                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Alarm Company
-                            <input type="text" id="DFBusOrgCAlarmCompany" name="AlarmCompany" placeholder="Ex. Vivint"/>
+                            <div class='DFUniversalInnerTitle'>Alarm Company<br/></div>
+                            <input class='DFUniversalFields' type="text" name="alarmCompany" placeholder="Telus Security"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Weight
-                            <input type="text" id="DFBusOrgCWeight" name="Weight" placeholder="Ex. 142 (Weight in Pounds)"/>
+                            <div class='DFUniversalInnerTitle'>Business / Organization Telephone Number<br/></div>
+                            <input class='DFUniversalFields' type="number" name="telephoneNumber" placeholder="(000) 000-0000"/>
                         </label>
-                    </td>
-                </tr>
-            </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
     )
 }

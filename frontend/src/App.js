@@ -15,32 +15,32 @@ import ManageData from "./pages/ManageData";
 
 function App() {
   return (
-    <div>
-      <Router>
-        <div className='container'>
-          <Header/>
-          <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/register' element={<Register/>} />
-            <Route path='/login' element={<Login/>} />
-            <Route path='/profile' element={<Profile/>} />
+      <div>
+        <Router>
+          <div className='container'>
+            <Header/>
+            <Routes>
+              <Route path='/' element={<Home/>} />
+              <Route path='/register' element={<Register/>} />
+              <Route path='/login' element={<Login/>} />
+              <Route path='/profile' element={<Profile/>} />
 
-            <Route path='/fastFind/:itemForSearch' element={<FastFind/>} />
-            <Route path='/detailedFind/:itemForSearch' element={<DetailedFind/>} />
-            <Route path='/fastFind' element={<FastFind/>} />
-            <Route path='/detailedFind' element={<DetailedFind/>} />
+              <Route path='/fastFind/:itemForSearch' element={<FastFind/>} />
+              <Route path='/detailedFind/:itemForSearch' element={<DetailedFind/>} />
+              <Route path='/fastFind' element={<FastFind/>} />
+              <Route path='/detailedFind' element={<DetailedFind/>} />
 
-            <Route path='/queryResultPage' element={<QueryResultPage/>} />
+              <Route path='/queryResultPage' element={<QueryResultPage/>} />
 
-            <Route path='/manageData' element={<ManageData/>} />
+              <Route path='/manageData' element={<ManageData/>} />
 
-            <Route path='/reportPage' element={<ReportPage/>} />
-            <Route path='/downloadReportPage' element={<DownloadReportPage/>} />
-          </Routes>
-        </div>
-      </Router>
-      <ToastContainer/>
-    </div>
+              <Route path='/reportPage/:itemForSearch' element={<ReportPage/>} />
+              <Route path='/downloadReportPage' element={<DownloadReportPage/>} />
+            </Routes>
+          </div>
+        </Router>
+        <ToastContainer/>
+      </div>
   );
 }
 

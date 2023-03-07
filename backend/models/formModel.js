@@ -52,10 +52,10 @@ const formSchema = mongoose.Schema({
     zone: {
         type: String,
     },
-    UnitWatch: {
+    unitWatch: {
         type: String,
     },
-    Priority: {
+    priority: {
         type: Boolean,
     },
     differentAddress: {

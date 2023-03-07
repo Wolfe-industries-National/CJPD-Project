@@ -8,6 +8,7 @@ import occurrenceReducer from '../features/occurrence/occurrenceSlice';
 import personReducer from '../features/person/personSlice';
 import propertyReducer from '../features/property/propertySlice';
 import vehicleReducer from '../features/vehicle/vehicleSlice';
+import formReducer from '../features/form/formSlice';
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
     person: personReducer,
     property: propertyReducer,
     vehicle: vehicleReducer,
+    form: formReducer,
   },
 });

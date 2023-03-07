@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 import {logout, reset} from '../features/auth/authSlice';
-import logo from "../Images/LCName.png";
+import logo from "../Images/FinalLogoImageCJPD.png";
 
 const Header = () => {
     const navigate = useNavigate();
@@ -26,13 +26,12 @@ const Header = () => {
                     user ? (
                         <>
                             <div className='navElementContainer'>
-                                <img className='navElement1' src={logo} alt="Logo" height={70} />
-                                <Link className='navElement2' to='/'>C.J.P.D.</Link>
+                                <Link className='navElement2' style={{paddingTop: 0, paddingBottom: 0}} to='/'><img className='navElement1' src={logo} alt="Logo" height={60} /></Link>
                                 <Link className='navElement3' to='/'>Home</Link>
-                                <Link className='navElement4' to='/reportPage'>Investigation Forms</Link>
+                                <Link className='navElement4' to='/reportPage/consenttosearch'>Investigation Forms</Link>
                                 {user.userType === 'Admin' && <Link className='navElement5' to='/manageData'>Manage Data</Link>}
                                 <Link className='navElement6' to='/profile'>{user.name}</Link>
-                                <button className='navElement7' onClick={onLogout}>Logout</button>
+                                {/*<button className='navElement7' onClick={onLogout}>Logout</button>*/}
                             </div>
                         </>
                     ) : (

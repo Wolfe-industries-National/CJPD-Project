@@ -17,6 +17,10 @@ const addressSchema = mongoose.Schema({
         type: String,
         required: [true, "Please add a Country"],
     },
+    province: {
+        type: String,
+        required: [true, "Please add a Province"],
+    },
     city: {
         type: String,
         required: [true, "Please add a City"],

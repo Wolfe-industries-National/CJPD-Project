@@ -5,77 +5,66 @@ import {Link, useNavigate} from 'react-router-dom';
 const DFAddress = () => {
 
     return (
-        <div>
-            <h3>DFAddress</h3>
-            <div>
-                <tr>
-                    <td>
+        <div class='DFUniversalContainer'>
+            <h3 class='DFUniversalTitle'>Detailed Find Address</h3>
+            <form class='DFUniversalForm'>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Name
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Owner / Tenant<br/></div>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            D.O.B.
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Type of Building<br/></div>
+                            <input class='DFUniversalFields' type="text" name="typeOfBuilding" placeholder="House, Apartment, Hotel, Etc."/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Telephone
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Vacant<br/></div>
+                            <select class='DFUniversalFields' name="vacant">
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Address
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Country<br/></div>
+                            <input class='DFUniversalFields' type="number" name="country" placeholder="Canada"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            FPS
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Province<br/></div>
+                            <input class='DFUniversalFields' type="text" name="province" placeholder="Alberta"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Height
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>City<br/></div>
+                            <input class='DFUniversalFields' type="text" name="city" placeholder="Lethbridge"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Weight
-                            <input type="text" id="fname" name="fname" value="John"/>
+                            <div class='DFUniversalInnerTitle'>Address<br/></div>
+                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W"/>
                         </label>
-                    </td>
-                    <td>
-                        <label>
-                            Aliases
-                            <input type="text" id="fname" name="fname" value="John"/>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
     )
 }

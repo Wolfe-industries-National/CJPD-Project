@@ -1,12 +1,21 @@
 import React, {useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {useNavigate} from "react-router-dom";
 import Unknown from "../Images/PersonsUnknown.jpg";
+import {logout, reset} from "../features/auth/authSlice";
 
 const Profile = () => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const {user} = useSelector((state) => state.auth);
+
+    const onLogout = () => {
+        dispatch(logout());
+        dispatch(reset());
+        navigate('/login');
+    }
 
     return (
 
@@ -20,10 +29,12 @@ const Profile = () => {
                     <h3>Name</h3>
                     <p>{user.name}</p>
                 </div>
-                <div className='profileLE3'>
+                <div className='profileLE3' style={{marginTop: '1.5rem'}}>
                     <h3>Email</h3>
                     <p>{user.email}</p>
+                    <button className='navElement7' onClick={onLogout}>Logout</button>
                 </div>
+
             </div>
 
             <div className='profileRightColumn'>

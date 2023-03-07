@@ -55,15 +55,49 @@ const FastFind = () => {
 
 
     return (
-        <div>
-            <h3>Fast Find</h3>
-            {rightSidePannel}
-            <div>
-                <h4>Results</h4>
+        <div className='DFOuterContainer'>
+
+            <div className='DFInnerContainer'>
+
+                <div className='DFLeftColumn'>
+                    <p>Category</p><br/>
+                    <span><Link className='DFLeftButtons' to='../fastFind/person'>Person</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/occurrence'>Occurrence</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/bus-org'>Bus/Org</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/property'>Property</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/vehicle'>Vehicle</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/address'>Address</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/telephone'>Telephone</Link><br/></span>
+                    <span><Link className='DFLeftButtons' to='../fastFind/officer-unit'>Officer / Unit</Link><br/></span>
+                </div>
+
+                <div className='FFRightColumn'>
+                    {/*Probably somewhere around here*/}
+                    {/*it will check for the page and then it will return the correct componenet for that page*/}
+                    <div>
+                        {rightSidePannel}
+
+                        <div className='DFBottomBar'>
+                            <div class='DFBottomBarInnerContainer'>
+                                <button class='DFBottomBarButton1'>Clear All</button>
+                            </div>
+                            <div class='DFBottomBarInnerContainer'>
+                                <button class='DFBottomBarButton1'>Find Now</button>
+                            </div>
+                            <div class='DFBottomBarInnerContainer'>
+                                <button class='DFBottomBarButton2' to={`/fastFind/${itemForSearch}`}>Switch to Fast Find</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
             </div>
-            <button>Clear All</button>
-            <button>Find Now</button>
-            <Link to={`/detailedFind/${itemForSearch}`}>Switch to Detailed Find</Link>
+
         </div>
     )
 }

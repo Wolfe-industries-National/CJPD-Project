@@ -5,66 +5,71 @@ import {Link, useNavigate} from 'react-router-dom';
 const DFOccurrence = () => {
 
     return (
-        <div>
-            <h3>DFOccurrence</h3>
-            <div>
-                <tr>
-                    <td>
+        <div class='DFUniversalContainer'>
+            <h3 class='DFUniversalTitle'>Detailed Find Occurence</h3>
+            <form class='DFUniversalForm'>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            File No.<br/>
-                            <input type="number" id="DFOccurenceCFileNo" name="FileNo" placeholder="00000000"/>
+                            <div class='DFUniversalInnerTitle'>File Number<br/></div>
+                            <input class='DFUniversalFields' type="number" name="fileNumber" placeholder="12345678"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Person<br/>
-                            <input type="select" id="DFOccurenceCPerson" name="Person"/>
+                            <div class='DFUniversalInnerTitle'>Name of Person<br/></div>
+                            <input class='DFUniversalFields' type="text" name="person" placeholder="First Name & Last Name"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Bus / Org<br/>
-                            <input type="select" id="DFOccurenceCBO" name="BO"/>
+                            <div class='DFUniversalInnerTitle'>Business / Organization<br/></div>
+                            <input class='DFUniversalFields' type="text" name="busOrg" placeholder="Random Incorporated ltd."/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Property<br/>
-                            <input type="select" id="DFOccurenceCProperty" name="Property"/>
+                            <div class='DFUniversalInnerTitle'>Property<br/></div>
+                            <input class='DFUniversalFields' type="text" name="property" placeholder="House, Apartment, Hotel, Etc."/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Vehicle<br/>
-                            <input type="select" id="DFOccurenceCVehicle" name="Vehicle"/>
+                            <div class='DFUniversalInnerTitle'>Vehicle<br/></div>
+                            <input class='DFUniversalFields' type="text" name="vehicle" placeholder="2018 Honda Civic LX"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Telephone<br/>
-                            <input type="select" id="DFOccurenceCTelephone" name="Telephone"/>
+                            <div class='DFUniversalInnerTitle'>Telephone<br/></div>
+                            <input class='DFUniversalFields' type="number" name="telephone" placeholder="(000) 000-0000"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Officer / Unit<br/>
-                            <input type="select" id="DFOccurenceCOU" name="OU"/>
+                            <div class='DFUniversalInnerTitle'>Officer / Unit<br/></div>
+                            <input class='DFUniversalFields' type="number" name="officerUnit" placeholder="1234567"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Address<br/>
-                            <input type="select" id="DFOccurenceCAddress" name="Address"/>
+                            <div class='DFUniversalInnerTitle'>Address<br/></div>
+                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB"/>
                         </label>
-                    </td>
-                </tr>
-            </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
     )
 }

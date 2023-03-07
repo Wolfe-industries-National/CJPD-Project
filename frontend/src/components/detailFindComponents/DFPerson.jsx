@@ -5,106 +5,113 @@ import {Link, useNavigate} from 'react-router-dom';
 const DFPerson = () => {
 
     return (
-        <div>
-            <h3>DFPerson</h3>
-            <div>
-                <tr>
-                    <td>
+        <div class='DFUniversalContainer'>
+            <h3 class='DFUniversalTitle'>Detailed Find Person</h3>
+            <form class='DFUniversalForm'>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Name<br/>
-                            <input type="text" id="DFPersonCName" name="Name" placeholder="FirstName LastName"/>
+                            <div class='DFUniversalInnerTitle'>Name<br/></div>
+                            <input class='DFUniversalFields' type="text" name="name" placeholder="First Name & Last Name"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            D.O.B.<br/>
-                            <input type="date" id="DFPersonCDOB" name="DOB"/>
+                            <div class='DFUniversalInnerTitle'>Date of Birth<br/></div>
+                            <input class='DFUniversalFields' type="date" name="dateOfBirth"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Telephone<br/>
-                            <input type="tel" id="DFPersonCTelephone" name="Telephone" placeholder="(000) 000-0000"/>
+                            <div class='DFUniversalInnerTitle'>Telephone<br/></div>
+                            <input class='DFUniversalFields' type="number" name="telephone" placeholder="(000) 000-0000"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Address<br/>
-                            <input type="select" id="DFPersonCAddress" name="Address"/>
+                            <div class='DFUniversalInnerTitle'>Address<br/></div>
+                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            FPS<br/>
-                            <input type="text" id="DFPersonCFPS" name="FPS" placeholder="A000000"/>
+                            <div class='DFUniversalInnerTitle'>Finger Print Section<br/></div>
+                            <input class='DFUniversalFields' type="text" name="fps" placeholder="A000000"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Height<br/>
-                            <input type="text" id="DFPersonCHeight" name="Height" placeholder="000 cm"/>
+                            <div class='DFUniversalInnerTitle'>Height (cm)<br/></div>
+                            <input class='DFUniversalFields' type="text" name="height" placeholder="000 cm"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Weight<br/>
-                            <input type="text" id="DFPersonCWeight" name="Weight" placeholder="000 lbs."/>
+                            <div class='DFUniversalInnerTitle'>Weight (lbs)<br/></div>
+                            <input class='DFUniversalFields' type="text" name="weight" placeholder="000 lbs."/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Aliases<br/>
-                            <input type="text" id="DFPersonCAliases" name="Aliases" placeholder="One Eyes Willy"/>
+                            <div class='DFUniversalInnerTitle'>Aliases<br/></div>
+                            <input class='DFUniversalFields' type="text" name="aliases" placeholder="One Eyed Willy"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Associated Vehicles<br/>
-                            <input type="select" id="DFPersonCAV" name="AV"/>
+                            <div class='DFUniversalInnerTitle'>Associated Vehicles<br/></div>
+                            <input class='DFUniversalFields' type="text" name="associatedVehicles" placeholder="2018 Honda Civic LX"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'td>
                         <label>
-                            Associates<br/>
-                            <input type="select" id="DFPersonCAssociates" name="Associates"/>
+                            <div class='DFUniversalInnerTitle'>Associates<br/></div>
+                            <input class='DFUniversalFields' type="text" name="associates" placeholder="Bill Benson"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Flags<br/>
-                            <input type="select" id="DFPersonCFlags" name="Flags"/>
+                            <div class='DFUniversalInnerTitle'>Flags<br/></div>
+                            <input class='DFUniversalFields' type="text" name="flags" placeholder="Violent Tendencies, HPV Positive, etc."/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Tattoos / Distinguishing Feature(s)<br/>
-                            <input type="text" id="DFPersonCTDF" name="TDF" value="Scar on left cheek"/>
+                            <div class='DFUniversalInnerTitle'>Tattoos / Distinguishing Feature(s)<br/></div>
+                            <input class='DFUniversalFields' type="text" name="tattoos" placeholder="Scar on left cheek"/>
                         </label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                    </div>
+                </div>
+
+                <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
                         <label>
-                            Hair Color<br/>
-                            <input type="text" id="DFPersonCHairColor" name="HairColor" value="Black"/>
+                            <div class='DFUniversalInnerTitle'>Hair Colour<br/></div>
+                            <input class='DFUniversalFields' type="text" name="hairColour" placeholder="Black"/>
                         </label>
-                    </td>
-                    <td>
+                    </div>
+                    <div class='DFUniversalData'>
                         <label>
-                            Eye Color<br/>
-                            <input type="text" id="DFPersonCEyeColor" name="EyeColor" value="Blue"/>
+                            <div class='DFUniversalInnerTitle'>Eye Colour<br/></div>
+                            <input class='DFUniversalFields' type="text" name="eyeColour" placeholder="Blue"/>
                         </label>
-                    </td>
-                </tr>
-            </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
     )
 }

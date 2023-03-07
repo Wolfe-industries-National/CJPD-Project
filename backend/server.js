@@ -17,6 +17,9 @@ app.use(express.urlencoded({extended: false}));
 app.get('/', (req, res) => {
     res.status(200).json({message: 'Welcome to the CJPD App'})
 })
+app.get('/api/v1/officerUnit/test', (req, res) => {
+    res.status(200).json({message: 'Welcome to the CJPD App'})
+})
 
 // Routes
 // user api routes
@@ -40,7 +43,7 @@ app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 // Person api routes
 app.use('/api/v1/person', require('./routes/personRoutes'));
 // Forms Data Api Routes
-// app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
+app.use('/api/v1/form', require('./routes/formRoutes'));
 
 
 // Middleware

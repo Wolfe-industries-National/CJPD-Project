@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 
 const OfficerUnit = require('../models/officerUnitModel');
 
+
 // @desc    Create new OfficerUnit
 // @route   POST /api/v1/officerUnit/
 // @access  Private
@@ -62,10 +63,33 @@ const getOfficerUnit = asyncHandler(async (req, res) => {
     res.status(200).json(officerUnit);
 });
 
+// @desc    Search Officer unit
+// @route   GET /api/v1/officerUnit/search
+// @access  Private
+const searchOfficerUnit = asyncHandler(async (req, res) => {
+    const searchQuery = req.body.query;
+    const result = await OfficerUnit.aggregate([
+        {
+            $search: {
+                index: "searchOfficerUnits",
+                text: {
+                    query: searchQuery,
+                    path: {
+                        wildcard: "*"
+                    }
+                }
+            }
+        }
+    ])
+    console.log(result);
+    res.status(200).json(result);
+});
+
 
 module.exports = {
     createOfficerUnit,
     getAllOfficerUnits,
     getOfficerUnit,
+    searchOfficerUnit
 }
 
