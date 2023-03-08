@@ -23,7 +23,6 @@ const createForm = asyncHandler(async (req, res) => {
         initials, suspectHistory, suspectHistoryNotes, complainant, complainantNotes, complainFuture,
         complainantFutureNotes, flags, formType
     } = req.body;
-
     // Validation
     if(!investigatorName || !agency || !fileNumber || !reportedDate || !occurrenceBetweenDate || !natureOfEvent ||
     !ambulance || !fire || !location )

@@ -11,12 +11,6 @@ const Profile = () => {
     const dispatch = useDispatch();
     const {user} = useSelector((state) => state.auth);
 
-    const onLogout = () => {
-        dispatch(logout());
-        dispatch(reset());
-        navigate('/login');
-    }
-
     return (
 
         <div className='profileContainer'>
@@ -32,7 +26,6 @@ const Profile = () => {
                 <div className='profileLE3' style={{marginTop: '1.5rem'}}>
                     <h3>Email</h3>
                     <p>{user.email}</p>
-                    <button className='navElement7' onClick={onLogout}>Logout</button>
                 </div>
 
             </div>

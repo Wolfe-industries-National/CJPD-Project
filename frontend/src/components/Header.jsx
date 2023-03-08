@@ -31,7 +31,7 @@ const Header = () => {
                                 <Link className='navElement4' to='/reportPage/consenttosearch'>Investigation Forms</Link>
                                 {user.userType === 'Admin' && <Link className='navElement5' to='/manageData'>Manage Data</Link>}
                                 <Link className='navElement6' to='/profile'>{user.name}</Link>
-                                {/*<button className='navElement7' onClick={onLogout}>Logout</button>*/}
+                                <button className='navElement7' onClick={onLogout}>Logout</button>
                             </div>
                         </>
                     ) : (

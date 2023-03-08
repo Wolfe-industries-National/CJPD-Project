@@ -70,13 +70,26 @@ const searchOfficerUnit = asyncHandler(async (req, res) => {
     const searchQuery = req.body.query;
     const result = await OfficerUnit.aggregate([
         {
-            $search: {
-                index: "searchOfficerUnits",
-                text: {
-                    query: searchQuery,
-                    path: {
-                        wildcard: "*"
-                    }
+            '$search': {
+                'index': 'searchIndex-OfficerUnits',
+                'autocomplete': {
+                    'query': req.body.query == '' ? '' : req.body.query,
+                    'path': 'name'
+                },
+                'highlight': {
+                    'path': [
+                        'name'
+                    ]
+                }
+            }
+        }, {
+            '$limit': 5
+        }, {
+            '$project': {
+                'name': 1,
+                'regimentalNumber': 1,
+                'highlights': {
+                    '$meta': 'searchHighlights'
                 }
             }
         }
