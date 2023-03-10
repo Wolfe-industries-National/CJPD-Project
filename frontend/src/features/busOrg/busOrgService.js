@@ -20,10 +20,18 @@ const getBusOrg = async (busOrgID) => {
     return response.data;
 }
 
+// search Addresses
+const searchBusOrg = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const busOrgService = {
     createBusOrg,
     getAllBusOrg,
-    getBusOrg
+    getBusOrg,
+    searchBusOrg
 }
 
 export default busOrgService;

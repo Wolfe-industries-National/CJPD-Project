@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Vehicle = require('../models/vehicleModel');
+const OfficerUnit = require("../models/officerUnitModel");
 
 
 // @desc    Create new Vehicle
@@ -70,8 +71,35 @@ const getVehicle = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Officer unit
+// @route   GET /api/v1/vehicle/search
+// @access  Private
+const searchVehicle = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const result = await Vehicle.aggregate([
+        {
+            '$search': {
+                'index': 'searchIndex-Vehicle',
+                'autocomplete': {
+                    'query': searchQuery == '' ? '' : searchQuery,
+                    'path': ['makeOfVehicle', 'modelOfVehicle', 'plateOfVehicle'],
+                    'fuzzy': {}
+                },
+                'highlight': {
+                    'path': [
+                        'makeOfVehicle', 'modelOfVehicle', 'plateOfVehicle'
+                    ]
+                }
+            }
+        }
+    ])
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createVehicle,
     getAllVehicles,
     getVehicle,
+    searchVehicle
 }

@@ -20,7 +20,7 @@ const Header = () => {
     }
 
     return (
-        <div className='navMainContainer'>
+        <div className='navMainContainer' style={{boxShadow: '0px 0px 10px #1A282B'}}>
             <div>
                 {
                     user ? (

@@ -38,6 +38,17 @@ export const getBusOrg = createAsyncThunk('busOrg/get', async (busOrgID, thunkAP
     }
 });
 
+
+export const searchBusOrg = createAsyncThunk('busOrg/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await busOrgService.searchBusOrg(searchQuery.query);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+
 export const busOrgSlice = createSlice({
     name: 'busOrg',
     initialState,
@@ -88,6 +99,18 @@ export const busOrgSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.busOrg = null
+            })
+            .addCase(searchBusOrg.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchBusOrg.fulfilled, (state, action) => {
+                state.busOrgs = action.payload
+            })
+            .addCase(searchBusOrg.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.busOrgs = null
             })
     }
 })

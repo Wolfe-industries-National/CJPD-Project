@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Property = require('../models/propertyModel');
+const Occurrence = require("../models/occurrenceModel");
 
 
 // @desc    Create new Property
@@ -66,8 +67,20 @@ const getProperty = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Property
+// @route   GET /api/v1/property/search
+// @access  Private
+const searchProperty = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const allOccurrence = await Property.find();
+    const result = allOccurrence.filter((item) => {return item.typeOfProperty.includes(searchQuery)});
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createProperty,
     getAllProperties,
     getProperty,
+    searchProperty
 }

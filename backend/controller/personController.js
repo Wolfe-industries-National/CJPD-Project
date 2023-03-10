@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 const Person = require('../models/personModel');
 const Occurrence = require("../models/occurrenceModel");
+const OfficerUnit = require("../models/officerUnitModel");
 
 // @desc    Create new Person
 // @route   POST /api/v1/person/
@@ -90,8 +91,36 @@ const getPerson = asyncHandler(async (req, res) => {
     res.status(200).json(person);
 });
 
+
+// @desc    Search Person
+// @route   GET /api/v1/person/search
+// @access  Private
+const searchPerson = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const result = await Person.aggregate([
+        {
+            '$search': {
+                'index': 'searchIndex-Person',
+                'autocomplete': {
+                    'query': searchQuery == '' ? '' : searchQuery,
+                    'path': 'name',
+                    'fuzzy': {}
+                },
+                'highlight': {
+                    'path': [
+                        'name'
+                    ]
+                }
+            }
+        }
+    ])
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createPerson,
     getAllPerson,
     getPerson,
+    searchPerson
 }

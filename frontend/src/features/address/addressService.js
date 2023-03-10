@@ -20,10 +20,18 @@ const getAddress = async (addressId) => {
     return response.data;
 }
 
+// search Addresses
+const searchAddress = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const addressService = {
     createAddress,
     getAllAddresses,
-    getAddress
+    getAddress,
+    searchAddress
 }
 
 export default addressService;

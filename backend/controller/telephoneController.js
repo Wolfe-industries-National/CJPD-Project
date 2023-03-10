@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Telephone = require('../models/telephoneModel');
+const Property = require("../models/propertyModel");
 
 
 // @desc    Create new Telephone
@@ -62,8 +63,20 @@ const getTelephone = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Telephone
+// @route   GET /api/v1/telephone/search
+// @access  Private
+const searchTelephone = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const allOccurrence = await Telephone.find();
+    const result = allOccurrence.filter((item) => {return item.telephoneNumber.includes(searchQuery)});
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createTelephone,
     getAllTelephones,
     getTelephone,
+    searchTelephone
 }

@@ -67,14 +67,15 @@ const getOfficerUnit = asyncHandler(async (req, res) => {
 // @route   GET /api/v1/officerUnit/search
 // @access  Private
 const searchOfficerUnit = asyncHandler(async (req, res) => {
-    const searchQuery = req.body.query;
+    const searchQuery = req.query.query;
     const result = await OfficerUnit.aggregate([
         {
             '$search': {
                 'index': 'searchIndex-OfficerUnits',
                 'autocomplete': {
-                    'query': req.body.query == '' ? '' : req.body.query,
-                    'path': 'name'
+                    'query': searchQuery == '' ? '' : searchQuery,
+                    'path': 'name',
+                    'fuzzy': {}
                 },
                 'highlight': {
                     'path': [
@@ -82,19 +83,8 @@ const searchOfficerUnit = asyncHandler(async (req, res) => {
                     ]
                 }
             }
-        }, {
-            '$limit': 5
-        }, {
-            '$project': {
-                'name': 1,
-                'regimentalNumber': 1,
-                'highlights': {
-                    '$meta': 'searchHighlights'
-                }
-            }
         }
     ])
-    console.log(result);
     res.status(200).json(result);
 });
 

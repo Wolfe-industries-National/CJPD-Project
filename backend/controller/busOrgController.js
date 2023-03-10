@@ -2,6 +2,7 @@ const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 
 const BusOrg = require('../models/busOrgModel');
+const OfficerUnit = require("../models/officerUnitModel");
 
 // @desc    Create new BusOrg
 // @route   POST /api/v1/bus-org/
@@ -71,8 +72,35 @@ const getBusOrg = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Bus Org unit
+// @route   GET /api/v1/bus-org/search
+// @access  Private
+const searchBusOrg = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const result = await BusOrg.aggregate([
+        {
+            '$search': {
+                'index': 'searchIndex-BusOrg',
+                'autocomplete': {
+                    'query': searchQuery == '' ? '' : searchQuery,
+                    'path': 'name',
+                    'fuzzy': {}
+                },
+                'highlight': {
+                    'path': [
+                        'name'
+                    ]
+                }
+            }
+        }
+    ])
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
+    searchBusOrg
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { login, reset } from '../features/auth/authSlice';
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import FinalLogoImageCJPD from '../Images/FinalLogoImageCJPD.png';
 
 const Login = () => {
 
@@ -46,16 +47,16 @@ const Login = () => {
     return (
         <div className='loginContainer'>
             <div className='loginTextContainer'>
-                <p className='loginMainText'>Criminal Justice Profiling Database<br/>(C.J.P.D.)</p>
+                <img className='homeImage' src={FinalLogoImageCJPD} alt="Home Image" height='40%' width='20%'/>
             </div>
             <div className='loginFormContainer'>
                 <form onSubmit={onSubmit}>
                     <label className='loginLabel' htmlFor="email">
-                        LC Email
+                        LC Email<br/>
                         <input className='loginTextFields' type="email" id='email' name='email' value={email} onChange={onChange} />
                     </label><br />
                     <label className='loginLabel' htmlFor="password">
-                        Password
+                        Password<br/>
                         <input className='loginTextFields' type="password" id='password' name='password' value={password} onChange={onChange} />
                     </label><br />
                     <div className='loginButtonContainer'>

@@ -85,7 +85,7 @@ const FastFind = () => {
                                 <button class='DFBottomBarButton1'>Find Now</button>
                             </div>
                             <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton2' to={`/fastFind/${itemForSearch}`}>Switch to Fast Find</button>
+                                <button class='DFBottomBarButton2' to={`/detailedFind/${itemForSearch}`}>Switch to Detailed Find</button>
                             </div>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
 const Address = require('../models/addressModel');
+const OfficerUnit = require("../models/officerUnitModel");
 
 
 // @desc    Create new Address
@@ -68,8 +69,36 @@ const getAddress = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Officer unit
+// @route   GET /api/v1/address/search
+// @access  Private
+const searchAddress = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const result = await Address.aggregate([
+        {
+            '$search': {
+                'index': 'searchIndex-Address',
+                'autocomplete': {
+                    'query': searchQuery == '' ? '' : searchQuery,
+                    'path': 'address',
+                    'fuzzy': {}
+                },
+                'highlight': {
+                    'path': [
+                        'address'
+                    ]
+                }
+            }
+        }
+    ])
+    res.status(200).json(result);
+    console.log(result);
+});
+
+
 module.exports = {
     createAddress,
     getAllAddresses,
     getAddress,
+    searchAddress
 }

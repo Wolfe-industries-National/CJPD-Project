@@ -2,6 +2,8 @@ const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 
 const Occurrence = require('../models/occurrenceModel');
+const OfficerUnit = require("../models/officerUnitModel");
+const Person = require("../models/personModel");
 
 
 // @desc    Create new Occurrence
@@ -84,8 +86,31 @@ const getOccurrence = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Search Occurrence
+// @route   GET /api/v1/occurrence/search
+// @access  Private
+const searchOfficerUnit = asyncHandler(async (req, res) => {
+    const searchQuery = req.body.query;
+    const allData = await Occurrence.find();
+
+    res.status(200).json(result);
+});
+
+
+// @desc    Search Occurrence
+// @route   GET /api/v1/occurrence/search
+// @access  Private
+const searchOccurrence = asyncHandler(async (req, res) => {
+    const searchQuery = req.query.query;
+    const allOccurrence = await Occurrence.find();
+    const result = allOccurrence.filter((item) => {return item.fileNumber.includes(searchQuery)});
+    res.status(200).json(result);
+});
+
+
 module.exports = {
     createOccurrence,
     getAllOccurrence,
     getOccurrence,
+    searchOccurrence
 }

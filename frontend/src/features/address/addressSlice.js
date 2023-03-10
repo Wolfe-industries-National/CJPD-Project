@@ -38,6 +38,16 @@ export const getAddress = createAsyncThunk('address/get', async (addressID, thun
     }
 });
 
+export const searchAddress = createAsyncThunk('address/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await addressService.searchAddress(searchQuery.query);
+
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const addressSlice = createSlice({
     name: 'address',
     initialState,
@@ -88,6 +98,18 @@ export const addressSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.address = null
+            })
+            .addCase(searchAddress.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchAddress.fulfilled, (state, action) => {
+                state.addresses = action.payload
+            })
+            .addCase(searchAddress.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.addresses = null
             })
     }
 })

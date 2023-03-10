@@ -6,7 +6,7 @@ const {protect} = require('../middleware/authMiddleware');
 
 router.route('/').post(protect, createOfficerUnit);
 router.route('/').get(protect, getAllOfficerUnits);
-router.route('/search').get(protect, searchOfficerUnit);
+router.route('/search').get(searchOfficerUnit);
 router.route('/:id').get(protect, getOfficerUnit);
 
 module.exports = router;
