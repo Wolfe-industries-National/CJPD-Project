@@ -3,7 +3,7 @@ import axios from 'axios';
 const API_URI = '/api/v1/address/';
 
 // Create new Address
-const createAddress = async (addressData) => {
+const createNewAddress = async (addressData) => {
     const response = await axios.post(API_URI, addressData);
     return response.data;
 }
@@ -28,7 +28,7 @@ const searchAddress = async (searchQuery) => {
 }
 
 const addressService = {
-    createAddress,
+    createNewAddress,
     getAllAddresses,
     getAddress,
     searchAddress

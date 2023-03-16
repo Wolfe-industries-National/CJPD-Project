@@ -8,7 +8,7 @@ const OfficerUnit = require("../models/officerUnitModel");
 // @route   POST /api/v1/address/
 // @access  Private
 const createAddress = asyncHandler(async (req, res) => {
-    const {owner, typeOfBuilding, vacant, country, city, address} = req.body;
+    const {owner, typeOfBuilding, vacant, country, province, city, address} = req.body;
 
     // Validation
     if(!address){
@@ -22,6 +22,7 @@ const createAddress = asyncHandler(async (req, res) => {
         typeOfBuilding,
         vacant,
         country,
+        province,
         city,
         address
     })
@@ -33,6 +34,7 @@ const createAddress = asyncHandler(async (req, res) => {
             typeOfBuilding: addressUnit.typeOfBuilding,
             vacant: addressUnit.vacant,
             country: addressUnit.country,
+            province: addressUnit.province,
             city: addressUnit.city,
             address: addressUnit.address,
         })

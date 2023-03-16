@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import officerUnitService from "./officerUnitService";
+import occurrenceService from "../occurrence/occurenceService";
+import {searchOccurrence} from "../occurrence/occurrenceSlice";
 
 
 const initialState = {
@@ -38,6 +40,16 @@ export const getOfficerUnit = createAsyncThunk('officerUnit/get', async (officer
     }
 });
 
+export const searchOfficerUnit = createAsyncThunk('officerUnit/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await officerUnitService.searchOfficerUnit(searchQuery.query);
+
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const officerUnitSlice = createSlice({
     name: 'officerUnit',
     initialState,
@@ -57,7 +69,6 @@ export const officerUnitSlice = createSlice({
             .addCase(createOfficerUnit.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
-                state.officerUnit = action.payload
             })
             .addCase(createOfficerUnit.rejected, (state, action) => {
                 state.isLoading = false
@@ -88,6 +99,18 @@ export const officerUnitSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.officerUnit = null
+            })
+            .addCase(searchOfficerUnit.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchOfficerUnit.fulfilled, (state, action) => {
+                state.officerUnits = action.payload
+            })
+            .addCase(searchOfficerUnit.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.officerUnits = null
             })
     }
 })

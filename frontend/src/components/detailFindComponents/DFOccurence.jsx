@@ -6,7 +6,7 @@ const DFOccurrence = () => {
 
     return (
         <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Detailed Find Occurence</h3>
+            <h3 class='DFUniversalTitle'>Detailed Find Occurrence</h3>
             <form class='DFUniversalForm'>
 
                 <div class='DFUniversalRow'>
@@ -21,8 +21,8 @@ const DFOccurrence = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Person<br/></div>
-                            <input class='DFUniversalFields' type="text" name="person" placeholder="First Name & Last Name"/>
+                            <div class='DFUniversalInnerTitle'>Person<br/></div>
+                            <input class='DFUniversalFields' type="text" name="person" placeholder="First & Last Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -55,7 +55,7 @@ const DFOccurrence = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Officer / Unit<br/></div>
-                            <input class='DFUniversalFields' type="number" name="officerUnit" placeholder="1234567"/>
+                            <input class='DFUniversalFields' type="text" name="officerUnit" placeholder="1234567"/>
                         </label>
                     </div>
                 </div>

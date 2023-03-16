@@ -4,7 +4,7 @@ const {createBusOrg, getAllBusOrg, getBusOrg, searchBusOrg} = require('../contro
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post(protect, createBusOrg);
+router.route('/').post(createBusOrg);
 router.route('/').get(protect, getAllBusOrg);
 router.route('/search').get(searchBusOrg);
 router.route('/:id').get(protect, getBusOrg);

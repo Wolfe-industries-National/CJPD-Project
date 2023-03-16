@@ -20,10 +20,18 @@ const getTelephone = async (telephoneID) => {
     return response.data;
 }
 
+// search Telephone
+const searchTelephone = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const telephoneService = {
     createTelephone,
     getAllTelephones,
-    getTelephone
+    getTelephone,
+    searchTelephone
 }
 
 export default telephoneService;

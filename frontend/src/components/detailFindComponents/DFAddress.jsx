@@ -13,23 +13,28 @@ const DFAddress = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Owner / Tenant<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Type of Building<br/></div>
+                            <div class='DFUniversalInnerTitle'>Building Type<br/></div>
                             <input class='DFUniversalFields' type="text" name="typeOfBuilding" placeholder="House, Apartment, Hotel, Etc."/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vacant<br/></div>
-                            <select class='DFUniversalFields' name="vacant">
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-
+                            <div class='UniversalRadioContainer'>
+                                <div class="RadioChoiceContainer">
+                                    <input id="DFARadioYes" class="UniversalRadioFix" type="radio" name="RC-DFA" value="yes"/>
+                                    <label for="DFARadioYes">Yes</label>
+                                </div>
+                                <div class="RadioChoiceContainer">
+                                    <input id="DFARadioNo" class="UniversalRadioFix" type="radio" name="RC-DFA" value="no"/>
+                                    <label for="DFARadioNo">No</label>
+                                </div>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -38,7 +43,7 @@ const DFAddress = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Country<br/></div>
-                            <input class='DFUniversalFields' type="number" name="country" placeholder="Canada"/>
+                            <input class='DFUniversalFields' type="text" name="country" placeholder="Canada"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>

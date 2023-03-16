@@ -4,7 +4,7 @@ const {createAddress, getAllAddresses, getAddress, searchAddress} = require('../
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post(protect, createAddress);
+router.route('/').post(createAddress);
 router.route('/').get(protect, getAllAddresses);
 router.route('/search').get(searchAddress);
 router.route('/:id').get(protect, getAddress);

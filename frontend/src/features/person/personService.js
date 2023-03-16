@@ -20,10 +20,18 @@ const getPerson = async (personID) => {
     return response.data;
 }
 
+// search Person
+const searchPerson = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const personService = {
     createPerson,
     getAllPerson,
-    getPerson
+    getPerson,
+    searchPerson
 }
 
 export default personService;

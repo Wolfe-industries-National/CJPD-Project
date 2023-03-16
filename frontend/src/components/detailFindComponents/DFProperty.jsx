@@ -12,14 +12,14 @@ const DFProperty = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Property Type<br/></div>
+                            <div class='DFUniversalInnerTitle'>Type<br/></div>
                             <input class='DFUniversalFields' type="text" name="typeOfProperty" placeholder="Necklace, Car, Etc."/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Property Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
+                            <div class='DFUniversalInnerTitle'>Owner<br/></div>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
                         </label>
                     </div>
                 </div>
@@ -27,14 +27,14 @@ const DFProperty = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Serial Number / Vehicle Identification Number (VIN)<br/></div>
-                            <input class='DFUniversalFields' type="number" name="vinOfProperty" placeholder="1234567"/>
+                            <div class='DFUniversalInnerTitle'>Serial Number / Vehicle Identification Number<br/></div>
+                            <input class='DFUniversalFields' type="text" name="vinOfProperty" placeholder="1234567"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Property Value<br/></div>
-                            <input class='DFUniversalFields' type="number" name="valueOfProperty" placeholder="$000"/>
+                            <div class='DFUniversalInnerTitle'>Value<br/></div>
+                            <input class='DFUniversalFields' type="number" name="valueOfProperty" placeholder="$123"/>
                         </label>
                     </div>
                 </div>

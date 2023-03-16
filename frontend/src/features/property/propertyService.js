@@ -20,10 +20,18 @@ const getProperty = async (propertyID) => {
     return response.data;
 }
 
+// search Officer Unit
+const searchProperty = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const propertyService = {
     createProperty,
     getAllProperties,
-    getProperty
+    getProperty,
+    searchProperty
 }
 
 export default propertyService;

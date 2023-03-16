@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from 'react';
+import {PDFDocument} from "pdf-lib";
 
 const ConsentforReleaseofMedicalInformation = () => {
 
@@ -29,19 +29,19 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Patient/Client Name<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Date of Birth<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="yyyy-mm-dd"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Personal Health Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div>Please provide details about the health information you want disclosed, such as the name of the AHS location/facility that provided the health service and the time period of the records.</div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -77,13 +77,13 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Name of Individual/Organization<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Phone<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -92,25 +92,25 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Address<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>City / Town<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Province<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Postal Code<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div>Please provide the reason why you want to disclose the health information (Required).</div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -150,88 +150,80 @@ const ConsentforReleaseofMedicalInformation = () => {
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            I, <input class='DFUniversalFields' type="text" name="name"/>, am
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            I, <input style={{margin: 5}} class='DFUniversalFields' type="text" name="" placeholder="Representative Name"/> am
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            I, <input class='DFUniversalFields' type="text" name="name" placeholder="Representative Name"/>, am
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-1" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The parent or legally appointed guardian of the patient/client who is under 18 years of age and who is not a mature minor in relation to their health information.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The parent or legally appointed guardian of the patient/client who is under 18 years of age and who is not a mature minor in relation to their health information.</p>
+                        <label style={{display: "inline-flex", alignItems: "center", justifyContent: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-2">The guardian or trustee appointed for the adult patient/client under the Adult Guardianship and Trusteeship Act exercising my powers or duties as their guardian or trustee.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The guardian or trustee appointed for the adult patient/client under the Adult Guardianship and Trusteeship Act exercising my powers or duties as their guardian or trustee.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The patient/client's agent named in an activated Personal Directive under the Personal Directives Act exercising my authority set out in the Personal Directive.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The patient/client's agent named in an activated Personal Directive under the Personal Directives Act exercising my authority set out in the Personal Directive.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The personal representative of a deceased patient/client appointed by the patient/client's will or by the Court, administering the patient/client's estate.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The personal representative of a deceased patient/client appointed by the patient/client's will or by the Court, administering the patient/client's estate.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The patient's named attorney in a Power of Attorney currently in effect exercising my powers and duties conferred by the Power of Attorney.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The patient's named attorney in a Power of Attorney currently in effect exercising my powers and duties conferred by the Power of Attorney.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The patient/client's nearest relative selected in accordance with the Mental Health Act carrying out my obligations as the nearest relative.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The patient/client's nearest relative selected in accordance with the Mental Health Act carrying out my obligations as the nearest relative.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">The patient/client's specific decision maker, supportive decision maker, or co-decision maker, authorized in accordance with the Adult Guardianship and Trusteeship Act carrying out the related duties.</label>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>The patient/client's specific decision maker, supportive decision maker, or co-decision maker, authorized in accordance with the Adult Guardianship and Trusteeship Act carrying out the related duties.</p>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <input class='DFUniversalFields' type="checkbox" name="name"/>
-                            <p>A person with written authorization from the patient/client to act on their behalf.</p>
+                        <label style={{display: "inline-flex", alignItems: "center"}}>
+                            <input id="CB-CRMI-2" class='CRMICheckboxFix' type="checkbox" name=""/>
+                            <label for="CB-CRMI-1">A person with written authorization from the patient/client to act on their behalf.</label>
                         </label>
                     </div>
                 </div>
@@ -256,13 +248,13 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Date of Consent is Effective<br/></div>
-                            <input class='DFUniversalFields' type="date" name="name" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Expiry Date (valid for 2 years if no date provided)<br/></div>
-                            <input class='DFUniversalFields' type="date" name="name" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
                         </label>
                     </div>
                 </div>
@@ -271,19 +263,19 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Name of Person Giving Consent<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Phone<br/></div>
-                            <input class='DFUniversalFields' type="number" name="name"/>
+                            <input class='DFUniversalFields' type="number" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Email<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                 </div>
@@ -292,13 +284,13 @@ const ConsentforReleaseofMedicalInformation = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Signature<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name"/>
+                            <input class='DFUniversalFields' type="text" name=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name="name" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
                         </label>
                     </div>
                 </div>
@@ -310,10 +302,23 @@ const ConsentforReleaseofMedicalInformation = () => {
                         </label>
                     </div>
                 </div>
-
             </form>
+            <div className='DFBottomBar'>
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton1'>Clear All</button>
+                </div>
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton1'>Save Form</button>
+                </div>
+
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton2'>Download Form</button>
+                </div>
+            </div>
         </div>
     )
 }
+
+
 
 export default ConsentforReleaseofMedicalInformation

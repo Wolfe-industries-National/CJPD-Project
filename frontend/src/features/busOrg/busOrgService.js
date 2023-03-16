@@ -20,7 +20,7 @@ const getBusOrg = async (busOrgID) => {
     return response.data;
 }
 
-// search Addresses
+// search Business or Organization
 const searchBusOrg = async (searchQuery) => {
     console.log('SERVICE: ', searchQuery);
     const response = await axios.get(API_URI+'search?query='+searchQuery);

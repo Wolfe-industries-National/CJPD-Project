@@ -18,10 +18,22 @@ const createPerson = asyncHandler(async (req, res) => {
     }
 
     // making the info be equal to the info's ID
-    const newAddress = mongoose.Types.ObjectId(address);
-    const newTelephone = mongoose.Types.ObjectId(telephone);
-    const newAssociatedVehicles = mongoose.Types.ObjectId(associatedVehicles);
-    const newAssociates = mongoose.Types.ObjectId(associates);
+    const newAddress = null;
+    const newTelephone = null;
+    const newAssociatedVehicles = null;
+    const newAssociates = null;
+    if(address){
+        newAddress = mongoose.Types.ObjectId(address);
+    }
+    if(telephone){
+        newTelephone = mongoose.Types.ObjectId(telephone);
+    }
+    if(associatedVehicles){
+        newAssociatedVehicles = mongoose.Types.ObjectId(associatedVehicles);
+    }
+    if (associates) {
+        newAssociates = mongoose.Types.ObjectId(associates);
+    }
 
 
     // Create Person

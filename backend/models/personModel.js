@@ -38,7 +38,7 @@ const personSchema = mongoose.Schema({
     },
     associates: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
+        required: false,
         ref: 'Person'
     },
     flags: {

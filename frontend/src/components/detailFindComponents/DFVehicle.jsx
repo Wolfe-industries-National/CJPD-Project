@@ -6,25 +6,25 @@ const DFVehicle = () => {
 
     return (
         <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Detailed Find Person</h3>
+            <h3 class='DFUniversalTitle'>Detailed Find Vehicle</h3>
             <form class='DFUniversalForm'>
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
+                            <div class='DFUniversalInnerTitle'>Owner<br/></div>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Make<br/></div>
+                            <div class='DFUniversalInnerTitle'>Make<br/></div>
                             <input class='DFUniversalFields' type="text" name="makeOfVehicle" placeholder="Honda"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Model<br/></div>
+                            <div class='DFUniversalInnerTitle'>Model<br/></div>
                             <input class='DFUniversalFields' type="text" name="modelOfVehicle" placeholder="Civic"/>
                         </label>
                     </div>
@@ -33,19 +33,19 @@ const DFVehicle = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
+                            <div class='DFUniversalInnerTitle'>Year<br/></div>
                             <input class='DFUniversalFields' type="number" name="yearOfVehicle" placeholder="2018"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Colour<br/></div>
+                            <div class='DFUniversalInnerTitle'>Colour<br/></div>
                             <input class='DFUniversalFields' type="text" name="colourOfVehicle" placeholder="Silver"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Identification Number (VIN)<br/></div>
+                            <div class='DFUniversalInnerTitle'>Vehicle Identification Number<br/></div>
                             <input class='DFUniversalFields' type="text" name="vinOfVehicle" placeholder="4Y1SL65848Z411439"/>
                         </label>
                     </div>
@@ -54,8 +54,8 @@ const DFVehicle = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle License Plate Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="plateOfVehicle" placeholder="4AA0-00"/>
+                            <div class='DFUniversalInnerTitle'>License Plate Number<br/></div>
+                            <input class='DFUniversalFields' type="text" name="plateOfVehicle" placeholder="AAA-0000"/>
                         </label>
                     </div>
                 </div>

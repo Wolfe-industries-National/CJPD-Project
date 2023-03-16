@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import personService from "./personService";
+import busOrgService from "../busOrg/busOrgService";
+import {searchBusOrg} from "../busOrg/busOrgSlice";
 
 
 const initialState = {
@@ -32,6 +34,15 @@ export const getAllPerson = createAsyncThunk('person/getAll', async (_, thunkAPI
 export const getPerson = createAsyncThunk('person/get', async (personID, thunkAPI) => {
     try {
         return await personService.getPerson(personID);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+export const searchPerson = createAsyncThunk('person/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await personService.searchPerson(searchQuery.query);
     } catch (error) {
         const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
@@ -88,6 +99,18 @@ export const personSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.person = null
+            })
+            .addCase(searchPerson.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchPerson.fulfilled, (state, action) => {
+                state.people = action.payload
+            })
+            .addCase(searchPerson.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.people = null
             })
     }
 })

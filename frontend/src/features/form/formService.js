@@ -8,7 +8,7 @@ const createForm = async (formData) => {
     return response.data;
 }
 
-// get all Forms
+// get all forms
 const getAllForms = async () => {
     const response = await axios.get(API_URI);
     return response.data;

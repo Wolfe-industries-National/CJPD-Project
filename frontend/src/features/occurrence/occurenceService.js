@@ -20,10 +20,18 @@ const getOccurrence = async (occurrenceID) => {
     return response.data;
 }
 
+// search Occurrence
+const searchOccurrence = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const occurrenceService = {
     createOccurrence,
     getAllOccurrence,
-    getOccurrence
+    getOccurrence,
+    searchOccurrence
 }
 
 export default occurrenceService;

@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import telephoneService from "./telephoneService";
+import addressService from "../address/addressService";
+import {searchAddress} from "../address/addressSlice";
 
 
 const initialState = {
@@ -29,9 +31,19 @@ export const getAllTelephones = createAsyncThunk('telephone/getAll', async (_, t
     }
 });
 
-export const getTelephone = createAsyncThunk('officerUnit/get', async (telephoneID, thunkAPI) => {
+export const getTelephone = createAsyncThunk('telephone/get', async (telephoneID, thunkAPI) => {
     try {
         return await telephoneService.getTelephone(telephoneID);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+export const searchTelephone = createAsyncThunk('telephone/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await telephoneService.searchTelephone(searchQuery.query);
+
     } catch (error) {
         const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
@@ -57,7 +69,6 @@ export const telephoneSlice = createSlice({
             .addCase(createTelephone.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
-                state.telephone = action.payload
             })
             .addCase(createTelephone.rejected, (state, action) => {
                 state.isLoading = false
@@ -88,6 +99,18 @@ export const telephoneSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.telephone = null
+            })
+            .addCase(searchTelephone.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchTelephone.fulfilled, (state, action) => {
+                state.telephones = action.payload
+            })
+            .addCase(searchTelephone.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.telephones = null
             })
     }
 })

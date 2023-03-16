@@ -1,7 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 
 const IncidentReport = () => {
+
+    const [formData, setFormData] = useState({
+        agency: '',
+        fileNumber: '',
+        reportedDate: '',
+        time: '',
+        occurrenceBetweenDate: '',
+        natureOfEvent: '',
+        complaintTakenBy: '',
+        unitsAssisting: '',
+        ambulance: '',
+        fire: '',
+        other: '',
+        badgeNumber: '',
+        investigatorName: '',
+        zone: '',
+        unitWatch: '',
+        vehicleStatus: '',
+        sex: '',
+        pho: ''
+    });
+    const {agency, fileNumber, reportedDate, time, occurrenceBetweenDate, natureOfEvent, complaintTakenBy,
+    unitsAssisting, ambulance, badgeNumber, fire, investigatorName, zone, unitWatch, other, vehicleStatus, sex, pho} = formData;
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
+    }
 
     return (
         <div class='DFUniversalContainer'>
@@ -12,25 +42,25 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Originating Agency<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="agency" placeholder="" value={agency} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>File Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="fileNumber" placeholder="" value={fileNumber} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Reported Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="reportedDate" placeholder="yyyy-mm-dd" value={reportedDate} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Time<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="hh:mm"/>
+                            <input class='DFUniversalFields' type="time" name="time" placeholder="hh:mm" value={time} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -44,25 +74,25 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Start Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="reportedDate" placeholder="yyyy-mm-dd" value={reportedDate} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Start Time<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="hh:mm"/>
+                            <input class='DFUniversalFields' type="time" name="time" placeholder="hh:mm" value={time} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>End Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name="" placeholder="yyyy-mm-dd"/>
+                            <input class='DFUniversalFields' type="date" name="occurrenceBetweenDate" placeholder="yyyy-mm-dd" value={occurrenceBetweenDate} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>End Time<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="hh:mm"/>
+                            <input class='DFUniversalFields' type="time" name="time" placeholder="hh:mm" value={time} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -71,13 +101,13 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Nature of Event<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="natureOfEvent" placeholder="" value={natureOfEvent} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Complaint taken by<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="complaintTakenBy" placeholder="" value={complaintTakenBy} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -86,25 +116,25 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Units Assisting<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="unitsAssisting" placeholder="" value={unitsAssisting} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Ambulance<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="ambulance" placeholder="" value={ambulance} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fire<br/></div>
-                            <input class='DFUniversalFields' type="date" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="date" name="fire" placeholder="" value={fire} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Other<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="other" placeholder="" value={other} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -113,7 +143,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Location (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="location" placeholder="" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -122,33 +152,47 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Badge Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="badgeNumber" placeholder="" value={badgeNumber} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Investigator<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="investigatorName" placeholder="" value={investigatorName} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Zone<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="zone" placeholder="" value={zone} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Unit / Watch<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="unitWatch" placeholder="" value={unitWatch} onChange={onChange}/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Priority<br/></div>
-                            1<input class='DFUniversalFields' type="radio" name="" placeholder=""/>
-                            2<input class='DFUniversalFields' type="radio" name="" placeholder=""/>
-                            3<input class='DFUniversalFields' type="radio" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>Priority<br/></div>
+                            <div class='UniversalRadioContainer'>
+                                <div class="RadioChoiceContainer">
+                                    <input id="IRRadio1" class="UniversalRadioFix" type="radio" name="RC-IR1" value="1"/>
+                                    <label for="IRRadio1">1</label>
+                                </div>
+                                <div class="RadioChoiceContainer">
+                                    <input id="IRRadio2" class="UniversalRadioFix" type="radio" name="RC-IR1" value="2"/>
+                                    <label for="IRRadio2">2</label>
+                                </div>
+                                <div class="RadioChoiceContainer">
+                                    <input id="IRRadio3" class="UniversalRadioFix" type="radio" name="RC-IR1" value="3"/>
+                                    <label for="IRRadio3">3</label>
+                                </div>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -158,37 +202,43 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            SUB<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                            BUS<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>SUB<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='CheckboxInnerTitle'>BUS<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Status<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="vehicleStatus" placeholder="" value={vehicleStatus} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Surname / Bus, Home<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Unit / Watch<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="aNum" placeholder=""/>
                         </label>
                     </div>
                 </div>
 
                 <div class='DFUniversalRow'>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='DFUniversalInnerTitle'>Person / Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="Name"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='DFUniversalInnerTitle'>Unit / Watch<br/></div>
+                            <input class='DFUniversalFields' type="text" name="unitWatch" placeholder="" value={unitWatch} onChange={onChange}/>
+                        </label>
+                    </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>G.1<br/></div>
@@ -201,16 +251,19 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Sex<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="sex " placeholder="" value={sex} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Home Telephone<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <input class='DFUniversalFields' type="text" name="phoneNumber" placeholder="" value={pho} onChange={onChange}/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -220,14 +273,17 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
+                            <div class='CheckboxInnerTitle'>Address same as Location?<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR2"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
                             <div>
-                                <input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                                <p>Same as LOC, or</p>
+                                <div class='DFUniversalInnerTitle'>Address (if different from location) (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
                                 <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                             </div>
                         </label>
@@ -244,7 +300,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Age<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. 37"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -259,6 +315,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder="lbs"/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Hair<br/></div>
@@ -280,7 +339,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Race<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, african-american, asian"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, asian"/>
                         </label>
                     </div>
                 </div>
@@ -310,6 +369,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fingerprint Section (FPS)<br/></div>
@@ -386,8 +448,14 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            SUB<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                            BUS<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>SUB<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='CheckboxInnerTitle'>BUS<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -402,10 +470,13 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Surname / Bus, Home<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <div class='DFUniversalInnerTitle'>Person / Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -414,9 +485,6 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
-                </div>
-
-                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>G.1<br/></div>
@@ -429,6 +497,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Sex<br/></div>
@@ -448,14 +519,17 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
+                            <div class='CheckboxInnerTitle'>Address same as Location?<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR2"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
                             <div>
-                                <input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                                <p>Same as LOC, or</p>
+                                <div class='DFUniversalInnerTitle'>Address (if different from location) (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
                                 <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                             </div>
                         </label>
@@ -472,7 +546,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Age<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. 37"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -487,6 +561,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder="lbs"/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Hair<br/></div>
@@ -508,7 +585,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Race<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, african-american, asian"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, asian"/>
                         </label>
                     </div>
                 </div>
@@ -538,6 +615,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fingerprint Section (FPS)<br/></div>
@@ -614,8 +694,14 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            SUB<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                            BUS<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>SUB<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='CheckboxInnerTitle'>BUS<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -630,10 +716,13 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Surname / Bus, Home<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <div class='DFUniversalInnerTitle'>Person / Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -642,9 +731,6 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
-                </div>
-
-                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>G.1<br/></div>
@@ -657,6 +743,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Sex<br/></div>
@@ -676,14 +765,17 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
+                            <div class='CheckboxInnerTitle'>Address same as Location?<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR2"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
                             <div>
-                                <input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                                <p>Same as LOC, or</p>
+                                <div class='DFUniversalInnerTitle'>Address (if different from location) (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
                                 <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                             </div>
                         </label>
@@ -700,7 +792,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Age<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. 37"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -715,6 +807,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder="lbs"/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Hair<br/></div>
@@ -736,7 +831,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Race<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, african-american, asian"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, asian"/>
                         </label>
                     </div>
                 </div>
@@ -766,6 +861,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fingerprint Section (FPS)<br/></div>
@@ -842,8 +940,14 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            SUB<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                            BUS<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>SUB<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='CheckboxInnerTitle'>BUS<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -858,10 +962,13 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Surname / Bus, Home<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <div class='DFUniversalInnerTitle'>Person / Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -870,9 +977,6 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
-                </div>
-
-                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>G.1<br/></div>
@@ -885,6 +989,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Sex<br/></div>
@@ -904,14 +1011,17 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
+                            <div class='CheckboxInnerTitle'>Address same as Location?<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR2"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
                             <div>
-                                <input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                                <p>Same as LOC, or</p>
+                                <div class='DFUniversalInnerTitle'>Address (if different from location) (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
                                 <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                             </div>
                         </label>
@@ -928,7 +1038,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Age<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. 37"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -943,6 +1053,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder="lbs"/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Hair<br/></div>
@@ -964,7 +1077,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Race<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, african-american, asian"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, asian"/>
                         </label>
                     </div>
                 </div>
@@ -994,6 +1107,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fingerprint Section (FPS)<br/></div>
@@ -1070,8 +1186,14 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            SUB<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                            BUS<input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
+                            <div class='CheckboxInnerTitle'>SUB<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
+                            <div class='CheckboxInnerTitle'>BUS<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR1"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -1086,10 +1208,13 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Surname / Bus, Home<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
+                            <div class='DFUniversalInnerTitle'>Person / Business<br/></div>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -1098,9 +1223,6 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
-                </div>
-
-                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>G.1<br/></div>
@@ -1113,6 +1235,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Sex<br/></div>
@@ -1132,14 +1257,17 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
+                            <div class='CheckboxInnerTitle'>Address same as Location?<br/></div>
+                            <input class='UniversalCheckboxFix' type="checkbox" name="CB-IR2"/>
+                        </label>
+                    </div>
+                    <div class='DFUniversalData'>
+                        <label>
                             <div>
-                                <input class='DFUniversalFields' type="checkbox" name="" placeholder=""/>
-                                <p>Same as LOC, or</p>
+                                <div class='DFUniversalInnerTitle'>Address (if different from location) (Street Number, Street, Apartment, City, Province, Country, Postal Code)<br/></div>
                                 <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                             </div>
                         </label>
@@ -1156,7 +1284,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Age<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. 37"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
@@ -1171,6 +1299,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder="lbs"/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Hair<br/></div>
@@ -1192,7 +1323,7 @@ const IncidentReport = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Race<br/></div>
-                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, african-american, asian"/>
+                            <input class='DFUniversalFields' type="text" name="" placeholder="ex. caucasian, asian"/>
                         </label>
                     </div>
                 </div>
@@ -1222,6 +1353,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Fingerprint Section (FPS)<br/></div>
@@ -1300,7 +1434,7 @@ const IncidentReport = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Incident Report - Vehicles Supplement<br/></div>
+                            <h3 class='DFUniversalTitle2'><b>Incident Report - Vehicles Supplement</b><br/></h3>
                         </label>
                     </div>
                 </div>
@@ -1345,6 +1479,10 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Licence Number<br/></div>
@@ -1384,6 +1522,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
@@ -1478,7 +1619,8 @@ const IncidentReport = () => {
 
                 <br/><br/><br/><br/><br/>
 
-                {/* Vehicles Supplement 2 */}
+
+                {/* Vehicles Supplement 1 */}
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
@@ -1520,6 +1662,10 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Licence Number<br/></div>
@@ -1559,6 +1705,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
@@ -1653,7 +1802,8 @@ const IncidentReport = () => {
 
                 <br/><br/><br/><br/><br/>
 
-                {/* Vehicles Supplement 3 */}
+
+                {/* Vehicles Supplement 1 */}
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
@@ -1695,6 +1845,10 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Licence Number<br/></div>
@@ -1734,6 +1888,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
@@ -1828,7 +1985,8 @@ const IncidentReport = () => {
 
                 <br/><br/><br/><br/><br/>
 
-                {/* Vehicles Supplement 4 */}
+
+                {/* Vehicles Supplement 1 */}
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
@@ -1870,6 +2028,10 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Licence Number<br/></div>
@@ -1909,6 +2071,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
@@ -2003,7 +2168,8 @@ const IncidentReport = () => {
 
                 <br/><br/><br/><br/><br/>
 
-                {/* Vehicles Supplement 5 */}
+
+                {/* Vehicles Supplement 1 */}
 
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
@@ -2045,6 +2211,10 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Licence Number<br/></div>
@@ -2084,6 +2254,9 @@ const IncidentReport = () => {
                             <input class='DFUniversalFields' type="text" name="" placeholder=""/>
                         </label>
                     </div>
+                </div>
+
+                <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
@@ -2175,8 +2348,18 @@ const IncidentReport = () => {
                         </label>
                     </div>
                 </div>
-
             </form>
+            <div className='DFBottomBar'>
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton1'>Clear All</button>
+                </div>
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton1'>Save Form</button>
+                </div>
+                <div className='DFBottomBarInnerContainer'>
+                    <button className='DFBottomBarButton2'>Download Form</button>
+                </div>
+            </div>
         </div>
     )
 }

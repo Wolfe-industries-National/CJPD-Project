@@ -1,44 +1,79 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import {createOfficerUnit} from "../../features/officerUnit/officerUnitSlice";
 
 
 const MDOfficerUnit = () => {
 
+    const [formData, setFormData] = useState({
+        name: '',
+        regimentalNumber: '',
+        rank: '',
+        unit: ''
+    })
+    const [successMessage, setSuccessMessage] = useState('');
+
+    const {name, regimentalNumber, rank, unit} = formData;
+
+    const dispatch = useDispatch();
+    const {officerUnit, isSuccess, isError} = useSelector((state) => state.officerUnit);
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createOfficerUnit(formData));
+        setSuccessMessage(`Successfuly created ${name}`);
+        setFormData({
+            name: '',
+            regimentalNumber: '',
+            rank: '',
+            unit: ''
+        })
+        console.log(formData);
+    }
+
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Manage Officer / Unit Form</h3>
-            <form class='DFUniversalForm'>
+        <div className='DFUniversalContainer'>
+            <h3 className='DFUniversalTitle'>Manage Officer / Unit Form</h3>
+            <form className='DFUniversalForm' onSubmit={onSubmit}>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className='DFUniversalRow'>
+                    <div className='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name" placeholder="First Name & Last Name"/>
+                            <div className='DFUniversalInnerTitle'>Name<br/></div>
+                            <input className='DFUniversalFields' type="text" name="name" placeholder="First Name & Last Name" onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Regimental Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name" placeholder="Honda"/>
+                            <div className='DFUniversalInnerTitle'>Regimental Number<br/></div>
+                            <input className='DFUniversalFields' type="text" name="regimentalNumber" placeholder="Honda" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className='DFUniversalRow'>
+                    <div className='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Rank<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name" placeholder="Civic"/>
+                            <div className='DFUniversalInnerTitle'>Rank<br/></div>
+                            <input className='DFUniversalFields' type="text" name="rank" placeholder="Civic" onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Unit<br/></div>
-                            <input class='DFUniversalFields' type="text" name="name" placeholder="Civic"/>
+                            <div className='DFUniversalInnerTitle'>Unit<br/></div>
+                            <input className='DFUniversalFields' type="text" name="unit" placeholder="Civic" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-
+                <button>Create</button>
             </form>
         </div>
     )

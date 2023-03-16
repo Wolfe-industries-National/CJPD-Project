@@ -20,10 +20,18 @@ const getVehicle = async (vehicleID) => {
     return response.data;
 }
 
+// search Vehicle
+const searchVehicle = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const vehicleService = {
     createVehicle,
     getAllVehicles,
-    getVehicle
+    getVehicle,
+    searchVehicle
 }
 
 export default vehicleService;

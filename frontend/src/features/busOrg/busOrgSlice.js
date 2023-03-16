@@ -68,7 +68,6 @@ export const busOrgSlice = createSlice({
             .addCase(createBusOrg.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
-                state.busOrg = action.payload
             })
             .addCase(createBusOrg.rejected, (state, action) => {
                 state.isLoading = false

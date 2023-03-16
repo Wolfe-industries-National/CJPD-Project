@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import addressService from "./addressService";
+import officerUnitService from "../officerUnit/officerUnitService";
 
 
 const initialState = {
@@ -11,9 +12,9 @@ const initialState = {
     message: ''
 }
 
-export const createAddress = createAsyncThunk('address/create', async (address, thunkAPI) => {
+export const createNewAddress = createAsyncThunk('officerUnit/create', async (AddressData, thunkAPI) => {
     try {
-        return await addressService.createAddress(address);
+        return await addressService.createNewAddress(AddressData);
     } catch (error) {
         const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
@@ -61,15 +62,15 @@ export const addressSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(createAddress.pending, (state) => {
+            .addCase(createNewAddress.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createAddress.fulfilled, (state, action) => {
+            .addCase(createNewAddress.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
                 state.address = action.payload
             })
-            .addCase(createAddress.rejected, (state, action) => {
+            .addCase(createNewAddress.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

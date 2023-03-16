@@ -12,19 +12,19 @@ const DFBusOrg = () => {
                 <div class='DFUniversalRow'>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name"/>
+                            <div class='DFUniversalInnerTitle'>Owner<br/></div>
+                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Business<br/></div>
+                            <div class='DFUniversalInnerTitle'>Business<br/></div>
                             <input class='DFUniversalFields' type="text" name="Bus/name" placeholder="Random Incorporated ltd."/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Business Type<br/></div>
+                            <div class='DFUniversalInnerTitle'>Type<br/></div>
                             <input class='DFUniversalFields' type="text" name="typeOfBusOrg" placeholder="Convenience Store"/>
                         </label>
                     </div>
@@ -48,7 +48,7 @@ const DFBusOrg = () => {
                     </div>
                     <div class='DFUniversalData'>
                         <label>
-                            <div class='DFUniversalInnerTitle'>Business / Organization Telephone Number<br/></div>
+                            <div class='DFUniversalInnerTitle'>Telephone<br/></div>
                             <input class='DFUniversalFields' type="number" name="telephoneNumber" placeholder="(000) 000-0000"/>
                         </label>
                     </div>

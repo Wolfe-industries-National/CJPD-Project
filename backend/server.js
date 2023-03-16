@@ -4,6 +4,36 @@ const connectDB = require('./config/db');
 const dotenv = require('dotenv').config();
 const {errorHandler} = require('./middleware/errorMiddleware');
 const PORT = process.env.PORT || 5000;
+const {PDFDocument} = require('pdf-lib');
+const {readFile, writeFile} = require('fs/promises');
+
+// Functions for Forms
+async function createPdf(input, output) {
+    // try {
+    //     const pdfDoc = await PDFDocument.load(await readFile(input));
+    //
+    //     // modify doc, fill out form
+    //     const fieldNames = pdfDoc
+    //         .getForm()
+    //         .getFields()
+    //         .map((f) => f.getName());
+    //     console.log({fieldNames});
+    //
+    //     const form = pdfDoc.getForm();
+    //
+    //     form.getTextField('Text2').setText('John Doe');
+    //
+    //     const pdfBytes = await pdfDoc.save();
+    //     await writeFile(output, pdfBytes);
+    //     console.log('PDF created!');
+    //
+    // } catch (err) {
+    //     console.log(err);
+    // }
+    console.log(input, output);
+}
+
+//
 
 
 // Connect to DB
@@ -19,6 +49,12 @@ app.get('/', (req, res) => {
 })
 app.get('/api/v1/officerUnit/test', (req, res) => {
     res.status(200).json({message: 'Welcome to the CJPD App'})
+})
+
+app.get('/api/v1/formFunctions/', (req, res) => {
+    console.log("NODEJS");
+    console.log(req.query);
+    res.status(200).json({message: 'Function from nodeJS running'});
 })
 
 // Routes
@@ -42,7 +78,7 @@ app.use('/api/v1/bus-org', require('./routes/busOrgRoutes'));
 app.use('/api/v1/occurrence', require('./routes/occurrenceRoutes'));
 // Person api routes
 app.use('/api/v1/person', require('./routes/personRoutes'));
-// Forms Data Api Routes
+// forms Data Api Routes
 app.use('/api/v1/form', require('./routes/formRoutes'));
 
 

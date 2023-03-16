@@ -4,7 +4,7 @@ const {createTelephone, getAllTelephones, getTelephone, searchTelephone} = requi
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post(protect, createTelephone);
+router.route('/').post(createTelephone);
 router.route('/').get(protect, getAllTelephones);
 router.route('/search').get(searchTelephone);
 router.route('/:id').get(protect, getTelephone);

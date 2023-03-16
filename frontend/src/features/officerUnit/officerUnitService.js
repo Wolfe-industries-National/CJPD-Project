@@ -20,10 +20,18 @@ const getOfficerUnit = async (officerUnitID) => {
     return response.data;
 }
 
+// search Officer Unit
+const searchOfficerUnit = async (searchQuery) => {
+    console.log('SERVICE: ', searchQuery);
+    const response = await axios.get(API_URI+'search?query='+searchQuery);
+    return response.data;
+}
+
 const officerUnitService = {
     createOfficerUnit,
     getAllOfficerUnits,
-    getOfficerUnit
+    getOfficerUnit,
+    searchOfficerUnit
 }
 
 export default officerUnitService;

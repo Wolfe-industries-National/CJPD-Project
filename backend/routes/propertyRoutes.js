@@ -4,7 +4,7 @@ const {createProperty, getAllProperties, getProperty, searchProperty} = require(
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post(protect, createProperty);
+router.route('/').post(createProperty);
 router.route('/').get(protect, getAllProperties);
 router.route('/search').get(searchProperty);
 router.route('/:id').get(protect, getProperty);

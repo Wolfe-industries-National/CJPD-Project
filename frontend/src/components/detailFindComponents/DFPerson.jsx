@@ -49,19 +49,19 @@ const DFPerson = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Height (cm)<br/></div>
-                            <input class='DFUniversalFields' type="text" name="height" placeholder="000 cm"/>
+                            <input class='DFUniversalFields' type="number" name="height" placeholder="188 cm"/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Weight (lbs)<br/></div>
-                            <input class='DFUniversalFields' type="text" name="weight" placeholder="000 lbs."/>
+                            <input class='DFUniversalFields' type="number" name="weight" placeholder="203 lbs."/>
                         </label>
                     </div>
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Aliases<br/></div>
-                            <input class='DFUniversalFields' type="text" name="aliases" placeholder="One Eyed Willy"/>
+                            <input class='DFUniversalFields' type="text" name="aliases" placeholder="Ice"/>
                         </label>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ const DFPerson = () => {
                     <div class='DFUniversalData'>
                         <label>
                             <div class='DFUniversalInnerTitle'>Flags<br/></div>
-                            <input class='DFUniversalFields' type="text" name="flags" placeholder="Violent Tendencies, HPV Positive, etc."/>
+                            <input class='DFUniversalFields' type="text" name="flags" placeholder="Violent Tendencies, Etc."/>
                         </label>
                     </div>
                 </div>

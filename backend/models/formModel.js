@@ -28,7 +28,7 @@ const formSchema = mongoose.Schema({
     complaintTakenBy: {
         type: String,
     },
-    unistAssisting: {
+    unitsAssisting: {
         type: String,
     },
     ambulance: {
@@ -40,7 +40,7 @@ const formSchema = mongoose.Schema({
         required: [true, "Please choose an option "]
     },
     other: {
-        type: Date,
+        type: String,
     },
     location: {
         type: String,
@@ -188,7 +188,7 @@ const formSchema = mongoose.Schema({
         type: String,
     },
     itemsOwnership: {
-        type: Boolean,
+        type: String,
     },
     criminalSignature: {
         type: String,
@@ -268,6 +268,24 @@ const formSchema = mongoose.Schema({
     formType: {
         type: String,
     },
+    person: {
+        type: String,
+    },
+    date: {
+        type: Date,
+    },
+    name: {
+        type: String,
+    },
+    time: {
+        type: String,
+    },
+    status: {
+        type: String,
+    },
+    sex: {
+        type: String,
+    }
 
 }, {
     timestamps: true

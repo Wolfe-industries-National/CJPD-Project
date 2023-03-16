@@ -8,7 +8,7 @@ const Property = require("../models/propertyModel");
 // @access  Private
 const createForm = asyncHandler(async (req, res) => {
     const {investigatorName, agency, fileNumber, reportedDate,occurrenceBetweenDate,
-        natureOfEvent, complaintTakenBy, unistAssisting, ambulance, fire, other, location,
+        natureOfEvent, complaintTakenBy, unitsAssisting, ambulance, fire, other, location,
         badgeNumber, zone, unitWatch, priority, differentAddress, dateOfBirth, age, height,
         weight, hair, eyes, race, placeOfBirth, personOfInterest, photoNumber, bookingNumber,
         citizenship, deformityOrOther, build, complexion, alias, occupation, employer,
@@ -21,7 +21,7 @@ const createForm = asyncHandler(async (req, res) => {
         dateComplainant, supervisor, department, exhibitsSeizedBy, dateSeized, locationOfSeizure,
         itemNumber, itemDescription, supervisorSignature, exhibitItem, movementTo, recipient,
         initials, suspectHistory, suspectHistoryNotes, complainant, complainantNotes, complainFuture,
-        complainantFutureNotes, flags, formType
+        complainantFutureNotes, flags, formType, person, date, name, time, status, sex
     } = req.body;
     // Validation
     if(!investigatorName || !agency || !fileNumber || !reportedDate || !occurrenceBetweenDate || !natureOfEvent ||
@@ -40,7 +40,7 @@ const createForm = asyncHandler(async (req, res) => {
         occurrenceBetweenDate,
         natureOfEvent,
         complaintTakenBy,
-        unistAssisting,
+        unitsAssisting,
         ambulance,
         fire,
         other,
@@ -118,7 +118,13 @@ const createForm = asyncHandler(async (req, res) => {
         complainFuture,
         complainantFutureNotes,
         flags,
-        formType
+        formType,
+        person,
+        date,
+        time,
+        name,
+        status,
+        sex
     })
 
     if(form){
@@ -131,7 +137,7 @@ const createForm = asyncHandler(async (req, res) => {
             occurrenceBetweenDate: form.occurrenceBetweenDate,
             natureOfEvent: form.natureOfEvent,
             complaintTakenBy: form.complaintTakenBy,
-            unistAssisting: form.unistAssisting,
+            unitsAssisting: form.unitsAssisting,
             ambulance: form.ambulance,
             fire: form.fire,
             other: form.other,
@@ -208,7 +214,13 @@ const createForm = asyncHandler(async (req, res) => {
             complainFuture: form.complainFuture,
             complainantFutureNotes: form.complainantFutureNotes,
             flags: form.flags,
-            formType: form.formType
+            formType: form.formType,
+            person: form.person,
+            date: form.date,
+            name: form.name,
+            time: form.time,
+            status: form.status,
+            sex: form.sex,
         })
     }else{
         res.status(400);

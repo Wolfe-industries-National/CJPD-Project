@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import vehicleService from "./vehicleService";
+import addressService from "../address/addressService";
+import {searchAddress} from "../address/addressSlice";
 
 
 const initialState = {
@@ -38,6 +40,16 @@ export const getVehicle = createAsyncThunk('vehicle/get', async (vehicleID, thun
     }
 });
 
+export const searchVehicle = createAsyncThunk('vehicle/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await vehicleService.searchVehicle(searchQuery.query);
+
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const vehicleSlice = createSlice({
     name: 'vehicle',
     initialState,
@@ -57,7 +69,6 @@ export const vehicleSlice = createSlice({
             .addCase(createVehicle.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
-                state.vehicle = action.payload
             })
             .addCase(createVehicle.rejected, (state, action) => {
                 state.isLoading = false
@@ -88,6 +99,18 @@ export const vehicleSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.vehicle = null
+            })
+            .addCase(searchVehicle.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchVehicle.fulfilled, (state, action) => {
+                state.vehicles = action.payload
+            })
+            .addCase(searchVehicle.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.vehicles = null
             })
     }
 })

@@ -15,40 +15,40 @@ const FastFind = () => {
 
     const {itemForSearch} = useParams();
     const navigate = useNavigate();
-    const [rightSidePannel, setRightSidePannel] = useState();
+    const [allFastFindPages, setAllFastFindPages] = useState([<FFPerson/>, <FFOccurrence/>, <FFBusOrg/>, <FFProperty/>, <FFVehicle/>, <FFAddress/>, <FFOfficerUnit/>, <FFTelephone/>])
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if(!itemForSearch){
             navigate('/fastFind/person');
         }
-        const locationsOfPage = window.location.pathname.split('/');
-        switch (locationsOfPage[2]) {
+        switch (itemForSearch) {
             case 'person':
-                setRightSidePannel(FFPerson);
+                setCurrentPageIndex(0);
                 break;
             case 'occurrence':
-                setRightSidePannel(FFOccurrence);
+                setCurrentPageIndex(1);
                 break;
             case 'bus-org':
-                setRightSidePannel(FFBusOrg);
+                setCurrentPageIndex(2);
                 break;
             case 'property':
-                setRightSidePannel(FFProperty);
+                setCurrentPageIndex(3);
                 break;
             case 'vehicle':
-                setRightSidePannel(FFVehicle);
+                setCurrentPageIndex(4);
                 break;
             case 'address':
-                setRightSidePannel(FFAddress);
+                setCurrentPageIndex(5);
                 break;
             case 'officer-unit':
-                setRightSidePannel(FFOfficerUnit);
+                setCurrentPageIndex(6);
                 break;
             case 'telephone':
-                setRightSidePannel(FFTelephone);
+                setCurrentPageIndex(7);
                 break;
             default:
-                setRightSidePannel(FFPerson);
+                setCurrentPageIndex(0);
                 break;
         }
     }, [navigate, itemForSearch]);
@@ -72,32 +72,11 @@ const FastFind = () => {
                 </div>
 
                 <div className='FFRightColumn'>
-                    {/*Probably somewhere around here*/}
-                    {/*it will check for the page and then it will return the correct componenet for that page*/}
                     <div>
-                        {rightSidePannel}
-
-                        <div className='DFBottomBar'>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton1'>Clear All</button>
-                            </div>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton1'>Find Now</button>
-                            </div>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton2' to={`/detailedFind/${itemForSearch}`}>Switch to Detailed Find</button>
-                            </div>
-                        </div>
+                        {allFastFindPages[currentPageIndex]}
                     </div>
-
-
                 </div>
-
-
-
-
             </div>
-
         </div>
     )
 }

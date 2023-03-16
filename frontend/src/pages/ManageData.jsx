@@ -1,61 +1,62 @@
 import React, {useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import {Link, useParams, useNavigate} from 'react-router-dom';
-import MDAddress from '../components/manageDataComponents/MDAddress';
-import MDBusOrg from '../components/manageDataComponents/MDBusOrg';
-import MDOccurrence from '../components/manageDataComponents/MDOccurrence';
-import MDOfficerUnit from '../components/manageDataComponents/MDOfficerUnit';
-import MDPerson from '../components/manageDataComponents/MDPerson';
-import MDProperty from '../components/manageDataComponents/MDProperty';
-import MDTelephone from '../components/manageDataComponents/MDTelephone';
 import MDUsers from '../components/manageDataComponents/MDUsers';
-import MDVehicle from '../components/manageDataComponents/MDVehicle';
+import MDAddress from "../components/manageDataComponents/MDAddress";
+import MDBusOrg from "../components/manageDataComponents/MDBusOrg";
+import MDOccurrence from "../components/manageDataComponents/MDOccurrence";
+import MDOfficerUnit from "../components/manageDataComponents/MDOfficerUnit";
+import MDPerson from "../components/manageDataComponents/MDPerson";
+import MDProperty from "../components/manageDataComponents/MDProperty";
+import MDTelephone from "../components/manageDataComponents/MDTelephone";
+import MDVehicle from "../components/manageDataComponents/MDVehicle";
 
 
 const ManagaData = () => {
 
     const {itemForSearch} = useParams();
     const navigate = useNavigate();
-    const [rightSidePannel, setRightSidePannel] = useState();
+
+    const [allManagaDataPages, setAllManageDataPages] = useState([<MDPerson/>, <MDOccurrence/>, <MDBusOrg/>, <MDProperty/>, <MDVehicle/>, <MDAddress/>, <MDOfficerUnit/>, <MDTelephone/>, <MDUsers/>]);
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
-        if(!itemForSearch){
-            navigate('/manageData/person');
+        if (!itemForSearch) {
+            navigate('/fastFind/person');
         }
-        const locationsOfPage = window.location.pathname.split('/');
         switch (itemForSearch) {
             case 'person':
-                setRightSidePannel(MDPerson);
+                setCurrentPageIndex(0);
                 break;
             case 'occurrence':
-                setRightSidePannel(MDOccurrence);
+                setCurrentPageIndex(1);
                 break;
             case 'bus-org':
-                setRightSidePannel(MDBusOrg);
+                setCurrentPageIndex(2);
                 break;
             case 'property':
-                setRightSidePannel(MDProperty);
+                setCurrentPageIndex(3);
                 break;
             case 'vehicle':
-                setRightSidePannel(MDVehicle);
+                setCurrentPageIndex(4);
                 break;
             case 'address':
-                setRightSidePannel(MDAddress);
+                setCurrentPageIndex(5);
                 break;
             case 'officer-unit':
-                setRightSidePannel(MDOfficerUnit);
+                setCurrentPageIndex(6);
                 break;
             case 'telephone':
-                setRightSidePannel(MDTelephone);
+                setCurrentPageIndex(7);
                 break;
             case 'users':
-                setRightSidePannel(MDUsers);
+                setCurrentPageIndex(8);
                 break;
             default:
-                setRightSidePannel(MDPerson);
+                setCurrentPageIndex(0);
                 break;
         }
-    }, [navigate, itemForSearch]);
+    }, [itemForSearch, navigate]);
 
     return (
         <div className='DFOuterContainer'>
@@ -76,9 +77,7 @@ const ManagaData = () => {
                 </div>
 
                 <div className='FFRightColumn'>
-                    <div>
-                        {rightSidePannel}
-                    </div>
+                    {allManagaDataPages[currentPageIndex]}
                 </div>
             </div>
         </div>

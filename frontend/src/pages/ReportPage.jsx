@@ -11,11 +11,13 @@ import ContinuationNarrativeReport from "../components/formComponenets/Continuat
 import FamilyViolenceInvestigationReport from "../components/formComponenets/FamilyViolenceInvestigationReport";
 import IncidentReport from "../components/formComponenets/IncidentReport";
 
+
 const ReportPage = () => {
 
     const {itemForSearch} = useParams();
     const navigate = useNavigate();
-    const [rightSidePannel, setRightSidePannel] = useState();
+    const [allFastFindPages, setAllFastFindPages] = useState([<ConsenttoSearch/>, <ExhibitReportandMovementSheet/>, <FISRequest/>, <WitnessStatement/>, <ConsentforReleaseofMedicalInformation/>, <ContinuationNarrativeReport/>, <FamilyViolenceInvestigationReport/>, <IncidentReport/>])
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if(!itemForSearch){
@@ -23,31 +25,31 @@ const ReportPage = () => {
         }
         switch (itemForSearch) {
             case 'consenttosearch':
-                setRightSidePannel(ConsenttoSearch);
+                setCurrentPageIndex(0);
                 break;
             case 'exhibitreportandmovementsheet':
-                setRightSidePannel(ExhibitReportandMovementSheet);
+                setCurrentPageIndex(1);
                 break;
             case 'fisrequest':
-                setRightSidePannel(FISRequest);
+                setCurrentPageIndex(2);
                 break;
             case 'witnessstatement':
-                setRightSidePannel(WitnessStatement);
+                setCurrentPageIndex(3);
                 break;
             case 'consentforreleaseofmedicalinformation':
-                setRightSidePannel(ConsentforReleaseofMedicalInformation);
+                setCurrentPageIndex(4);
                 break;
             case 'continuationnarrativereport':
-                setRightSidePannel(ContinuationNarrativeReport);
+                setCurrentPageIndex(5);
                 break;
             case 'familyviolenceinvestigationreport':
-                setRightSidePannel(FamilyViolenceInvestigationReport);
+                setCurrentPageIndex(6);
                 break;
             case 'incidentreport':
-                setRightSidePannel(IncidentReport);
+                setCurrentPageIndex(7);
                 break;
             default:
-                setRightSidePannel(ConsenttoSearch);
+                setCurrentPageIndex(0);
                 break;
         }
     }, [navigate, itemForSearch]);
@@ -68,21 +70,8 @@ const ReportPage = () => {
                 </div>
 
                 <div className='DFRightColumn'>
-                    {/*Probably somewhere around here*/}
-                    {/*it will check for the page and then it will return the correct componenet for that page*/}
                     <div>
-                        {rightSidePannel}
-                        <div className='DFBottomBar'>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton1'>Clear All</button>
-                            </div>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton1'>Save Form</button>
-                            </div>
-                            <div class='DFBottomBarInnerContainer'>
-                                <button class='DFBottomBarButton2'>Download Form</button>
-                            </div>
-                        </div>
+                        {allFastFindPages[currentPageIndex]}
                     </div>
                 </div>
             </div>

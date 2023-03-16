@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import propertyService from "./propertyService";
+import officerUnitService from "../officerUnit/officerUnitService";
+import {searchOfficerUnit} from "../officerUnit/officerUnitSlice";
 
 
 const initialState = {
@@ -38,6 +40,16 @@ export const getProperty = createAsyncThunk('property/get', async (propertyID, t
     }
 });
 
+export const searchProperty = createAsyncThunk('property/search', async (searchQuery, thunkAPI) => {
+    try {
+        return await propertyService.searchProperty(searchQuery.query);
+
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const propertySlice = createSlice({
     name: 'property',
     initialState,
@@ -57,7 +69,6 @@ export const propertySlice = createSlice({
             .addCase(createProperty.fulfilled, (state, action) => {
                 state.isLoading = true
                 state.isSuccess = true
-                state.property = action.payload
             })
             .addCase(createProperty.rejected, (state, action) => {
                 state.isLoading = false
@@ -88,6 +99,18 @@ export const propertySlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.property = null
+            })
+            .addCase(searchProperty.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(searchProperty.fulfilled, (state, action) => {
+                state.properties = action.payload
+            })
+            .addCase(searchProperty.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.properties = null
             })
     }
 })
