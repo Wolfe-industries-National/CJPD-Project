@@ -51,7 +51,7 @@ const createPerson = asyncHandler(async (req, res) => {
         flags,
         tattoos,
         hairColour,
-        eyeColour
+        eyeColour,
     })
 
     if(person){

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /*Web Wide Styles*/
 *{
@@ -8,7 +8,7 @@
 body, html
 {
     background-color: #E5F2FF;
-    font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
+    font-family: "Inter", "Sans-Serif", "Times New Roman";
     font-style: normal;
     font-weight: 500;
     width: 100%;
@@ -22,7 +22,7 @@ body, html
     background-color: lightgray;
     border: none;
     box-shadow: 1px 1px 1px 1px grey;
-    min-height: 6vh;
+    height: 12vh;
     width: 100%;
     min-width: 100%;
     max-width: 100%;
@@ -32,7 +32,7 @@ body, html
 .UniversalTFFormat
 {
     font-size: 1vw;
-    font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
+    font-family: "Inter", "Sans-Serif", "Times New Roman";
     font-style: normal;
     font-weight: 300;
 }
@@ -49,11 +49,12 @@ body, html
 .UniversalRadioContainer
 {
     display: inline-flex;
-    margin-right: 1vw;
     height: 6vh;
+    max-height: 6vh;
     width: 100%;
     max-width: 100%;
     justify-content: center;
+    flex-grow: 1;
 }
 .UniversalRadioContainer input[type="radio"] {
     opacity: 0;
@@ -62,14 +63,14 @@ body, html
 }
 .UniversalRadioContainer label {
     display: inline-flex;
-    margin-right: 1vw;
+    margin-right: 8px;
     padding: 1vw 2vw;
     border-radius: 5px;
     background-color: lightgray;
     border: none;
     box-shadow: 1px 1px 1px 1px grey;
     font-size: 1vw;
-    font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
+    font-family: "Inter", "Sans-Serif", "Times New Roman";
     font-style: normal;
     font-weight: 300;
     text-align: center;
@@ -85,9 +86,14 @@ body, html
 {
     display: flex;
     flex-direction: row;
-    width: auto;
+    width: 100%;
     max-width: 100%;
+    height: 100%;
     justify-content: center;
+}
+.RadioChoiceContainer label
+{
+    align-items: center;
 }
 .UniversalRadioFix
 {
@@ -111,7 +117,9 @@ body, html
     font-size: 1vw;
     text-align: center;
     justify-content: center;
+    align-items: center;
 }
+
 
 
 /*Navigation Bar*/
@@ -704,9 +712,10 @@ body, html
     width: 100%;
     padding-left: 1vw;
     font-size: 1vw;
-    font-family: 'Inter', 'Sans-Serif', 'Times New Roman';
+    font-family: "Inter", "Sans-Serif", "Times New Roman";
     font-style: normal;
     font-weight: 300;
+    align-items: center;
 }
 
 
@@ -819,13 +828,11 @@ body, html
 {
     color: #DDBA2C;
     font-size: 2vw;
-    text-align: center;
 }
 .QRResultText
 {
     color: #FFFFFF;
     font-size: 1vw;
-    text-align: center;
     margin-top: 5px
 
 }
@@ -846,7 +853,7 @@ body, html
 .QRData
 {
     display: block;
-    justify-content: center;
+    justify-content: start;
     flex-grow: 1;
     width: 100%;
     margin: 0.5% 0;

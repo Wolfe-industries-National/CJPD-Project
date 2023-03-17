@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createProperty} from "../../features/property/propertySlice";
-
 
 const MDProperty = () => {
 
@@ -41,48 +39,62 @@ const MDProperty = () => {
     }
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Manage Property Form</h3>
-            <form class='DFUniversalForm' onSubmit={onSubmit}>
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Manage Property</h3>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
+
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Property Type<br/></div>
-                            <input class='DFUniversalFields' type="text" name="typeOfProperty" placeholder="Necklace, Car, Etc." value={typeOfProperty} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Type<br/></div>
+                            <input className="DFUniversalFields" type="text" name="typeOfProperty" placeholder="Necklace, Car, Etc." value={typeOfProperty} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Property Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name" value={owner} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Owner<br/></div>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First Name & Last Name" value={owner} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Serial Number / Vehicle Identification Number (VIN)<br/></div>
-                            <input class='DFUniversalFields' type="number" name="vinOfProperty" placeholder="1234567" value={vinOfProperty} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Serial Number / Vehicle Identification Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="vinOfProperty" placeholder="1234567" value={vinOfProperty} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Property Value<br/></div>
-                            <input class='DFUniversalFields' type="number" name="valueOfProperty" placeholder="$000" value={valueOfProperty} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Value<br/></div>
+                            <input className="DFUniversalFields" type="number" name="valueOfProperty" placeholder="$000" value={valueOfProperty} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Description<br/></div>
-                            <textarea class='UniversalFieldsTB' name="descriptionOfProperty" value={descriptionOfProperty} onChange={onChange}></textarea>
+                            <div className="DFUniversalInnerTitle">Description<br/></div>
+                            <textarea className="UniversalFieldsTB" name="name" value={descriptionOfProperty} onChange={onChange}></textarea>
                         </label>
                     </div>
                 </div>
-                <button>Create</button>
+                <div className="DFBottomBar">
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Clear All</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Update</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Delete</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton2">Create</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import { useSelector } from 'react-redux';
-import {Link, useParams, useNavigate} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
+import {Link, useParams, useNavigate} from "react-router-dom";
 import QRPerson from "../components/queryResultComponents/QRPerson";
 import QROccurrence from "../components/queryResultComponents/QROccurrence";
 import QRBusOrg from "../components/queryResultComponents/QRBusOrg";
@@ -10,44 +10,44 @@ import QRAddress from "../components/queryResultComponents/QRAddress";
 
 const QueryResultPage = () => {
 
-    const {itemForSearch} = useParams();
+    const {itemForSearch, id} = useParams();
     const navigate = useNavigate();
-    const [centerPannel, setCenterPannel] = useState();
+    const [allResultPages, setAllResultPages] = useState([<QRPerson id={id}/>, <QROccurrence id={id}/>, <QRBusOrg id={id}/>, <QRProperty id={id}/>, <QRVehicle id={id}/>, <QRAddress id={id}/>])
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if(!itemForSearch){
             navigate('/queryResultPage/person');
         }
-        const locationsOfPage = window.location.pathname.split('/');
-        switch (locationsOfPage[2]) {
+        switch (itemForSearch) {
             case 'person':
-                setCenterPannel(QRPerson);
+                setCurrentPageIndex(0);
                 break;
             case 'occurrence':
-                setCenterPannel(QROccurrence);
+                setCurrentPageIndex(1);
                 break;
             case 'bus-org':
-                setCenterPannel(QRBusOrg);
+                setCurrentPageIndex(2);
                 break;
             case 'property':
-                setCenterPannel(QRProperty);
+                setCurrentPageIndex(3);
                 break;
             case 'vehicle':
-                setCenterPannel(QRVehicle);
+                setCurrentPageIndex(4);
                 break;
             case 'address':
-                setCenterPannel(QRAddress);
+                setCurrentPageIndex(5);
                 break;
             default:
-                setCenterPannel(QRPerson);
+                setCurrentPageIndex(0);
                 break;
         }
     }, [navigate, itemForSearch]);
 
     return (
-        <div class='QRContainer'>
-            <div class='QRInnerContainer'>
-                {centerPannel}
+        <div className="QRContainer">
+            <div className="QRInnerContainer">
+                {allResultPages[currentPageIndex]}
             </div>
         </div>
     )

@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createVehicle} from "../../features/vehicle/vehicleSlice";
-
 
 const MDVehicle = () => {
 
@@ -45,61 +43,74 @@ const MDVehicle = () => {
     }
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Manage Vehicle Form</h3>
-            <form class='DFUniversalForm' onSubmit={onSubmit}>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Manage Vehicle Form</h3>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name" value={owner} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Owner<br/></div>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" value={owner} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Make<br/></div>
-                            <input class='DFUniversalFields' type="text" name="makeOfVehicle" placeholder="Honda" value={makeOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Make<br/></div>
+                            <input className="DFUniversalFields" type="text" name="makeOfVehicle" placeholder="Honda" value={makeOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Model<br/></div>
-                            <input class='DFUniversalFields' type="text" name="modelOfVehicle" placeholder="Civic" value={modelOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Model<br/></div>
+                            <input className="DFUniversalFields" type="text" name="modelOfVehicle" placeholder="Civic" value={modelOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Year<br/></div>
-                            <input class='DFUniversalFields' type="number" name="yearOfVehicle" placeholder="2018" value={yearOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Year<br/></div>
+                            <input className="DFUniversalFields" type="number" name="yearOfVehicle" placeholder="2018" value={yearOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Colour<br/></div>
-                            <input class='DFUniversalFields' type="text" name="colourOfVehicle" placeholder="Silver" value={colourOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Colour<br/></div>
+                            <input className="DFUniversalFields" type="text" name="colourOfVehicle" placeholder="Silver" value={colourOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Identification Number (VIN)<br/></div>
-                            <input class='DFUniversalFields' type="text" name="vinOfVehicle" placeholder="4Y1SL65848Z411439" value={vinOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Vehicle Identification Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="vinOfVehicle" placeholder="4Y1SL65848Z411439" value={vinOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle License Plate Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="plateOfVehicle" placeholder="4AA0-00" value={plateOfVehicle} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">License Plate Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="plateOfVehicle" placeholder="AAA-0000" value={plateOfVehicle} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-                <button>Create</button>
+                <div className="DFBottomBar">
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Clear All</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Update</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Delete</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton2">Create</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

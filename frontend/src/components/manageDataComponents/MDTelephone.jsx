@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createTelephone} from "../../features/telephone/telephoneSlice";
-
 
 const MDTelephone = () => {
 
@@ -38,30 +36,44 @@ const MDTelephone = () => {
     }
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Manage Telephone Form</h3>
-            <form class='DFUniversalForm' onSubmit={onSubmit}>
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Manage Telephone</h3>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
+
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Name of Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Owner<br/></div>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Telephone Type<br/></div>
-                            <input class='DFUniversalFields' type="text" name="typeOfTelephone" placeholder="Honda" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Telephone Type<br/></div>
+                            <input className="DFUniversalFields" type="text" name="typeOfTelephone" placeholder="Honda" onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Telephone Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="telephoneNumber" placeholder="Civic" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Telephone<br/></div>
+                            <input className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="Civic" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-                <button>Create</button>
+                <div className="DFBottomBar">
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Clear All</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Update</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Delete</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton2">Create</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

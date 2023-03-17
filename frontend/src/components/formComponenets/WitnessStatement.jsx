@@ -1,142 +1,25 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
+import {Viewer, Worker} from '@react-pdf-viewer/core';
+import {defaultLayoutPlugin} from '@react-pdf-viewer/default-layout';
+
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 const WitnessStatement = () => {
 
+    const newPlugins = defaultLayoutPlugin();
+
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Witness Statement</h3>
-            <form class='DFUniversalForm'>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Surname<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date of Birth<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>File Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Given Names<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Location of Interview<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Address<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Phone<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date of Interview<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Place of Employment / Occupation<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Employer Phone<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Investigating Officer<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Time Start<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Time End<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Notes<br/></div>
-                            <textarea class='UniversalFieldsTB' name=""></textarea>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Interviewing Officer Signature<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Witness Signature<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-            </form>
-            <div className='DFBottomBar'>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton1'>Clear All</button>
-                </div>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton1'>Save Form</button>
-                </div>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton2'>Download Form</button>
-                </div>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Consent to Search</h3>
+            <div style={{width: '100%', height: '100vh'}}>
+                <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js'>
+                    <Viewer fileUrl={'/formsPDF/Incident_Report_Updated.pdf'} plugins={[newPlugins]} />
+                </Worker>
             </div>
         </div>
     )
+
 }
 
 export default WitnessStatement

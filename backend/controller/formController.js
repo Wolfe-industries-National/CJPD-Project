@@ -21,7 +21,8 @@ const createForm = asyncHandler(async (req, res) => {
         dateComplainant, supervisor, department, exhibitsSeizedBy, dateSeized, locationOfSeizure,
         itemNumber, itemDescription, supervisorSignature, exhibitItem, movementTo, recipient,
         initials, suspectHistory, suspectHistoryNotes, complainant, complainantNotes, complainFuture,
-        complainantFutureNotes, flags, formType, person, date, name, time, status, sex
+        complainantFutureNotes, flags, formType, person, date, name, time, status, sex, ethnicity,
+        fps, startDate, endDate, tattoos, associates, itemOrGood,
     } = req.body;
     // Validation
     if(!investigatorName || !agency || !fileNumber || !reportedDate || !occurrenceBetweenDate || !natureOfEvent ||
@@ -124,7 +125,14 @@ const createForm = asyncHandler(async (req, res) => {
         time,
         name,
         status,
-        sex
+        sex,
+        ethnicity,
+        fps,
+        startDate,
+        endDate,
+        tattoos,
+        associates,
+        itemOrGood,
     })
 
     if(form){
@@ -221,6 +229,13 @@ const createForm = asyncHandler(async (req, res) => {
             time: form.time,
             status: form.status,
             sex: form.sex,
+            ethnicity: form.ethnicity,
+            fps: form.fps,
+            startDate: form.startDate,
+            endDate: form.endDate,
+            tattoos: form.tattoos,
+            associates: form.associates,
+            itemOrGood: form.itemOrGood,
         })
     }else{
         res.status(400);

@@ -5,8 +5,8 @@ const {createVehicle, getAllVehicles, getVehicle, searchVehicle} = require('../c
 const {protect} = require('../middleware/authMiddleware');
 
 router.route('/').post(createVehicle);
-router.route('/').get(protect, getAllVehicles);
+router.route('/').get(getAllVehicles);
 router.route('/search').get(searchVehicle);
-router.route('/:id').get(protect, getVehicle);
+router.route('/:id').get(getVehicle);
 
 module.exports = router;

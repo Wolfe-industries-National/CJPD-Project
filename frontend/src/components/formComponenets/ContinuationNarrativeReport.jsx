@@ -1,109 +1,25 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
+import {Viewer, Worker} from '@react-pdf-viewer/core';
+import {defaultLayoutPlugin} from '@react-pdf-viewer/default-layout';
+
+import '@react-pdf-viewer/core/lib/styles/index.css';
+import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 
 const ContinuationNarrativeReport = () => {
 
+    const newPlugins = defaultLayoutPlugin();
+
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Continuation (Narrative) Report</h3>
-            <form class='DFUniversalForm'>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>RE:<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Occurence (File) Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Time<br/></div>
-                            <input class='DFUniversalFields' type="time" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Action Taken<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Concluded<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date Complainant Notified<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>D.D. - D.A. | SUI<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Investigator Signature<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Supervisor Signature<br/></div>
-                            <input class='DFUniversalFields' type="text" name=""/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Date<br/></div>
-                            <input class='DFUniversalFields' type="date" name=""/>
-                        </label>
-                    </div>
-                </div>
-            </form>
-            <div className='DFBottomBar'>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton1'>Clear All</button>
-                </div>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton1'>Save Form</button>
-                </div>
-                <div className='DFBottomBarInnerContainer'>
-                    <button className='DFBottomBarButton2'>Download Form</button>
-                </div>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Consent to Search</h3>
+            <div style={{width: '100%', height: '100vh'}}>
+                <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js'>
+                    <Viewer fileUrl={'/formsPDF/Consent_for_Release_of_Medical_Information_Updated.pdf'} plugins={[newPlugins]} />
+                </Worker>
             </div>
         </div>
     )
+
 }
 
 export default ContinuationNarrativeReport

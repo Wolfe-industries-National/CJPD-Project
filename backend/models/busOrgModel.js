@@ -14,7 +14,7 @@ const busOrgSchema = mongoose.Schema({
         required: [true, "Please add a type of Business or Organization"]
     },
     address: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: 'Address'
     },
@@ -23,7 +23,7 @@ const busOrgSchema = mongoose.Schema({
         required: [true, "Please add an alarm company"]
     },
     telephoneNumber: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: 'Telephone'
     },

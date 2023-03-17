@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect, useState} from "react";
+import { useSelector } from "react-redux";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import FFAddress from "../components/fastfindComponenets/FFAddress";
 import FFBusOrg from "../components/fastfindComponenets/FFBusOrg";
@@ -55,23 +55,22 @@ const FastFind = () => {
 
 
     return (
-        <div className='DFOuterContainer'>
+        <div className="DFOuterContainer">
+            <div className="DFInnerContainer">
 
-            <div className='DFInnerContainer'>
-
-                <div className='DFLeftColumn'>
+                <div className="DFLeftColumn">
                     <p>Category</p><br/>
-                    <span><Link className='DFLeftButtons' to='../fastFind/person'>Person</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/occurrence'>Occurrence</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/bus-org'>Bus/Org</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/property'>Property</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/vehicle'>Vehicle</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/address'>Address</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/telephone'>Telephone</Link><br/></span>
-                    <span><Link className='DFLeftButtons' to='../fastFind/officer-unit'>Officer / Unit</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/person">Person</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/occurrence">Occurrence</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/bus-org">Bus/Org</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/property">Property</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/vehicle">Vehicle</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/address">Address</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/telephone">Telephone</Link><br/></span>
+                    <span><Link className="DFLeftButtons" to="../fastFind/officer-unit">Officer / Unit</Link><br/></span>
                 </div>
 
-                <div className='FFRightColumn'>
+                <div className="FFRightColumn">
                     <div>
                         {allFastFindPages[currentPageIndex]}
                     </div>

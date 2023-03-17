@@ -22,7 +22,7 @@ const createProperty = asyncHandler(async (req, res) => {
         typeOfProperty,
         vinOfProperty,
         valueOfProperty,
-        descriptionOfProperty
+        descriptionOfProperty,
     })
 
     if(property){

@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createNewAddress} from "../../features/address/addressSlice";
-
 
 const MDAddress = () => {
 
@@ -45,65 +43,82 @@ const MDAddress = () => {
     }
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Manage Address Form</h3>
-            <form class='DFUniversalForm' onSubmit={onSubmit}>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Manage Address</h3>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Owner / Tenant<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First Name & Last Name" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Owner / Tenant<br/></div>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Type of Building<br/></div>
-                            <input class='DFUniversalFields' type="text" name="typeOfBuilding" placeholder="House, Apartment, Hotel, Etc." onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Building Type<br/></div>
+                            <input className="DFUniversalFields" type="text" name="typeOfBuilding" placeholder="House, Apartment, Hotel, Etc." onChange={onChange}/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vacant<br/></div>
-                            <select class='DFUniversalFields' name="vacant" onChange={onChange}>
-                                <option value={true}>Yes</option>
-                                <option value={false}>No</option>
-                            </select>
-
-                        </label>
-                    </div>
-                </div>
-
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Country<br/></div>
-                            <input class='DFUniversalFields' type="text" name="country" placeholder="Canada" onChange={onChange}/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>Province<br/></div>
-                            <input class='DFUniversalFields' type="text" name="province" placeholder="Alberta" onChange={onChange}/>
-                        </label>
-                    </div>
-                    <div class='DFUniversalData'>
-                        <label>
-                            <div class='DFUniversalInnerTitle'>City<br/></div>
-                            <input class='DFUniversalFields' type="text" name="city" placeholder="Lethbridge" onChange={onChange}/>
+                            <div className="CheckboxInnerTitle">Vacant<br/></div>
+                            <div className="UniversalRadioContainer">
+                                <div className="RadioChoiceContainer">
+                                    <input id="MDRadioYes" className="UniversalRadioFix" type="radio" name="RC-MDA" value={true}/>
+                                    <label for="MDRadioYes">Yes</label>
+                                </div>
+                                <div className="RadioChoiceContainer">
+                                    <input id="MDRadioNo" className="UniversalRadioFix" type="radio" name="RC-MDA" value={false}/>
+                                    <label for="MDRadioNo">No</label>
+                                </div>
+                            </div>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address<br/></div>
-                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Country<br/></div>
+                            <input className="DFUniversalFields" type="number" name="country" placeholder="Canada" onChange={onChange}/>
+                        </label>
+                    </div>
+                    <div className="DFUniversalData">
+                        <label>
+                            <div className="DFUniversalInnerTitle">Province<br/></div>
+                            <input className="DFUniversalFields" type="text" name="province" placeholder="Alberta" onChange={onChange}/>
+                        </label>
+                    </div>
+                    <div className="DFUniversalData">
+                        <label>
+                            <div className="DFUniversalInnerTitle">City<br/></div>
+                            <input className="DFUniversalFields" type="text" name="city" placeholder="Lethbridge" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-                <button>Create</button>
+
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <label>
+                            <div className="DFUniversalInnerTitle">Address<br/></div>
+                            <input className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W" onChange={onChange}/>
+                        </label>
+                    </div>
+                </div>
+                <div className="DFBottomBar">
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Clear All</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Update</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Delete</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton2">Create</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

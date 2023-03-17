@@ -285,7 +285,28 @@ const formSchema = mongoose.Schema({
     },
     sex: {
         type: String,
-    }
+    },
+    ethnicity: {
+        type: String,
+    },
+    fps: {
+        type: String,
+    },
+    startDate: {
+        type: Date,
+    },
+    endDate: {
+        type: Date,
+    },
+    tattoos: {
+        type: String,
+    },
+    associates: {
+        type: String,
+    },
+    itemOrGood: {
+        type: String,
+    },
 
 }, {
     timestamps: true

@@ -5,8 +5,8 @@ const {createPerson, getAllPerson, getPerson, searchPerson} = require('../contro
 const {protect} = require('../middleware/authMiddleware');
 
 router.route('/').post(createPerson);
-router.route('/').get(protect, getAllPerson);
+router.route('/').get(getAllPerson);
 router.route('/search').get(searchPerson);
-router.route('/:id').get(protect, getPerson);
+router.route('/:id').get(getPerson);
 
 module.exports = router;

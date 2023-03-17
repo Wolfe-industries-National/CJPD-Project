@@ -1,40 +1,38 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-
+import React from "react";
 
 const DFProperty = () => {
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Detailed Find Property</h3>
-            <form class='DFUniversalForm'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Detailed Find Property</h3>
+            <form className="DFUniversalForm">
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Type<br/></div>
-                            <input class='DFUniversalFields' type="text" name="typeOfProperty" placeholder="Necklace, Car, Etc."/>
+                            <div className="DFUniversalInnerTitle">Type<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Necklace, Car, Etc."/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
+                            <div className="DFUniversalInnerTitle">Owner<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="First & Last Name"/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Serial Number / Vehicle Identification Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="vinOfProperty" placeholder="1234567"/>
+                            <div className="DFUniversalInnerTitle">Serial Number / Vehicle Identification Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="1234567"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Value<br/></div>
-                            <input class='DFUniversalFields' type="number" name="valueOfProperty" placeholder="$123"/>
+                            <div className="DFUniversalInnerTitle">Value<br/></div>
+                            <input className="DFUniversalFields" type="number" name="" placeholder="$123"/>
                         </label>
                     </div>
                 </div>

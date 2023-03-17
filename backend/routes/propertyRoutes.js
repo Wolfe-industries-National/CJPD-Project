@@ -5,8 +5,8 @@ const {createProperty, getAllProperties, getProperty, searchProperty} = require(
 const {protect} = require('../middleware/authMiddleware');
 
 router.route('/').post(createProperty);
-router.route('/').get(protect, getAllProperties);
+router.route('/').get(getAllProperties);
 router.route('/search').get(searchProperty);
-router.route('/:id').get(protect, getProperty);
+router.route('/:id').get(getProperty);
 
 module.exports = router;

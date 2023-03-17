@@ -30,7 +30,7 @@ function App() {
               <Route path='/fastFind' element={<FastFind/>} />
               <Route path='/detailedFind' element={<DetailedFind/>} />
 
-              <Route path='/queryResultPage/:itemForSearch' element={<QueryResultPage/>} />
+              <Route path='/queryResultPage/:itemForSearch/:id' element={<QueryResultPage/>} />
 
               <Route path='/manageData/:itemForSearch' element={<ManageData/>} />
 

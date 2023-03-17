@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {createOfficerUnit} from "../../features/officerUnit/officerUnitSlice";
-
 
 const MDOfficerUnit = () => {
 
@@ -40,40 +38,53 @@ const MDOfficerUnit = () => {
     }
 
     return (
-        <div className='DFUniversalContainer'>
-            <h3 className='DFUniversalTitle'>Manage Officer / Unit Form</h3>
-            <form className='DFUniversalForm' onSubmit={onSubmit}>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Manage Officer / Unit</h3>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
 
-                <div className='DFUniversalRow'>
-                    <div className='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div className='DFUniversalInnerTitle'>Name<br/></div>
-                            <input className='DFUniversalFields' type="text" name="name" placeholder="First Name & Last Name" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Name<br/></div>
+                            <input className="DFUniversalFields" type="text" name="name" placeholder="First & Last Name"  onChange={onChange}/>
                         </label>
                     </div>
-                    <div className='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div className='DFUniversalInnerTitle'>Regimental Number<br/></div>
-                            <input className='DFUniversalFields' type="text" name="regimentalNumber" placeholder="Honda" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Regimental Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="regimentalNumber" placeholder="123456"  onChange={onChange}/>
                         </label>
                     </div>
                 </div>
 
-                <div className='DFUniversalRow'>
-                    <div className='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div className='DFUniversalInnerTitle'>Rank<br/></div>
-                            <input className='DFUniversalFields' type="text" name="rank" placeholder="Civic" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Rank<br/></div>
+                            <input className="DFUniversalFields" type="text" name="rank" placeholder="Captain"  onChange={onChange}/>
                         </label>
                     </div>
-                    <div className='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div className='DFUniversalInnerTitle'>Unit<br/></div>
-                            <input className='DFUniversalFields' type="text" name="unit" placeholder="Civic" onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Unit<br/></div>
+                            <input className="DFUniversalFields" type="text" name="unit" placeholder="AAAAA"  onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-                <button>Create</button>
+                <div className="DFBottomBar">
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Clear All</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Update</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton1">Delete</button>
+                    </div>
+                    <div className="DFBottomBarInnerContainer">
+                        <button className="DFBottomBarButton2">Create</button>
+                    </div>
+                </div>
             </form>
         </div>
     )

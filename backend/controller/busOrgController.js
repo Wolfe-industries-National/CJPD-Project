@@ -16,15 +16,12 @@ const createBusOrg = asyncHandler(async (req, res) => {
         throw new Error('Please include name of Business or Organization');
     }
 
-    // making the address info be equal to an address ID
-    const newAddress = mongoose.Types.ObjectId(address);
-
     // Create BusOrg
     const busOrg = await BusOrg.create({
         owner,
         name,
         typeOfBusOrg,
-        address: newAddress,
+        address,
         alarmCompany,
         telephoneNumber
     })
@@ -84,12 +81,11 @@ const searchBusOrg = asyncHandler(async (req, res) => {
                 'autocomplete': {
                     'query': searchQuery == '' ? '' : searchQuery,
                     'path': 'name',
-                    'fuzzy': {}
-                },
-                'highlight': {
-                    'path': [
-                        'name'
-                    ]
+                    "fuzzy": {
+                        "maxEdits": 1,
+                        "prefixLength": 2,
+                        "maxExpansions": 100,
+                    }
                 }
             }
         }

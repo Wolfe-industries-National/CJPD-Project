@@ -4,9 +4,9 @@ const {createOfficerUnit, getAllOfficerUnits, getOfficerUnit, searchOfficerUnit}
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post( createOfficerUnit);
-router.route('/').get(protect, getAllOfficerUnits);
+router.route('/').post(createOfficerUnit);
+router.route('/').get(getAllOfficerUnits);
 router.route('/search').get(searchOfficerUnit);
-router.route('/:id').get(protect, getOfficerUnit);
+router.route('/:id').get(getOfficerUnit);
 
 module.exports = router;

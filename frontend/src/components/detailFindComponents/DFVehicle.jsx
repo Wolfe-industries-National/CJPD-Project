@@ -1,61 +1,59 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-
+import React from "react";
 
 const DFVehicle = () => {
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Detailed Find Vehicle</h3>
-            <form class='DFUniversalForm'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Detailed Find Vehicle</h3>
+            <form className="DFUniversalForm">
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Owner<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
+                            <div className="DFUniversalInnerTitle">Owner<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="First & Last Name"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Make<br/></div>
-                            <input class='DFUniversalFields' type="text" name="makeOfVehicle" placeholder="Honda"/>
+                            <div className="DFUniversalInnerTitle">Make<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Honda"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Model<br/></div>
-                            <input class='DFUniversalFields' type="text" name="modelOfVehicle" placeholder="Civic"/>
+                            <div className="DFUniversalInnerTitle">Model<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Civic"/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Year<br/></div>
-                            <input class='DFUniversalFields' type="number" name="yearOfVehicle" placeholder="2018"/>
+                            <div className="DFUniversalInnerTitle">Year<br/></div>
+                            <input className="DFUniversalFields" type="number" name="" placeholder="2018"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Colour<br/></div>
-                            <input class='DFUniversalFields' type="text" name="colourOfVehicle" placeholder="Silver"/>
+                            <div className="DFUniversalInnerTitle">Colour<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Silver"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vehicle Identification Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="vinOfVehicle" placeholder="4Y1SL65848Z411439"/>
+                            <div className="DFUniversalInnerTitle">Vehicle Identification Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="4Y1SL65848Z411439"/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>License Plate Number<br/></div>
-                            <input class='DFUniversalFields' type="text" name="plateOfVehicle" placeholder="AAA-0000"/>
+                            <div className="DFUniversalInnerTitle">License Plate Number<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="AAA-0000"/>
                         </label>
                     </div>
                 </div>

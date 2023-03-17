@@ -1,37 +1,35 @@
-import React from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-
+import React from "react";
 
 const DFAddress = () => {
 
     return (
-        <div class='DFUniversalContainer'>
-            <h3 class='DFUniversalTitle'>Detailed Find Address</h3>
-            <form class='DFUniversalForm'>
+        <div className="DFUniversalContainer">
+            <h3 className="DFUniversalTitle">Detailed Find Address</h3>
+            <form className="DFUniversalForm">
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Owner / Tenant<br/></div>
-                            <input class='DFUniversalFields' type="text" name="owner" placeholder="First & Last Name"/>
+                            <div className="DFUniversalInnerTitle">Owner / Tenant<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="First & Last Name"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Building Type<br/></div>
-                            <input class='DFUniversalFields' type="text" name="typeOfBuilding" placeholder="House, Apartment, Hotel, Etc."/>
+                            <div className="DFUniversalInnerTitle">Building Type<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="House, Apartment, Hotel, Etc."/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Vacant<br/></div>
-                            <div class='UniversalRadioContainer'>
-                                <div class="RadioChoiceContainer">
-                                    <input id="DFARadioYes" class="UniversalRadioFix" type="radio" name="RC-DFA" value="yes"/>
+                            <div className="CheckboxInnerTitle">Vacant<br/></div>
+                            <div className="UniversalRadioContainer">
+                                <div className="RadioChoiceContainer">
+                                    <input id="DFARadioYes" className="UniversalRadioFix" type="radio" name="RC-DFA" value="yes"/>
                                     <label for="DFARadioYes">Yes</label>
                                 </div>
-                                <div class="RadioChoiceContainer">
-                                    <input id="DFARadioNo" class="UniversalRadioFix" type="radio" name="RC-DFA" value="no"/>
+                                <div className="RadioChoiceContainer">
+                                    <input id="DFARadioNo" className="UniversalRadioFix" type="radio" name="RC-DFA" value="no"/>
                                     <label for="DFARadioNo">No</label>
                                 </div>
                             </div>
@@ -39,32 +37,32 @@ const DFAddress = () => {
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Country<br/></div>
-                            <input class='DFUniversalFields' type="text" name="country" placeholder="Canada"/>
+                            <div className="DFUniversalInnerTitle">Country<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Canada"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Province<br/></div>
-                            <input class='DFUniversalFields' type="text" name="province" placeholder="Alberta"/>
+                            <div className="DFUniversalInnerTitle">Province<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Alberta"/>
                         </label>
                     </div>
-                    <div class='DFUniversalData'>
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>City<br/></div>
-                            <input class='DFUniversalFields' type="text" name="city" placeholder="Lethbridge"/>
+                            <div className="DFUniversalInnerTitle">City<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="Lethbridge"/>
                         </label>
                     </div>
                 </div>
 
-                <div class='DFUniversalRow'>
-                    <div class='DFUniversalData'>
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
                         <label>
-                            <div class='DFUniversalInnerTitle'>Address<br/></div>
-                            <input class='DFUniversalFields' type="text" name="address" placeholder="123 Random Place Blvd. W"/>
+                            <div className="DFUniversalInnerTitle">Address<br/></div>
+                            <input className="DFUniversalFields" type="text" name="" placeholder="123 Random Place Blvd. W"/>
                         </label>
                     </div>
                 </div>
