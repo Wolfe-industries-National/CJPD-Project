@@ -39,9 +39,9 @@ app.use('/api/v1/person', require(`${__dirname}/routes/personRoutes`));
 // forms Data Api Routes
 app.use('/api/v1/form', require(`${__dirname}/routes/formRoutes`));
 
-app.get('/', (req, res) => {
-    res.status(200).json({message: 'Welcome to the CJPD App'})
-})
+// app.get('/', (req, res) => {
+//     res.status(200).json({message: 'Welcome to the CJPD App'})
+// })
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
@@ -52,6 +52,8 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (_, res) => {
         res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
     })
+}else{
+    res.status(200).json({message: 'Frontend loading did not work'});
 }
 
 
