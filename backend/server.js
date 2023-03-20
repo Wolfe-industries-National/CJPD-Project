@@ -15,10 +15,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.get('/', (req, res) => {
-    res.status(200).json({message: 'Welcome to the CJPD App'})
-})
-
 // Routes
 // user api routes
 app.use('/api/v1/users', require(`${__dirname}/routes/userRoutes`));
@@ -42,6 +38,10 @@ app.use('/api/v1/occurrence', require(`${__dirname}/routes/occurrenceRoutes`));
 app.use('/api/v1/person', require(`${__dirname}/routes/personRoutes`));
 // forms Data Api Routes
 app.use('/api/v1/form', require(`${__dirname}/routes/formRoutes`));
+
+app.get('/', (req, res) => {
+    res.status(200).json({message: 'Welcome to the CJPD App'})
+})
 
 // Serve Frontend
 if (process.env.NODE_ENV === 'production') {
