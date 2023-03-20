@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getPerson, reset} from "../../features/person/personSlice";
+import {getPerson} from "../../features/person/personSlice";
 
 const QRPerson = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {person} = useSelector((state) => state.person);
     let showPerson = {}
 

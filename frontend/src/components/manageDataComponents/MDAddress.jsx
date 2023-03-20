@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {createNewAddress} from "../../features/address/addressSlice";
 
 const MDAddress = () => {
@@ -15,7 +15,7 @@ const MDAddress = () => {
     })
     const [successMessage, setSuccessMessage] = useState('');
 
-    const {owner, typeOfBuilding, vacant, country, province, city, address} = formData;
+    const { address} = formData;
 
     const dispatch = useDispatch();
     // const {address, isSuccess, isError} = useSelector((state) => state.address);

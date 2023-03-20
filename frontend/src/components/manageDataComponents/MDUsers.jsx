@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import { register, reset } from '../../features/auth/authSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import {toast} from 'react-toastify';
+import { register } from '../../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
 
 const MDUsers = () => {
 
@@ -16,7 +15,7 @@ const MDUsers = () => {
     const {name, email, password, userType} = formData;
 
     const dispatch = useDispatch();
-    const {user, isSuccess, isError} = useSelector((state) => state.auth);
+    // const {user, isSuccess, isError} = useSelector((state) => state.auth);
 
     const onChange = (e) => {
         setFormData((prevState) => ({

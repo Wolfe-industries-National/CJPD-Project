@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {createTelephone} from "../../features/telephone/telephoneSlice";
 
 const MDTelephone = () => {
@@ -11,10 +11,10 @@ const MDTelephone = () => {
     })
     const [successMessage, setSuccessMessage] = useState('');
 
-    const {owner, typeOfTelephone, telephoneNumber} = formData;
+    const { telephoneNumber} = formData;
 
     const dispatch = useDispatch();
-    const {telephone, isSuccess, isError} = useSelector((state) => state.telephone);
+    // const {telephone, isSuccess, isError} = useSelector((state) => state.telephone);
 
     const onChange = (e) => {
         setFormData((prevState) => ({

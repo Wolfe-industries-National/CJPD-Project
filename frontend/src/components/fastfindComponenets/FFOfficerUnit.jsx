@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
 import {searchOfficerUnit, getAllOfficerUnits, reset} from "../../features/officerUnit/officerUnitSlice";
 
 const FFOfficerUnit = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {officerUnits} = useSelector((state) => state.officerUnit);
     let officerUnitList = [];
 

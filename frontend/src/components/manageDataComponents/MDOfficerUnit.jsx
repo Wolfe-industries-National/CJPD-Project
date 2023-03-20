@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {createOfficerUnit} from "../../features/officerUnit/officerUnitSlice";
 
 const MDOfficerUnit = () => {
@@ -12,10 +12,10 @@ const MDOfficerUnit = () => {
     })
     const [successMessage, setSuccessMessage] = useState('');
 
-    const {name, regimentalNumber, rank, unit} = formData;
+    const {name} = formData;
 
     const dispatch = useDispatch();
-    const {officerUnit, isSuccess, isError} = useSelector((state) => state.officerUnit);
+    // const {officerUnit, isSuccess, isError} = useSelector((state) => state.officerUnit);
 
     const onChange = (e) => {
         setFormData((prevState) => ({

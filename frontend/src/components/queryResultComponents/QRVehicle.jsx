@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getVehicle, reset} from "../../features/vehicle/vehicleSlice";
+import {getVehicle} from "../../features/vehicle/vehicleSlice";
 
 const QRVehicle = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {vehicle} = useSelector((state) => state.vehicle);
     let showVehicle = {}
 

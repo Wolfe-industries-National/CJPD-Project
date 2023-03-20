@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getOccurrence, reset} from "../../features/occurrence/occurrenceSlice";
+import {getOccurrence} from "../../features/occurrence/occurrenceSlice";
 
 const QROccurrence = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {occurrence} = useSelector((state) => state.occurrence);
     let showOccurrence = {}
 

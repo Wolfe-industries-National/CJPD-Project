@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getAddress, reset} from "../../features/address/addressSlice";
+import {getAddress} from "../../features/address/addressSlice";
 
 const QRAddress = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {address} = useSelector((state) => state.address);
     let showAddress = {}
 

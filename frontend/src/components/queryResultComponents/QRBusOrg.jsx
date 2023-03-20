@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getBusOrg, reset} from "../../features/busOrg/busOrgSlice";
+import {getBusOrg} from "../../features/busOrg/busOrgSlice";
 
 const QRBusOrg = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {busOrg} = useSelector((state) => state.busOrg);
     let showBusOrg = {}
 

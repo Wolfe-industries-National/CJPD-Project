@@ -1,12 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
 import {searchTelephone, getAllTelephones, reset} from "../../features/telephone/telephoneSlice";
 
 const FFTelephone = () => {
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {telephones} = useSelector((state) => state.telephone);
     let telephoneList = [];
 

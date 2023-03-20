@@ -1,13 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from 'react-router-dom';
-import {getProperty, reset} from "../../features/property/propertySlice";
+import {getProperty} from "../../features/property/propertySlice";
 
 const QRProperty = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {property} = useSelector((state) => state.property);
     let showProperty = {}
 
