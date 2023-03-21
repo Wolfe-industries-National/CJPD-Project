@@ -52,8 +52,6 @@ if (process.env.NODE_ENV === 'production') {
     app.get('*', (_, res) => {
         res.sendFile(path.join(__dirname, '../frontend/build/index.html'))
     })
-}else{
-    res.status(200).json({message: 'Frontend loading did not work'});
 }
 
 

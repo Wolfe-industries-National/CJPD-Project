@@ -27,10 +27,13 @@ const FFAddress = () => {
     }
 
     return (
-        <div className="FFUniversalContainer">
-            <h3 className="FFUniversalTitle">Fast Find Address</h3>
+        <div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <h3 className="FFUniversalTitle">Fast Find Address</h3>
+                <button className="DFBottomBarButton2" to={`/detailedFind/address`}>Switch to Detailed Find</button>
+            </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Address" onChange={onChange}/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

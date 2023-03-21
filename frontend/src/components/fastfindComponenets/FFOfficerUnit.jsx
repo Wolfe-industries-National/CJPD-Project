@@ -25,10 +25,13 @@ const FFOfficerUnit = () => {
     }
 
     return (
-        <div className="FFUniversalContainer">
-            <h3 className="FFUniversalTitle">Fast Find Officer / Unit</h3>
+        <div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <h3 className="FFUniversalTitle">Fast Find Officer Unit </h3>
+                <button className="DFBottomBarButton2" to={`/detailedFind/officerUnit`}>Switch to Detailed Find</button>
+            </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Name" onChange={onChange}/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

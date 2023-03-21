@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import Footer from "../components/Footer";
 import FinalLogoImageCJPD from "../Images/FinalLogoImageCJPD.png";
 
 const Home = () => {
@@ -81,27 +82,35 @@ const Home = () => {
         return <h3>hmm... You are not logged in...</h3>
     }else {
         return (
-            <div className="homeContentContainer">
-                <div className="homeFFColumn">
-                    <Link className="homeFFButton" to="/fastFind/person">Fast Find</Link>
-                    <ul className="homeButtonMargin">
+            <div style={{margin: '5rem 10rem 0 10rem', display: 'flex', justifyContent: 'space-between'}}>
+                <div style={{textAlign: 'center'}}>
+                    <div style={{marginBottom: '1rem'}}>
+                        <Link style={{fontSize: '1.6rem', textDecoration: 'none', color: '#01244C'}} to="/fastFind/person">Fast Find</Link>
+                        <hr style={{height: '0.1rem', backgroundColor: '#DDBA2C', border: 'none'}} />
+                    </div>
+                    <ul style={{listStyle: 'none', textAlign: 'center', width: '12rem'}}>
                         {fastFindChoicesList.map((item, index) => {
-                            return (<li className="homeList" key={index}><Link className="homeListLeft" key={index} to={`/fastFind/${item.value}`}>{item.name}</Link></li>);
+                            return (<li style={{marginBottom: '0.7rem', backgroundColor: '#01244C', padding: '0.8rem 0', borderRadius: '5px', cursor: 'pointer'}} key={index}><Link style={{fontSize: '1.2rem', textDecoration: 'none', color: '#DDBA2C'}} key={index} to={`/fastFind/${item.value}`}>{item.name}</Link></li>);
                         })}
                     </ul>
                 </div>
 
-                <div className="homeRightContainer">
-                    <img style={{borderRadius: "50%", boxShadow: "0px 0px 50px #1A282B",}} className="homeImage" src={FinalLogoImageCJPD} alt="Home Image"/>
+                <div>
+                    <img style={{borderRadius: "50%", boxShadow: "0px 0px 50px #1A282B", width: '33rem', marginTop: '1rem'}} src={FinalLogoImageCJPD} alt="HomeImage"/>
                 </div>
-                <div className="homeDFColumn">
-                    <Link className="homeDFButton" to="/detailedFind/person">Detailed Find</Link>
-                    <ul className="homeButtonMargin">
+
+                <div style={{textAlign: 'center'}}>
+                    <div style={{marginBottom: '1rem'}}>
+                        <Link style={{fontSize: '1.6rem', textDecoration: 'none', color: '#01244C'}} to="/detailedFind/person">Detailed Find</Link>
+                        <hr style={{height: '0.1rem', backgroundColor: '#DDBA2C', border: 'none'}} />
+                    </div>
+                    <ul style={{listStyle: 'none', textAlign: 'center', width: '12rem', marginLeft: '0.3rem'}}>
                         {detailedFindChoicesList.map((item, index) => {
-                            return (<li className="homeList" key={index}><Link className="homeListRight" key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link></li>);
+                            return (<li style={{marginBottom: '0.7rem', backgroundColor: '#DDBA2C', padding: '0.8rem 0', borderRadius: '5px', cursor: 'pointer'}} key={index}><Link style={{fontSize: '1.2rem', textDecoration: 'none', color: '#01244C'}} key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link></li>);
                         })}
                     </ul>
                 </div>
+                <Footer/>
             </div>
         )
     }

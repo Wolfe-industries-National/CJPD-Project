@@ -10,6 +10,7 @@ import ConsentforReleaseofMedicalInformation from "../components/formComponenets
 import ContinuationNarrativeReport from "../components/formComponenets/ContinuationNarrativeReport";
 import FamilyViolenceInvestigationReport from "../components/formComponenets/FamilyViolenceInvestigationReport";
 import IncidentReport from "../components/formComponenets/IncidentReport";
+import Footer from "../components/Footer";
 
 const ReportPage = () => {
 
@@ -55,7 +56,7 @@ const ReportPage = () => {
 
     return (
         <div className="DFOuterContainer">
-            <div className="DFInnerContainer">
+            <div className="DFInnerContainer" style={{marginBottom: '2rem'}}>
                 <div className="DFLeftColumn">
                     <p>Select Type of Form:</p><br/>
                     <span><Link className="DFLeftButtons" to="../reportPage/consenttosearch">Consent to Search</Link><br/></span>
@@ -74,6 +75,7 @@ const ReportPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     )
 }

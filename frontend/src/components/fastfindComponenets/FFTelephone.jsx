@@ -25,10 +25,13 @@ const FFTelephone = () => {
     }
 
     return (
-        <div className="FFUniversalContainer">
-            <h3 className="FFUniversalTitle">Fast Find Telephone</h3>
+        <div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <h3 className="FFUniversalTitle">Fast Find Telephone</h3>
+                <button className="DFBottomBarButton2" to={`/detailedFind/telephone`}>Switch to Detailed Find</button>
+            </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Telephone" onChange={onChange}/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

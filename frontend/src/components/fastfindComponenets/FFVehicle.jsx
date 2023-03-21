@@ -27,10 +27,13 @@ const FFVehicle = () => {
     }
 
     return (
-        <div className="FFUniversalContainer">
-            <h3 className="FFUniversalTitle">Fast Find Vehicle</h3>
+        <div>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <h3 className="FFUniversalTitle">Fast Find Vehicle</h3>
+                <button className="DFBottomBarButton2" to={`/detailedFind/vehicle`}>Switch to Detailed Find</button>
+            </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Make / Model" onChange={onChange}/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Vehicle"/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

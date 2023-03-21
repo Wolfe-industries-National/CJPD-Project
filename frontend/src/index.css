@@ -580,13 +580,12 @@ body, html
 {
     position: relative;
     display: flex;
-    font-size: 1.1vw;
     font-weight: 700;
     color: #DDBA2C;
     background-color: #01244C;
     border: 2px solid #01244C;
-    height: 3.5vw;
-    margin: 0 1vw;
+    height: 3rem;
+    margin: 0 1rem;
     border-radius: 8px;
     text-decoration: none;
     align-items: center;
@@ -618,23 +617,24 @@ body, html
 .DFBottomBar
 {
     display: inline-flex;
-    margin-bottom: 1vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     max-width: 100%;
     justify-content: right;
     float: right;
-    padding-right: 1vw;
+    padding-right: 1rem;
 }
 .DFBottomBarInnerContainer
 {
-    margin: 0 0.5vw;
+    margin: 0 0.5rem;
 }
 .DFBottomBarButton1
 {
-    font-size: 1vw;
+    font-size: 1rem;
     color: #01244C;
     background-color: #DDBA2C;
-    width: 13vw;
-    height: 5vh;
+    width: 13rem;
+    height: 3rem;
     border-radius: 5px;
     border: none;
     font-weight: 600;
@@ -646,11 +646,11 @@ body, html
 }
 .DFBottomBarButton2
 {
-    font-size: 1vw;
+    font-size: 1rem;
     color: #DDBA2C;
     background-color: #01244C;
-    width: 13vw;
-    height: 5vh;
+    width: 13rem;
+    height: 3rem;
     border-radius: 5px;
     border: none;
     font-weight: 600;
@@ -681,13 +681,13 @@ body, html
 .DFUniversalRow
 {
     display: inline-flex;
-    margin-bottom: 2vw;
+    margin-bottom: 1rem;
     width: 100%;
 }
 .DFUniversalData
 {
     display: flex;
-    margin: 0 1vw;
+    margin: 0 1rem;
     flex-grow: 1;
     width: 100%;
     align-items: center;
@@ -708,10 +708,10 @@ body, html
     background-color: lightgray;
     border: none;
     box-shadow: 1px 1px 1px 1px grey;
-    height: 6vh;
-    width: 100%;
-    padding-left: 1vw;
-    font-size: 1vw;
+    height: 3rem;
+    width: 98%;
+    padding-left: 1rem;
+    font-size: 1rem;
     font-family: "Inter", "Sans-Serif", "Times New Roman";
     font-style: normal;
     font-weight: 300;
@@ -730,7 +730,7 @@ body, html
     width: 70vw;
     height: auto;
     border-radius: 15px;
-    margin-bottom: 1vw;;
+    margin-bottom: 1vw;
 }
 .FFUniversalContainer
 {
@@ -740,17 +740,17 @@ body, html
 .FFUniversalTitle
 {
     color: #01244C;
-    font-size: 1.5vw;
-    margin-bottom: 1.5vw;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 .FFResultsContainer
 {
-    margin-top: 5vh;
+    margin-top: 2rem;
     background-color: #FFFFFF;
     border: 2px solid #01244C;
     border-radius: 15px;
     height: auto;
-    min-height: 35vw;
+    min-height: 35rem;
 }
 .FFUniversalInnerTitle
 {
@@ -758,7 +758,7 @@ body, html
     font-weight: 700;
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 1vw;
+    font-size: 1rem;
 }
 
 /* Report Page */
