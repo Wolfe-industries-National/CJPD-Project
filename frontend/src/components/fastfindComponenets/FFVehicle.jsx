@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
-import {searchVehicle, getAllVehicles, reset} from "../../features/vehicle/vehicleSlice";
+import {searchVehicle, getAllVehicles, resetVehicles} from "../../features/vehicle/vehicleSlice";
 
 const FFVehicle = () => {
 
@@ -18,7 +18,7 @@ const FFVehicle = () => {
     const onChange = (e) => {
         if(e.target.value.length > 1){
             console.log(e.target.value);
-            dispatch(reset());
+            dispatch(resetVehicles());
             dispatch(searchVehicle({query: e.target.value}));
             console.log(vehicles);
         }else{
@@ -33,7 +33,7 @@ const FFVehicle = () => {
                 <button className="DFBottomBarButton2" to={`/detailedFind/vehicle`}>Switch to Detailed Find</button>
             </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Vehicle"/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Vehicle" onChange={onChange}/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

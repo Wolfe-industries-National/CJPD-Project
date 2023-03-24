@@ -10,12 +10,12 @@ const personSchema = mongoose.Schema({
         required: [true, "Please add a Date of Birth"],
     },
     telephone: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: 'Telephone'
     },
     address: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         required: true,
         ref: 'Address'
     },
@@ -32,12 +32,12 @@ const personSchema = mongoose.Schema({
         type: [String],
     },
     associatedVehicles: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: [String],
         required: true,
         ref: 'Vehicle'
     },
     associates: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: [String],
         required: false,
         ref: 'Person'
     },

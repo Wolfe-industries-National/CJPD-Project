@@ -11,7 +11,7 @@ const IncidentReport = () => {
 
     return (
         <div className="DFUniversalContainer">
-            <h3 className="DFUniversalTitle">Consent to Search</h3>
+            <h3 className="DFUniversalTitle">Incident Report</h3>
             <div style={{width: '100%', height: '100vh'}}>
                 <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js'>
                     <Viewer fileUrl={'/formsPDF/Incident_Report_Updated.pdf'} plugins={[newPlugins]} />

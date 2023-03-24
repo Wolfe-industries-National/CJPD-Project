@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {searchTelephone, getAllTelephones, reset} from "../../features/telephone/telephoneSlice";
+import {searchTelephone, getAllTelephones, resetTelephone} from "../../features/telephone/telephoneSlice";
 
 const FFTelephone = () => {
 
@@ -16,7 +16,7 @@ const FFTelephone = () => {
     const onChange = (e) => {
         if(e.target.value.length > 1){
             console.log(e.target.value);
-            dispatch(reset());
+            dispatch(resetTelephone());
             dispatch(searchTelephone({query: e.target.value}));
             console.log(telephones);
         }else{
@@ -31,7 +31,7 @@ const FFTelephone = () => {
                 <button className="DFBottomBarButton2" to={`/detailedFind/telephone`}>Switch to Detailed Find</button>
             </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Telephone" onChange={onChange}/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

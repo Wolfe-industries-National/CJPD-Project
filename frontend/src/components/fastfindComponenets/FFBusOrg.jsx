@@ -33,7 +33,7 @@ const FFBusOrg = () => {
                 <button className="DFBottomBarButton2" to={`/detailedFind/bus-org`}>Switch to Detailed Find</button>
             </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
+                <input className="DFUniversalFields" type="text" name="" placeholder="Business / Organization" onChange={onChange}/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

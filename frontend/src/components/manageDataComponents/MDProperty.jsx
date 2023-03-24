@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 import {createProperty} from "../../features/property/propertySlice";
 
 const MDProperty = () => {
@@ -7,11 +8,10 @@ const MDProperty = () => {
     const [formData, setFormData] = useState({
         owner: '',
         typeOfProperty: '',
-        vinOfProperty: false,
+        vinOfProperty: '',
         valueOfProperty: '',
         descriptionOfProperty: '',
     })
-    const [successMessage, setSuccessMessage] = useState('');
 
     const {owner, typeOfProperty, vinOfProperty, valueOfProperty, descriptionOfProperty} = formData;
 
@@ -27,11 +27,11 @@ const MDProperty = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createProperty(formData));
-        setSuccessMessage(`Successfuly created Property`);
+        toast.success(`Successfuly created Property`);
         setFormData({
             owner: '',
             typeOfProperty: '',
-            vinOfProperty: false,
+            vinOfProperty: '',
             valueOfProperty: '',
             descriptionOfProperty: '',
         })
@@ -84,12 +84,6 @@ const MDProperty = () => {
                 <div className="DFBottomBar">
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Update</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Delete</button>
                     </div>
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton2">Create</button>

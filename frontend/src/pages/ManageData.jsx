@@ -10,6 +10,7 @@ import MDProperty from "../components/manageDataComponents/MDProperty";
 import MDTelephone from "../components/manageDataComponents/MDTelephone";
 import MDUsers from "../components/manageDataComponents/MDUsers";
 import MDVehicle from "../components/manageDataComponents/MDVehicle";
+import Footer from '../components/Footer';
 
 const ManageData = () => {
 
@@ -81,6 +82,8 @@ const ManageData = () => {
                     </div>
                 </div>
             </div>
+            
+            <Footer/>
         </div>
     )
 }

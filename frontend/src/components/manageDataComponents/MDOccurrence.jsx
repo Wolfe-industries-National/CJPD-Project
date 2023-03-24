@@ -1,6 +1,14 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
+import React, {useState, useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {toast} from "react-toastify";
 import {createOccurrence} from "../../features/occurrence/occurrenceSlice";
+import { searchPerson, getAllPerson } from "../../features/person/personSlice";
+import { searchBusOrg, getAllBusOrg } from "../../features/busOrg/busOrgSlice";
+import { searchProperty, getAllProperties } from "../../features/property/propertySlice";
+import {searchAddress, getAllAddresses, reset} from "../../features/address/addressSlice";
+import {searchTelephone, getAllTelephones, resetTelephone} from '../../features/telephone/telephoneSlice';
+import {searchVehicle, getAllVehicles, resetVehicles} from '../../features/vehicle/vehicleSlice';
+import { getAllOfficerUnits, searchOfficerUnit } from "../../features/officerUnit/officerUnitSlice";
 
 const MDOccurrence = () => {
 
@@ -14,24 +22,154 @@ const MDOccurrence = () => {
         telephone: '',
         officerUnit: '',
         address: ''
-    })
-    const [successMessage, setSuccessMessage] = useState('');
+    });
+    const [showListOfPerson, setShowListPerson] = useState(false);
+    const [showListOfBusiness, setShowListOfBusiness] = useState(false);
+    const [showListProperty, setShowListProperty] = useState(false);
+    const [showListOfficerUnits, setShowListOfficerUnits] = useState(false);
+    const [showListAddress, setShowListAddress] = useState(false);
+    const [showListTelephones, setShowListTelephones] = useState(false);
+    const [showListVehicles, setShowListVehicles] = useState(false);
 
     const {fileNumber, summary, person, busOrg, property, vehicle, telephone, officerUnit, address} = formData;
+    const {people} = useSelector((state) => state.person);
+    const {busOrgs} = useSelector((state) => state.busOrg);
+    const {properties} = useSelector((state) => state.property);
+    const {vehicles} = useSelector((state) => state.vehicle);
+    const {telephones} = useSelector((state) => state.telephone);
+    const {officerUnits} = useSelector((state) => state.officerUnit);
+    const {addresses} = useSelector((state) => state.address);
 
     const dispatch = useDispatch();
 
+    let peopleList = [];
+    let busOrgList = [];
+    let propertyList = [];
+    let officerUnitList = [];
+    let addressList = [];
+    let telephoneList = [];
+    let vehicleList = [];
+
+    useEffect(() => {
+        dispatch(getAllPerson());
+        dispatch(getAllBusOrg());
+        dispatch(getAllProperties());
+        dispatch(getAllOfficerUnits());
+        dispatch(getAllAddresses());
+        dispatch(getAllTelephones());
+        dispatch(getAllVehicles());
+    }, [dispatch]);
+    peopleList = people;
+    busOrgList = busOrgs;
+    propertyList = properties;
+    officerUnitList = officerUnits;
+    addressList = addresses;
+    telephoneList = telephones;
+    vehicleList = vehicles;
+
     const onChange = (e) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }))
+        if(e.target.name === 'officerUnit'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                // dispatch(reset());
+                dispatch(searchOfficerUnit({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllOfficerUnits());
+            }
+        }else if(e.target.name === 'property'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                // dispatch(reset());
+                dispatch(searchProperty({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllProperties());
+            }
+        }else if(e.target.name === 'busOrg'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                // dispatch(reset());
+                dispatch(searchBusOrg({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllBusOrg());
+            }
+        }else if(e.target.name === 'person'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                // dispatch(reset());
+                dispatch(searchPerson({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllPerson());
+            }
+        }else if(e.target.name === 'address'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                dispatch(reset());
+                dispatch(searchAddress({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllAddresses());
+            }
+        }else if(e.target.name === 'telephone'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                dispatch(resetTelephone());
+                dispatch(searchTelephone({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllTelephones());
+            }
+        }else if(e.target.name === 'vehicle'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                dispatch(resetVehicles());
+                dispatch(searchVehicle({query: e.target.value}));
+            }else{
+                dispatch(getAllVehicles());
+            }
+        }else{
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+        }
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createOccurrence(formData));
-        setSuccessMessage(`Successfuly created Occurrence`);
+        toast.success(`Successfuly created Occurrence ${fileNumber}`);
         setFormData({
             fileNumber: '',
             summary: '',
@@ -44,6 +182,48 @@ const MDOccurrence = () => {
             address: ''
         })
         console.log(formData);
+    }
+
+    const onSelectPerson = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            person: value
+        }))
+    }
+
+    const onSelectBusiness = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            busOrg: value
+        }))
+    }
+
+    const onSelectProperty = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            property: value
+        }))
+    }
+
+    const onSelectVehicle = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            vehicle: value
+        }))
+    }
+
+    const onSelectTelephone = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            telephone: value
+        }))
+    }
+
+    const onSelectAddress = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            address: value
+        }))
     }
 
     return (
@@ -75,18 +255,42 @@ const MDOccurrence = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">Person<br/></div>
                             <input className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={fileNumber} onChange={onChange}/>
+                            {
+                                showListOfPerson && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            peopleList.map((item) => <li onClick={() => onSelectPerson(item.name)}>{item.name}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Business / Organization<br/></div>
                             <input className="DFUniversalFields" type="text" name="busOrg" placeholder="Random Incorporated ltd." value={busOrg} onChange={onChange}/>
+                            {
+                                showListOfBusiness && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            busOrgList.map((item) => <li onClick={() => onSelectBusiness(item.name)}>{item.name}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Property<br/></div>
                             <input className="DFUniversalFields" type="text" name="property" placeholder="House, Apartment, Hotel, Etc." value={property} onChange={onChange}/>
+                            {
+                                showListProperty && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            propertyList.map((item) => <li onClick={() => onSelectProperty(item.typeOfProperty)}>{item.typeOfProperty}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                 </div>
@@ -96,12 +300,28 @@ const MDOccurrence = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">Vehicle<br/></div>
                             <input className="DFUniversalFields" type="text" name="vehicle" placeholder="2018 Honda Civic LX" value={vehicle} onChange={onChange}/>
+                            {
+                                showListVehicles && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            vehicleList.map((item) => <li onClick={() => onSelectVehicle(`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle}`)}>{`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle}`}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="number" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
+                            <input className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
+                            {
+                                showListTelephones && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            telephoneList.map((item) => <li onClick={() => onSelectTelephone(item.telephoneNumber)}>{item.telephoneNumber}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                     <div className="DFUniversalData">
@@ -117,18 +337,20 @@ const MDOccurrence = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">Address<br/></div>
                             <input className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
+                            {
+                                showListAddress && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            addressList.map((item) => <li onClick={() => onSelectAddress(item.address)}>{item.address}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                 </div>
                 <div className="DFBottomBar">
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Update</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Delete</button>
                     </div>
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton2">Create</button>

@@ -18,26 +18,17 @@ const createOccurrence = asyncHandler(async (req, res) => {
         throw new Error('Please include fileNumber and summary');
     }
 
-    // making the address info be equal to an address ID
-    const newAddress = mongoose.Types.ObjectId(address);
-    const newPerson = mongoose.Types.ObjectId(person);
-    const newBusOrg = mongoose.Types.ObjectId(busOrg);
-    const newProperty = mongoose.Types.ObjectId(property);
-    const newVehicle = mongoose.Types.ObjectId(vehicle);
-    const newTelephone = mongoose.Types.ObjectId(telephone);
-    const newOfficerUnit = mongoose.Types.ObjectId(officerUnit);
-
     // Create BusOrg
     const occurrence = await Occurrence.create({
         fileNumber,
         summary,
-        person: newPerson,
-        busOrg: newBusOrg,
-        property: newProperty,
-        vehicle: newVehicle,
-        telephone: newTelephone,
-        officerUnit: newOfficerUnit,
-        address: newAddress
+        person,
+        busOrg,
+        property,
+        vehicle,
+        telephone,
+        officerUnit,
+        address
     })
 
     if(occurrence){

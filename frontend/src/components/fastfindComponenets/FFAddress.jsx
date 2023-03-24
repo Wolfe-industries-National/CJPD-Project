@@ -33,7 +33,7 @@ const FFAddress = () => {
                 <button className="DFBottomBarButton2" to={`/detailedFind/address`}>Switch to Detailed Find</button>
             </div>
             <label>
-                <input className="DFUniversalFields" type="text" name="" placeholder="Person"/>
+                <input className="DFUniversalFields" type="text" name="address" placeholder="Address" onChange={onChange}/>
             </label>
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">

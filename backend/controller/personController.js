@@ -2,8 +2,6 @@ const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 
 const Person = require('../models/personModel');
-const Occurrence = require("../models/occurrenceModel");
-const OfficerUnit = require("../models/officerUnitModel");
 
 // @desc    Create new Person
 // @route   POST /api/v1/person/
@@ -17,37 +15,19 @@ const createPerson = asyncHandler(async (req, res) => {
         throw new Error('Please include Name');
     }
 
-    // making the info be equal to the info's ID
-    const newAddress = null;
-    const newTelephone = null;
-    const newAssociatedVehicles = null;
-    const newAssociates = null;
-    if(address){
-        newAddress = mongoose.Types.ObjectId(address);
-    }
-    if(telephone){
-        newTelephone = mongoose.Types.ObjectId(telephone);
-    }
-    if(associatedVehicles){
-        newAssociatedVehicles = mongoose.Types.ObjectId(associatedVehicles);
-    }
-    if (associates) {
-        newAssociates = mongoose.Types.ObjectId(associates);
-    }
-
 
     // Create Person
     const person = await Person.create({
         name,
         dateOfBirth,
-        telephone: newTelephone,
-        address: newAddress,
+        telephone,
+        address,
         fps,
         height,
         weight,
         aliases,
-        associatedVehicles: newAssociatedVehicles,
-        associates: newAssociates,
+        associatedVehicles,
+        associates,
         flags,
         tattoos,
         hairColour,

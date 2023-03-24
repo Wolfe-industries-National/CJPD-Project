@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Header from './components/Header';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import FastFind from "./pages/FastFind";
 import DetailedFind from "./pages/DetailedFind";
 import QueryResultPage from "./pages/QueryResultPage";
@@ -15,7 +16,7 @@ import ManageData from "./pages/ManageData";
 
 function App() {
   return (
-      <div>
+      <>
         <Router>
           <div className='container'>
             <Header/>
@@ -40,7 +41,7 @@ function App() {
           </div>
         </Router>
         <ToastContainer/>
-      </div>
+      </>
   );
 }
 

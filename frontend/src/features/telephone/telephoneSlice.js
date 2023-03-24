@@ -54,7 +54,7 @@ export const telephoneSlice = createSlice({
     name: 'telephone',
     initialState,
     reducers: {
-        reset: (state) => {
+        resetTelephone: (state) => {
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
@@ -115,5 +115,5 @@ export const telephoneSlice = createSlice({
     }
 })
 
-export const {reset} = telephoneSlice.actions;
+export const {resetTelephone} = telephoneSlice.actions;
 export default telephoneSlice.reducer;

@@ -54,7 +54,7 @@ export const vehicleSlice = createSlice({
     name: 'vehicle',
     initialState,
     reducers: {
-        reset: (state) => {
+        resetVehicles: (state) => {
             state.isLoading = false
             state.isError = false
             state.isSuccess = false
@@ -115,5 +115,5 @@ export const vehicleSlice = createSlice({
     }
 })
 
-export const {reset} = vehicleSlice.actions;
+export const {resetVehicles} = vehicleSlice.actions;
 export default vehicleSlice.reducer;

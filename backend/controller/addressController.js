@@ -76,23 +76,27 @@ const getAddress = asyncHandler(async (req, res) => {
 // @access  Private
 const searchAddress = asyncHandler(async (req, res) => {
     const searchQuery = req.query.query;
-    const result = await Address.aggregate([
+    let result = await Address.aggregate([
         {
             '$search': {
-                'index': 'searchIndex-Address',
-                'autocomplete': {
+                'index': "searchIndex-Address",
+                'text': {
                     'query': searchQuery == '' ? '' : searchQuery,
-                    'path': 'address',
-                    'fuzzy': {}
-                },
-                'highlight': {
-                    'path': [
-                        'address'
-                    ]
+                    'path': {
+                        'wildcard': "*"
+                    }
                 }
-            }
+            } 
         }
     ])
+    if(result.length === 0){
+        const doubleChecking = await Address.find();
+        doubleChecking.map((item) => {
+            if(item.address.includes(searchQuery)){
+                result.push(item);
+            }
+        })
+    }
     res.status(200).json(result);
     console.log(result);
 });

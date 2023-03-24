@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
+import {toast} from "react-toastify";
 import {createTelephone} from "../../features/telephone/telephoneSlice";
 
 const MDTelephone = () => {
@@ -9,9 +10,8 @@ const MDTelephone = () => {
         typeOfTelephone: '',
         telephoneNumber: ''
     })
-    const [successMessage, setSuccessMessage] = useState('');
 
-    const { telephoneNumber} = formData;
+    const {owner, typeOfTelephone, telephoneNumber} = formData;
 
     const dispatch = useDispatch();
     // const {telephone, isSuccess, isError} = useSelector((state) => state.telephone);
@@ -26,7 +26,7 @@ const MDTelephone = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(createTelephone(formData));
-        setSuccessMessage(`Successfuly created ${telephoneNumber}`);
+        toast.success(`Successfuly created ${telephoneNumber}`);
         setFormData({
             owner: '',
             typeOfTelephone: '',
@@ -44,31 +44,25 @@ const MDTelephone = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Owner<br/></div>
-                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" onChange={onChange}/>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" value={owner} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone Type<br/></div>
-                            <input className="DFUniversalFields" type="text" name="typeOfTelephone" placeholder="Honda" onChange={onChange}/>
+                            <input className="DFUniversalFields" type="text" name="typeOfTelephone" value={typeOfTelephone} placeholder="Mobile Phone" onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="Civic" onChange={onChange}/>
+                            <input className="DFUniversalFields" type="text" name="telephoneNumber" value={telephoneNumber} placeholder="000-000-0000" onChange={onChange}/>
                         </label>
                     </div>
                 </div>
                 <div className="DFBottomBar">
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Update</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Delete</button>
                     </div>
                     <div className="DFBottomBarInnerContainer">
                         <button className="DFBottomBarButton2">Create</button>
