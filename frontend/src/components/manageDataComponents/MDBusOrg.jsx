@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import {createBusOrg} from "../../features/busOrg/busOrgSlice";
 import {searchAddress, getAllAddresses, reset} from "../../features/address/addressSlice";
+import { searchTelephone, getAllTelephones, resetTelephone } from "../../features/telephone/telephoneSlice";
 
 const MDBusOrg = () => {
 
@@ -15,19 +16,38 @@ const MDBusOrg = () => {
         telephoneNumber: ''
     });
     const [showListAddress, setShowListAddress] = useState(false);
+    const [showListTelephone, setShowListTelephone] = useState(false);
 
     const {owner, name, typeOfBusOrg, address, alarmCompany, telephoneNumber} = formData;
     const {addresses} = useSelector((state) => state.address);
+    const {telephones} = useSelector((state) => state.telephone);
     const dispatch = useDispatch();
     let addressList = [];
+    let telephoneList = [];
 
     useEffect(() => {
         dispatch(getAllAddresses());
+        dispatch(getAllTelephones());
     }, [dispatch]);
     addressList = addresses;
+    telephoneList = telephones;
 
     const onChange = (e) => {
-        if(e.target.name === 'address'){
+        if(e.target.name === "telephoneNumber"){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                dispatch(resetTelephone());
+                dispatch(searchTelephone({query: e.target.value}));
+                console.log(telephones);
+            }else{
+                dispatch(getAllTelephones());
+            }
+        }
+        else if(e.target.name === 'address'){
             setFormData((prevState) => ({
                 ...prevState,
                 [e.target.name]: e.target.value
@@ -52,6 +72,13 @@ const MDBusOrg = () => {
         setFormData((prevState) => ({
             ...prevState,
             address: value
+        }))
+    }
+
+    const onSelectTelephone = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            telephoneNumber: value
         }))
     }
 
@@ -123,7 +150,15 @@ const MDBusOrg = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber} onChange={onChange}/>
+                            <input onBlur={() => setShowListTelephone(false)} onFocus={() => setShowListTelephone(true)} className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber} onChange={onChange}/>
+                            {
+                                showListTelephone && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            telephoneList.map((item) => <li onClick={() => onSelectTelephone(item.telephoneNumber)}>{item.telephoneNumber}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                 </div>

@@ -254,7 +254,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Person<br/></div>
-                            <input className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={fileNumber} onChange={onChange}/>
+                            <input onBlur={() => setShowListPerson(false)} onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={fileNumber} onChange={onChange}/>
                             {
                                 showListOfPerson && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -268,7 +268,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Business / Organization<br/></div>
-                            <input className="DFUniversalFields" type="text" name="busOrg" placeholder="Random Incorporated ltd." value={busOrg} onChange={onChange}/>
+                            <input onBlur={() => setShowListOfBusiness(false)} onFocus={() => setShowListOfBusiness(true)} className="DFUniversalFields" type="text" name="busOrg" placeholder="Random Incorporated ltd." value={busOrg} onChange={onChange}/>
                             {
                                 showListOfBusiness && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -282,7 +282,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Property<br/></div>
-                            <input className="DFUniversalFields" type="text" name="property" placeholder="House, Apartment, Hotel, Etc." value={property} onChange={onChange}/>
+                            <input onBlur={() => setShowListProperty(false)} onFocus={() => setShowListProperty(true)} className="DFUniversalFields" type="text" name="property" placeholder="House, Apartment, Hotel, Etc." value={property} onChange={onChange}/>
                             {
                                 showListProperty && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -299,7 +299,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Vehicle<br/></div>
-                            <input className="DFUniversalFields" type="text" name="vehicle" placeholder="2018 Honda Civic LX" value={vehicle} onChange={onChange}/>
+                            <input onBlur={() => setShowListVehicles(false)} onFocus={() => setShowListVehicles(true)} className="DFUniversalFields" type="text" name="vehicle" placeholder="2018 Honda Civic LX" value={vehicle} onChange={onChange}/>
                             {
                                 showListVehicles && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -313,7 +313,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
+                            <input onBlur={() => setShowListTelephones(false)} onFocus={() => setShowListTelephones(true)} className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
                             {
                                 showListTelephones && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -327,7 +327,15 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Officer / Unit<br/></div>
-                            <input className="DFUniversalFields" type="number" name="officerUnit" placeholder="1234567" value={officerUnit} onChange={onChange}/>
+                            <input onBlur={() => setShowListOfficerUnits(false)} onFocus={() => setShowListOfficerUnits(true)} className="DFUniversalFields" type="number" name="officerUnit" placeholder="1234567" value={officerUnit} onChange={onChange}/>
+                            {
+                                showListOfficerUnits && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            officerUnitList.map((item) => <li onClick={() => onSelectTelephone(item.name)}>{item.name}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                 </div>
@@ -336,7 +344,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Address<br/></div>
-                            <input className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
+                            <input onBlur={() => setShowListAddress(false)} onFocus={() => setShowListAddress(true)} className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
                             {
                                 showListAddress && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>

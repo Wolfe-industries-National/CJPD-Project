@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {toast} from "react-toastify";
 import {createPerson} from "../../features/person/personSlice";
+import { searchPerson, getAllPerson } from "../../features/person/personSlice";
 import {searchAddress, getAllAddresses, reset} from "../../features/address/addressSlice";
 import {searchTelephone, getAllTelephones, resetTelephone} from '../../features/telephone/telephoneSlice';
 import {searchVehicle, getAllVehicles, resetVehicles} from '../../features/vehicle/vehicleSlice';
@@ -27,21 +28,26 @@ const MDPerson = () => {
     const [showListAddress, setShowListAddress] = useState(false);
     const [showListTelephones, setShowListTelephones] = useState(false);
     const [showListVehicles, setShowListVehicles] = useState(false);
+    const [showListOfPerson, setShowListPerson] = useState(false);
 
     const {name, dateOfBirth, telephone, address, fps, height, weight, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = formData;
     const {addresses} = useSelector((state) => state.address);
     const {telephones} = useSelector((state) => state.telephone);
     const {vehicles} = useSelector((state) => state.vehicle);
+    const {people} = useSelector((state) => state.person);
     const dispatch = useDispatch();
     let addressList = [];
     let telephoneList = [];
     let vehicleList = [];
+    let peopleList = [];
 
     useEffect(() => {
+        dispatch(getAllPerson());
         dispatch(getAllAddresses());
         dispatch(getAllTelephones());
         dispatch(getAllVehicles());
     }, [dispatch]);
+    peopleList = people;
     addressList = addresses;
     telephoneList = telephones;
     vehicleList = vehicles;
@@ -84,6 +90,19 @@ const MDPerson = () => {
                 dispatch(searchVehicle({query: e.target.value}));
             }else{
                 dispatch(getAllVehicles());
+            }
+        }else if(e.target.name === 'associates'){
+            setFormData((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }))
+            if(e.target.value.length > 1){
+                console.log(e.target.value);
+                // dispatch(reset());
+                dispatch(searchPerson({query: e.target.value}));
+                console.log(addresses);
+            }else{
+                dispatch(getAllPerson());
             }
         }else{
             setFormData((prevState) => ({
@@ -134,6 +153,13 @@ const MDPerson = () => {
         setFormData((prevState) => ({
             ...prevState,
             associatedVehicles: value
+        }))
+    }
+
+    const onSelectPerson = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            associates: value
         }))
     }
 
@@ -232,7 +258,15 @@ const MDPerson = () => {
                     <div className="DFUniversalData"td>
                         <label>
                             <div className="DFUniversalInnerTitle">Associates<br/></div>
-                            <input className="DFUniversalFields" type="text" name="associates" placeholder="Bill Benson" value={associates} onChange={onChange}/>
+                            <input onBlur={() => setShowListPerson(false)} onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="associates" placeholder="Bill Benson" value={associates} onChange={onChange}/>
+                            {
+                                showListOfPerson && 
+                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        {
+                                            peopleList.map((item) => <li onClick={() => onSelectPerson(item.name)}>{item.name}</li>)
+                                        }
+                                    </ul>
+                            }
                         </label>
                     </div>
                     <div className="DFUniversalData">

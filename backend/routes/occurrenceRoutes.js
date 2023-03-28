@@ -4,9 +4,9 @@ const {createOccurrence, getAllOccurrence, getOccurrence, searchOccurrence} = re
 
 const {protect} = require('../middleware/authMiddleware');
 
-router.route('/').post(protect, createOccurrence);
-router.route('/').get(protect, getAllOccurrence);
+router.route('/').post(createOccurrence);
+router.route('/').get(getAllOccurrence);
 router.route('/search').get(searchOccurrence);
-router.route('/:id').get(protect, getOccurrence);
+router.route('/:id').get(getOccurrence);
 
 module.exports = router;
