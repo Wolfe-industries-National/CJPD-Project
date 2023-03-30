@@ -27,11 +27,18 @@ const searchProperty = async (searchQuery) => {
     return response.data;
 }
 
+// detaild search Property
+const detailSearchProperty = async (searchData) => {
+    const response = await axios.post(API_URI+'detailSearch', searchData);
+    return response.data;
+}
+
 const propertyService = {
     createProperty,
     getAllProperties,
     getProperty,
-    searchProperty
+    searchProperty,
+    detailSearchProperty
 }
 
 export default propertyService;

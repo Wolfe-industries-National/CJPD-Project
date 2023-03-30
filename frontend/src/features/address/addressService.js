@@ -27,11 +27,19 @@ const searchAddress = async (searchQuery) => {
     return response.data;
 }
 
+// detaild search Address
+const detailSearchAddress = async (searchData) => {
+    console.log('searchData from the SERVICE OF DETAIL FIND:', searchData);
+    const response = await axios.post(API_URI+'detailSearch', searchData);
+    return response.data;
+}
+
 const addressService = {
     createNewAddress,
     getAllAddresses,
     getAddress,
-    searchAddress
+    searchAddress,
+    detailSearchAddress
 }
 
 export default addressService;

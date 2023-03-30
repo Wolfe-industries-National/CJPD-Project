@@ -77,10 +77,39 @@ const searchProperty = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Search Property
+// @route   GET /api/v1/property/detailSearch
+// @access  Private
+const detailSearchProperty = asyncHandler(async (req, res) => {
+    const searchData = req.body;
+    let newSearchData = searchData;
+
+    if(newSearchData.owner === ''){
+        delete newSearchData.owner;
+    }
+    if(newSearchData.typeOfProperty === ''){
+        delete newSearchData.typeOfProperty;
+    }
+    if(newSearchData.vinOfProperty === ''){
+        delete newSearchData.vinOfProperty;
+    }
+    if(newSearchData.valueOfProperty === ''){
+        delete newSearchData.valueOfProperty;
+    }
+    if(newSearchData.descriptionOfProperty === ''){
+        delete newSearchData.descriptionOfProperty;
+    }
+
+    const result = await Property.find(newSearchData);
+
+    res.status(200).json(result);
+});
+
 
 module.exports = {
     createProperty,
     getAllProperties,
     getProperty,
-    searchProperty
+    searchProperty,
+    detailSearchProperty
 }

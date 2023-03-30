@@ -10,7 +10,7 @@ const occurrenceSchema = mongoose.Schema({
         required: [true, "Please add a Summary"],
     },
     person: {
-        type: [mongoose.Schema.Types.ObjectId],
+        type: String,
         required: true,
         ref: 'Person'
     },

@@ -226,6 +226,20 @@ const MDOccurrence = () => {
         }))
     }
 
+    const clearFields = () => {
+        setFormData({
+            fileNumber: '',
+            summary: '',
+            person: '',
+            busOrg: '',
+            property: '',
+            vehicle: '',
+            telephone: '',
+            officerUnit: '',
+            address: ''
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
             <h3 className="DFUniversalTitle">Manage Occurrence</h3>
@@ -254,7 +268,7 @@ const MDOccurrence = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Person<br/></div>
-                            <input onBlur={() => setShowListPerson(false)} onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={fileNumber} onChange={onChange}/>
+                            <input onBlur={() => setShowListPerson(false)} onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={person} onChange={onChange}/>
                             {
                                 showListOfPerson && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
@@ -328,14 +342,14 @@ const MDOccurrence = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">Officer / Unit<br/></div>
                             <input onBlur={() => setShowListOfficerUnits(false)} onFocus={() => setShowListOfficerUnits(true)} className="DFUniversalFields" type="number" name="officerUnit" placeholder="1234567" value={officerUnit} onChange={onChange}/>
-                            {
+                            {/* {
                                 showListOfficerUnits && 
                                     <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
                                         {
                                             officerUnitList.map((item) => <li onClick={() => onSelectTelephone(item.name)}>{item.name}</li>)
                                         }
                                     </ul>
-                            }
+                            } */}
                         </label>
                     </div>
                 </div>
@@ -356,15 +370,15 @@ const MDOccurrence = () => {
                         </label>
                     </div>
                 </div>
-                <div className="DFBottomBar">
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton2">Create</button>
-                    </div>
-                </div>
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton2" onClick={onSubmit}>Create</button>
+                </div>
+            </div>
         </div>
     )
 }

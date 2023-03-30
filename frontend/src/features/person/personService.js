@@ -27,11 +27,18 @@ const searchPerson = async (searchQuery) => {
     return response.data;
 }
 
+// detaild search Person
+const detailSearchPerson = async (searchData) => {
+    const response = await axios.post(API_URI+'detailSearch', searchData);
+    return response.data;
+}
+
 const personService = {
     createPerson,
     getAllPerson,
     getPerson,
-    searchPerson
+    searchPerson,
+    detailSearchPerson
 }
 
 export default personService;

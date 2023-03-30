@@ -48,6 +48,15 @@ export const searchBusOrg = createAsyncThunk('busOrg/search', async (searchQuery
     }
 });
 
+export const detailSearchBusOrg = createAsyncThunk('busOrg/detailSearch', async (searchData, thunkAPI) => {
+    try {
+        return await busOrgService.detailSearchBusOrg(searchData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 
 export const busOrgSlice = createSlice({
     name: 'busOrg',
@@ -106,6 +115,18 @@ export const busOrgSlice = createSlice({
                 state.busOrgs = action.payload
             })
             .addCase(searchBusOrg.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.busOrgs = null
+            })
+            .addCase(detailSearchBusOrg.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(detailSearchBusOrg.fulfilled, (state, action) => {
+                state.busOrgs = action.payload
+            })
+            .addCase(detailSearchBusOrg.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

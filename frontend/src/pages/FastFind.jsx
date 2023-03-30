@@ -55,9 +55,9 @@ const FastFind = () => {
 
 
     return (
-        <div style={{margin: '2rem 10rem 0 10rem'}}>
-            <div style={{display: 'flex', gap: '3rem'}}>
-                <div className="FFResultsContainer" style={{backgroundColor: '#FFFFFF', textAlign: 'center', textDecoration: 'none', width: '18rem', marginBottom: '3rem'}}>
+        <div className="DFOuterContainer">
+            <div className="DFInnerContainer">
+                <div className="DFLeftColumn">
                     <p className="FFUniversalTitle">Category</p><br/>
                     <span><Link className="DFLeftButtons" to="../fastFind/person">Person</Link><br/></span>
                     <span><Link className="DFLeftButtons" to="../fastFind/occurrence">Occurrence</Link><br/></span>
@@ -69,7 +69,7 @@ const FastFind = () => {
                     <span><Link className="DFLeftButtons" to="../fastFind/officer-unit">Officer / Unit</Link><br/></span>
                 </div>
 
-                <div style={{width: '100%'}}>
+                <div className="DFRightColumn" style={{backgroundColor: 'transparent', border: 'none'}}>
                     <div>
                         {allFastFindPages[currentPageIndex]}
                     </div>

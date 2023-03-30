@@ -50,7 +50,7 @@ const FFOccurrence = () => {
                             <div className="FFUniversalInnerTitle">{item.fileNumber}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.description}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.summary}<br/></div>
                         </div>
                     </div>)
                 }

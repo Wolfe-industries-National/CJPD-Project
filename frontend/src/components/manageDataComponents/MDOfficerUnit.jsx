@@ -36,6 +36,15 @@ const MDOfficerUnit = () => {
         console.log(formData);
     }
 
+    const clearFields = () => {
+        setFormData({
+            name: '',
+            regimentalNumber: '',
+            rank: '',
+            unit: ''
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
             <h3 className="DFUniversalTitle">Manage Officer / Unit</h3>
@@ -70,15 +79,15 @@ const MDOfficerUnit = () => {
                         </label>
                     </div>
                 </div>
-                <div className="DFBottomBar">
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton2">Create</button>
-                    </div>
-                </div>
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton2" onClick={onSubmit}>Create</button>
+                </div>
+            </div>
         </div>
     )
 }

@@ -75,24 +75,58 @@ const getVehicle = asyncHandler(async (req, res) => {
 // @route   GET /api/v1/vehicle/search
 // @access  Private
 const searchVehicle = asyncHandler(async (req, res) => {
+    // const searchQuery = req.query.query;
+    // const result = await Vehicle.aggregate([
+    //     {
+    //         '$search': {
+    //             'index': "searchIndex-Vehicle",
+    //             'text': {
+    //                 'query': searchQuery == '' ? '' : searchQuery,
+    //                 'path': {
+    //                     'wildcard': "*"
+    //                 }
+    //             }
+    //         } 
+    //     }
+    // ])
+    // res.status(200).json(result);
     const searchQuery = req.query.query;
-    const result = await Vehicle.aggregate([
-        {
-            '$search': {
-                'index': 'searchIndex-Vehicle',
-                'autocomplete': {
-                    'query': searchQuery == '' ? '' : searchQuery,
-                    'path': ['makeOfVehicle', 'modelOfVehicle', 'plateOfVehicle'],
-                    'fuzzy': {}
-                },
-                'highlight': {
-                    'path': [
-                        'makeOfVehicle', 'modelOfVehicle', 'plateOfVehicle'
-                    ]
-                }
-            }
-        }
-    ])
+    const allOccurrence = await Vehicle.find();
+    const result = allOccurrence.filter((item) => {return item.makeOfVehicle.includes(searchQuery)});
+    res.status(200).json(result);
+});
+
+// @desc    Search Vehicle
+// @route   GET /api/v1/vehicle/detailSearch
+// @access  Private
+const detailSearchVehicle = asyncHandler(async (req, res) => {
+    const searchData = req.body;
+    let newSearchData = searchData;
+
+    if(newSearchData.owner === ''){
+        delete newSearchData.owner;
+    }
+    if(newSearchData.makeOfVehicle === ''){
+        delete newSearchData.makeOfVehicle;
+    }
+    if(newSearchData.modelOfVehicle === ''){
+        delete newSearchData.modelOfVehicle;
+    }
+    if(newSearchData.yearOfVehicle === ''){
+        delete newSearchData.yearOfVehicle;
+    }
+    if(newSearchData.colourOfVehicle === ''){
+        delete newSearchData.colourOfVehicle;
+    }
+    if(newSearchData.vinOfVehicle === ''){
+        delete newSearchData.vinOfVehicle;
+    }
+    if(newSearchData.plateOfVehicle === ''){
+        delete newSearchData.plateOfVehicle;
+    }
+
+    const result = await Vehicle.find(newSearchData);
+
     res.status(200).json(result);
 });
 
@@ -101,5 +135,6 @@ module.exports = {
     createVehicle,
     getAllVehicles,
     getVehicle,
-    searchVehicle
+    searchVehicle,
+    detailSearchVehicle
 }

@@ -38,6 +38,16 @@ const MDProperty = () => {
         console.log(formData);
     }
 
+    const clearFields = () => {
+        setFormData({
+            owner: '',
+            typeOfProperty: '',
+            vinOfProperty: '',
+            valueOfProperty: '',
+            descriptionOfProperty: '',
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
             <h3 className="DFUniversalTitle">Manage Property</h3>
@@ -81,15 +91,15 @@ const MDProperty = () => {
                         </label>
                     </div>
                 </div>
-                <div className="DFBottomBar">
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton2">Create</button>
-                    </div>
-                </div>
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton2" onClick={onSubmit}>Create</button>
+                </div>
+            </div>
         </div>
     )
 }

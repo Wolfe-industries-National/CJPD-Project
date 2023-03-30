@@ -49,6 +49,15 @@ export const searchPerson = createAsyncThunk('person/search', async (searchQuery
     }
 });
 
+export const detailSearchPerson = createAsyncThunk('person/detailSearch', async (searchData, thunkAPI) => {
+    try {
+        return await personService.detailSearchPerson(searchData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const personSlice = createSlice({
     name: 'person',
     initialState,
@@ -107,6 +116,18 @@ export const personSlice = createSlice({
                 state.people = action.payload
             })
             .addCase(searchPerson.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.people = null
+            })
+            .addCase(detailSearchPerson.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(detailSearchPerson.fulfilled, (state, action) => {
+                state.people = action.payload
+            })
+            .addCase(detailSearchPerson.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

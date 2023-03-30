@@ -109,10 +109,67 @@ const searchPerson = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Search Person
+// @route   GET /api/v1/person/detailSearch
+// @access  Private
+const detailSearchPerson = asyncHandler(async (req, res) => {
+    const searchData = req.body;
+    let newSearchData = searchData;
+
+    if(newSearchData.name === ''){
+        delete newSearchData.name;
+    }
+    if(newSearchData.dateOfBirth === ''){
+        delete newSearchData.dateOfBirth;
+    }
+    if(newSearchData.telephone === ''){
+        delete newSearchData.telephone;
+    }
+    if(newSearchData.address === ''){
+        delete newSearchData.address;
+    }
+    if(newSearchData.fps === ''){
+        delete newSearchData.fps;
+    }
+    if(newSearchData.height === ''){
+        delete newSearchData.height;
+    }
+    if(newSearchData.weight === ''){
+        delete newSearchData.weight;
+    }
+    if(newSearchData.aliases[0] === ''){
+        delete newSearchData.aliases;
+    }
+    if(newSearchData.associatedVehicles[0] === ''){
+        delete newSearchData.associatedVehicles;
+    }
+    if(newSearchData.associates[0] === ''){
+        delete newSearchData.associates;
+    }
+    if(newSearchData.flags[0] === ''){
+        delete newSearchData.flags;
+    }
+    if(newSearchData.tattoos[0] === ''){
+        delete newSearchData.tattoos;
+    }
+    if(newSearchData.hairColour === ''){
+        delete newSearchData.hairColour;
+    }
+    if(newSearchData.eyeColour === ''){
+        delete newSearchData.eyeColour;
+    }
+    
+    console.log(newSearchData);
+    const result = await Person.find(newSearchData);
+    console.log(result);
+    res.status(200).json(result);
+});
+
 
 module.exports = {
     createPerson,
     getAllPerson,
     getPerson,
-    searchPerson
+    searchPerson,
+    detailSearchPerson
 }

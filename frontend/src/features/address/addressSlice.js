@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import addressService from "./addressService";
-import officerUnitService from "../officerUnit/officerUnitService";
 
 
 const initialState = {
@@ -43,6 +42,16 @@ export const searchAddress = createAsyncThunk('address/search', async (searchQue
     try {
         return await addressService.searchAddress(searchQuery.query);
 
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+export const detailSearchAddress = createAsyncThunk('address/detailSearch', async (searchData, thunkAPI) => {
+    try {
+        console.log('searchData from the SLICE OF DETAIL FIND:', searchData);
+        return await addressService.detailSearchAddress(searchData);
     } catch (error) {
         const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
@@ -107,6 +116,18 @@ export const addressSlice = createSlice({
                 state.addresses = action.payload
             })
             .addCase(searchAddress.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.addresses = null
+            })
+            .addCase(detailSearchAddress.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(detailSearchAddress.fulfilled, (state, action) => {
+                state.addresses = action.payload
+            })
+            .addCase(detailSearchAddress.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

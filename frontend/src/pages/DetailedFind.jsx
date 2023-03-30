@@ -13,34 +13,34 @@ const DetailedFind = () => {
 
     const {itemForSearch} = useParams();
     const navigate = useNavigate();
-    const [rightSidePannel, setRightSidePannel] = useState();
+    const [allFastFindPages, setAllFastFindPages] = useState([<DFPerson/>, <DFOccurrence/>, <DFBusOrg/>, <DFProperty/>, <DFVehicle/>, <DFAddress/>])
+    const [currentPageIndex, setCurrentPageIndex] = useState(0);
 
     useEffect(() => {
         if(!itemForSearch){
-            navigate("/detailedFind/person");
+            navigate('/detailedFind/person');
         }
-        const locationsOfPage = window.location.pathname.split("/");
-        switch (locationsOfPage[2]) {
-            case "person":
-                setRightSidePannel(DFPerson);
+        switch (itemForSearch) {
+            case 'person':
+                setCurrentPageIndex(0);
                 break;
-            case "occurrence":
-                setRightSidePannel(DFOccurrence);
+            case 'occurrence':
+                setCurrentPageIndex(1);
                 break;
-            case "bus-org":
-                setRightSidePannel(DFBusOrg);
+            case 'bus-org':
+                setCurrentPageIndex(2);
                 break;
-            case "property":
-                setRightSidePannel(DFProperty);
+            case 'property':
+                setCurrentPageIndex(3);
                 break;
-            case "vehicle":
-                setRightSidePannel(DFVehicle);
+            case 'vehicle':
+                setCurrentPageIndex(4);
                 break;
-            case "address":
-                setRightSidePannel(DFAddress);
+            case 'address':
+                setCurrentPageIndex(5);
                 break;
             default:
-                setRightSidePannel(DFPerson);
+                setCurrentPageIndex(0);
                 break;
         }
     }, [navigate, itemForSearch]);
@@ -51,7 +51,6 @@ const DetailedFind = () => {
                 <div className="DFLeftColumn">
                     <p>Category</p><br/>
                     <span><Link className="DFLeftButtons" to="../detailedFind/person">Person</Link><br/></span>
-                    <span><Link className="DFLeftButtons" to="../detailedFind/occurrence">Occurrence</Link><br/></span>
                     <span><Link className="DFLeftButtons" to="../detailedFind/bus-org">Bus/Org</Link><br/></span>
                     <span><Link className="DFLeftButtons" to="../detailedFind/property">Property</Link><br/></span>
                     <span><Link className="DFLeftButtons" to="../detailedFind/vehicle">Vehicle</Link><br/></span>
@@ -59,21 +58,8 @@ const DetailedFind = () => {
                 </div>
 
                 <div className="DFRightColumn">
-                    {/*Probably somewhere around here*/}
-                    {/*it will check for the page and then it will return the correct componenet for that page*/}
                     <div>
-                        {rightSidePannel}
-                        <div className="DFBottomBar">
-                            <div className="DFBottomBarInnerContainer">
-                                <button className="DFBottomBarButton1">Clear All</button>
-                            </div>
-                            <div className="DFBottomBarInnerContainer">
-                                <button className="DFBottomBarButton1">Find Now</button>
-                            </div>
-                            <div className="DFBottomBarInnerContainer">
-                                <button className="DFBottomBarButton2" to={`/fastFind/${itemForSearch}`}>Switch to Fast Find</button>
-                            </div>
-                        </div>
+                        {allFastFindPages[currentPageIndex]}
                     </div>
                 </div>
             </div>

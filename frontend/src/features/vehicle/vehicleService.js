@@ -27,11 +27,18 @@ const searchVehicle = async (searchQuery) => {
     return response.data;
 }
 
+// detaild search Vehicle
+const detailSearchVehicle = async (searchData) => {
+    const response = await axios.post(API_URI+'detailSearch', searchData);
+    return response.data;
+}
+
 const vehicleService = {
     createVehicle,
     getAllVehicles,
     getVehicle,
-    searchVehicle
+    searchVehicle,
+    detailSearchVehicle
 }
 
 export default vehicleService;

@@ -1,29 +1,95 @@
-import React from "react";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {detailSearchPerson} from "../../features/person/personSlice";
+import { Link } from "react-router-dom";
 
 const DFPerson = () => {
 
+    const [searchData, setSearchData] = useState({
+        name: '',
+        dateOfBirth: Date,
+        telephone: '',
+        address: '',
+        fps: '',
+        height: '',
+        weight: '',
+        aliases: [''],
+        associatedVehicles: [''],
+        associates: [''],
+        flags: [''],
+        tattoos: [''],
+        hairColour: '',
+        eyeColour: ''
+    });
+
+    const {name, dateOfBirth, telephone, address, fps, height, weight, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = searchData;
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {people} = useSelector((state) => state.person);
+    let personList = [];
+
+    const onChange = (e) => {
+        setSearchData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        dispatch(detailSearchPerson(searchData));
+        personList = people;
+        console.log(personList);
+    }
+
+    const clearFields = () => {
+        setSearchData({
+            name: '',
+            dateOfBirth: Date,
+            telephone: '',
+            address: '',
+            fps: '',
+            height: '',
+            weight: '',
+            aliases: [''],
+            associatedVehicles: [''],
+            associates: [''],
+            flags: [''],
+            tattoos: [''],
+            hairColour: '',
+            eyeColour: ''
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
-            <h3 className="DFUniversalTitle">Detailed Find Person</h3>
-            <form className="DFUniversalForm">
+            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '2rem'}}>
+                <h3 className="DFUniversalTitle" style={{marginBottom: 0}}>Detailed Find Person</h3>
+                <div className="DFBottomBarInnerContainer">
+                    <Link className="DFBottomBarButton2" to='/fastFind/person'>Switch to Fast Find</Link>
+                </div>
+            </div>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
 
                 <div className="DFUniversalRow">
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Name<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="First & Last Name"/>
+                            <input className="DFUniversalFields" type="text" name="name" placeholder="First & Last Name" value={name} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Date of Birth<br/></div>
-                            <input className="DFUniversalFields" type="date" name=""/>
+                            <input className="DFUniversalFields" type="date" name="dateOfBirth" value={dateOfBirth} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="number" name="" placeholder="(000) 000-0000"/>
+                            <input className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -32,13 +98,13 @@ const DFPerson = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Address<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="123 Random Place Blvd. W, Lethbridge AB"/>
+                            <input className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Finger Print Section<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="A000000"/>
+                            <input className="DFUniversalFields" type="text" name="fps" placeholder="A000000" value={fps} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -47,19 +113,19 @@ const DFPerson = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Height (cm)<br/></div>
-                            <input className="DFUniversalFields" type="number" name="" placeholder="188 cm"/>
+                            <input className="DFUniversalFields" type="number" name="height" placeholder="188 cm" value={height} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Weight (lbs)<br/></div>
-                            <input className="DFUniversalFields" type="number" name="" placeholder="203 lbs."/>
+                            <input className="DFUniversalFields" type="number" name="weight" placeholder="203 lbs." value={weight} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Aliases<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Ice"/>
+                            <input className="DFUniversalFields" type="text" name="aliases" placeholder="Ice" value={aliases} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -68,19 +134,19 @@ const DFPerson = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Associated Vehicles<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="2018 Honda Civic LX"/>
+                            <input className="DFUniversalFields" type="text" name="associatedVehicles" placeholder="2018 Honda Civic LX" value={associatedVehicles} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData"td>
                         <label>
                             <div className="DFUniversalInnerTitle">Associates<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Bill Benson"/>
+                            <input className="DFUniversalFields" type="text" name="associates" placeholder="Bill Benson" value={associates} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Flags<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Violent Tendencies, Etc."/>
+                            <input className="DFUniversalFields" type="text" name="flags" placeholder="Violent Tendencies, Etc." value={flags} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -89,7 +155,7 @@ const DFPerson = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Tattoos / Distinguishing Feature(s)<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Scar on left cheek"/>
+                            <input className="DFUniversalFields" type="text" name="tattoos" placeholder="Scar on left cheek" value={tattoos} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -98,18 +164,25 @@ const DFPerson = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Hair Colour<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Black"/>
+                            <input className="DFUniversalFields" type="text" name="hairColour" placeholder="Black" value={hairColour} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Eye Colour<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Blue"/>
+                            <input className="DFUniversalFields" type="text" name="eyeColour" placeholder="Blue" value={eyeColour} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
+                </div>
+            </div>
         </div>
     )
 }

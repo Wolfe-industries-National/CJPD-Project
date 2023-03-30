@@ -101,10 +101,47 @@ const searchAddress = asyncHandler(async (req, res) => {
     console.log(result);
 });
 
+// @desc    Search Address
+// @route   GET /api/v1/address/detailSearch
+// @access  Private
+const detailSearchAddress = asyncHandler(async (req, res) => {
+    console.log('BODY:', req.body);
+    const searchData = req.body;
+    let newSearchData = searchData;
+
+    if(newSearchData.owner === ''){
+        delete newSearchData.owner;
+    }
+    if(newSearchData.typeOfBuilding === ''){
+        delete newSearchData.typeOfBuilding;
+    }
+    if(newSearchData.vacant === ''){
+        delete newSearchData.vacant;
+    }
+    if(newSearchData.country === ''){
+        delete newSearchData.country;
+    }
+    if(newSearchData.province === ''){
+        delete newSearchData.province;
+    }
+    if(newSearchData.address === ''){
+        delete newSearchData.address;
+    }
+    if(newSearchData.city === ''){
+        delete newSearchData.city;
+    }
+
+    console.log('CONTROLLER:',newSearchData);
+    const result = await Address.find(newSearchData);
+
+    res.status(200).json(result);
+});
+
 
 module.exports = {
     createAddress,
     getAllAddresses,
     getAddress,
-    searchAddress
+    searchAddress,
+    detailSearchAddress
 }

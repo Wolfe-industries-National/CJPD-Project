@@ -93,10 +93,42 @@ const searchBusOrg = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Search Bussiness and Organization
+// @route   GET /api/v1/bus-org/detailSearch
+// @access  Private
+const detailSearchBusOrg = asyncHandler(async (req, res) => {
+    const searchData = req.body;
+    let newSearchData = searchData;
+
+    if(newSearchData.owner === ''){
+        delete newSearchData.owner;
+    }
+    if(newSearchData.name === ''){
+        delete newSearchData.name;
+    }
+    if(newSearchData.typeOfBusOrg === ''){
+        delete newSearchData.typeOfBusOrg;
+    }
+    if(newSearchData.address === ''){
+        delete newSearchData.address;
+    }
+    if(newSearchData.alarmCompany === ''){
+        delete newSearchData.alarmCompany;
+    }
+    if(newSearchData.telephoneNumber === ''){
+        delete newSearchData.telephoneNumber
+    }
+
+    const result = await BusOrg.find(newSearchData);
+
+    res.status(200).json(result);
+});
+
 
 module.exports = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
-    searchBusOrg
+    searchBusOrg,
+    detailSearchBusOrg
 }

@@ -163,6 +163,25 @@ const MDPerson = () => {
         }))
     }
 
+    const clearFields = () => {
+        setFormData({
+            name: '',
+            dateOfBirth: Date,
+            telephone: '',
+            address: '',
+            fps: '',
+            height: '',
+            weight: '',
+            aliases: '',
+            associatedVehicles: '',
+            associates: '',
+            flags: '',
+            tattoos: '',
+            hairColour: '',
+            eyeColour: ''
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
             <h3 className="DFUniversalTitle">Manage Person</h3>
@@ -300,15 +319,15 @@ const MDPerson = () => {
                         </label>
                     </div>
                 </div>
-                <div className="DFBottomBar">
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton1">Clear All</button>
-                    </div>
-                    <div className="DFBottomBarInnerContainer">
-                        <button className="DFBottomBarButton2">Create</button>
-                    </div>
-                </div>
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton2" onClick={onSubmit}>Create</button>
+                </div>
+            </div>
         </div>
     )
 }

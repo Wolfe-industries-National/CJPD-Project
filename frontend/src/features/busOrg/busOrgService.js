@@ -27,11 +27,18 @@ const searchBusOrg = async (searchQuery) => {
     return response.data;
 }
 
+// detaild search Business or Organization
+const detailSearchBusOrg = async (searchData) => {
+    const response = await axios.post(API_URI+'detailSearch', searchData);
+    return response.data;
+}
+
 const busOrgService = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
-    searchBusOrg
+    searchBusOrg,
+    detailSearchBusOrg
 }
 
 export default busOrgService;

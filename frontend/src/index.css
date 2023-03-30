@@ -649,11 +649,11 @@ body, html
     font-size: 1rem;
     color: #DDBA2C;
     background-color: #01244C;
-    width: 13rem;
-    height: 3rem;
     border-radius: 5px;
     border: none;
     font-weight: 600;
+    text-decoration: none;
+    padding: 1rem 3rem;
 }
 .DFBottomBarButton2:hover
 {

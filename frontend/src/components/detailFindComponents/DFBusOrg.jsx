@@ -1,29 +1,79 @@
-import React from "react";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {detailSearchBusOrg} from "../../features/busOrg/busOrgSlice";
+import { Link } from "react-router-dom";
 
 const DFBusOrg = () => {
 
+    const [searchData, setSearchData] = useState({
+        owner: '',
+        name: '',
+        typeOfBusOrg: '',
+        address: '',
+        alarmCompany: '',
+        telephoneNumber: ''
+    });
+
+    const {owner, name, typeOfBusOrg, address, alarmCompany, telephoneNumber} = searchData;
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {busOrgs} = useSelector((state) => state.busOrg);
+    let busOrgList = [];
+
+    const onChange = (e) => {
+        setSearchData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        dispatch(detailSearchBusOrg(searchData));
+        busOrgList = busOrgs;
+        console.log(busOrgList);
+    }
+
+    const clearFields = () => {
+        setSearchData({
+            owner: '',
+            name: '',
+            typeOfBusOrg: '',
+            address: '',
+            alarmCompany: '',
+            telephoneNumber: ''
+        })
+    }
+
     return (
         <div className="DFUniversalContainer">
-            <h3 className="DFUniversalTitle">Detailed Find Business / Organization</h3>
-            <form className="DFUniversalForm">
+            <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '2rem'}}>
+                <h3 className="DFUniversalTitle" style={{marginBottom: 0}}>Detailed Find Business / Organization</h3>
+                <div className="DFBottomBarInnerContainer">
+                    <Link className="DFBottomBarButton2" to='/fastFind/bus-org'>Switch to Fast Find</Link>
+                </div>
+            </div>
+            <form className="DFUniversalForm" onSubmit={onSubmit}>
 
                 <div className="DFUniversalRow">
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Owner<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="First & Last Name"/>
+                            <input className="DFUniversalFields" type="text" name="owner" placeholder="First & Last Name" value={owner} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Business<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Random Incorporated ltd."/>
+                            <input className="DFUniversalFields" type="text" name="name" placeholder="Random Incorporated ltd." value={name} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Type<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Convenience Store"/>
+                            <input className="DFUniversalFields" type="text" name="typeOfBusOrg" placeholder="Convenience Store" value={typeOfBusOrg} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -32,7 +82,7 @@ const DFBusOrg = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Address<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="123 Random Place Blvd. W, Lethbridge AB"/>
+                            <input className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
@@ -41,18 +91,25 @@ const DFBusOrg = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Alarm Company<br/></div>
-                            <input className="DFUniversalFields" type="text" name="" placeholder="Telus Security"/>
+                            <input className="DFUniversalFields" type="text" name="alarmCompany" placeholder="Telus Security" value={alarmCompany} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input className="DFUniversalFields" type="number" name="" placeholder="(000) 000-0000"/>
+                            <input className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber} onChange={onChange}/>
                         </label>
                     </div>
                 </div>
-
             </form>
+            <div style={{display: 'flex', justifyContent: 'right'}}>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={clearFields}>Clear All</button>
+                </div>
+                <div className="DFBottomBarInnerContainer">
+                    <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
+                </div>
+            </div>
         </div>
     )
 }
