@@ -29,6 +29,7 @@ const DFPerson = () => {
     const navigate = useNavigate();
     const {people} = useSelector((state) => state.person);
     let personList = [];
+    const currentYear = new Date().getFullYear();
 
     const onChange = (e) => {
         setSearchData((prevState) => ({
@@ -182,6 +183,39 @@ const DFPerson = () => {
                 <div className="DFBottomBarInnerContainer">
                     <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
                 </div>
+            </div>
+
+            <div className="FFResultsContainer">
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Person<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Date of Birth<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Age<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Fingerprint Section<br/></div>
+                    </div>
+                </div>
+                {
+                    people.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.name}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.dateOfBirth.split('T')[0]}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{(currentYear - item.dateOfBirth.split('-')[0])}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.fps}<br/></div>
+                        </div>
+                    </div>)
+                }
             </div>
         </div>
     )

@@ -14,7 +14,8 @@ const WitnessStatement = () => {
             <h3 className="DFUniversalTitle">Witness Statement</h3>
             <div style={{width: '100%', height: '100vh'}}>
                 <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js'>
-                    <Viewer fileUrl={'/formsPDF/Incident_Report_Updated.pdf'} plugins={[newPlugins]} />
+                    <Viewer fileUrl={'/formsPDF/Witness_Statement_Updated.pdf'} plugins={[newPlugins]} />
+                    <Viewer fileUrl={'/formsPDF/Witness_Statement_Continuation_Updated.pdf'} plugins={[newPlugins]} />
                 </Worker>
             </div>
         </div>

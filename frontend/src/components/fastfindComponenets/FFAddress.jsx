@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchAddress, getAllAddresses, reset} from "../../features/address/addressSlice";
+import { Link } from "react-router-dom";
 
 const FFAddress = () => {
 
@@ -30,7 +31,7 @@ const FFAddress = () => {
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Address</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/address`}>Switch to Detailed Find</button>
+                <Link className="DFBottomBarButton2" to='/detailedFind/address'>Switch to Detailed Find</Link>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="address" placeholder="Address" onChange={onChange}/>

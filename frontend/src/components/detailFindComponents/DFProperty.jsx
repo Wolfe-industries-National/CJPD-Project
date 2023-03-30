@@ -93,6 +93,39 @@ const DFProperty = () => {
                     <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
                 </div>
             </div>
+
+            <div className="FFResultsContainer">
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Type<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Owner<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Serial Number / Vehicle Identification Number<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Value<br/></div>
+                    </div>
+                </div>
+                {
+                    properties.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.typeOfProperty}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.vinOfProperty}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.valueOfProperty}<br/></div>
+                        </div>
+                    </div>)
+                }
+            </div>
         </div>
     )
 }

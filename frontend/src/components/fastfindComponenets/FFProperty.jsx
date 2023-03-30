@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchProperty, getAllProperties, reset} from "../../features/property/propertySlice";
+import { Link } from "react-router-dom";
 
 const FFProperty = () => {
 
@@ -30,7 +31,7 @@ const FFProperty = () => {
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Property</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/property`}>Switch to Detailed Find</button>
+                <Link className="DFBottomBarButton2" to='/detailedFind/property'>Switch to Detailed Find</Link>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="Property" onChange={onChange}/>

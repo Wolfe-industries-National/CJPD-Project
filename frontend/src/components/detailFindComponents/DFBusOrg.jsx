@@ -110,6 +110,45 @@ const DFBusOrg = () => {
                     <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
                 </div>
             </div>
+
+            <div className="FFResultsContainer">
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Owner<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Business<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Type<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Address<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Telephone<br/></div>
+                    </div>
+                </div>
+                {
+                    busOrgs.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/bus-org/${item._id}`)}>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.name}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.typeOfBusOrg}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.address}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.telephoneNumber}<br/></div>
+                        </div>
+                    </div>)
+                }
+            </div>
         </div>
     )
 }

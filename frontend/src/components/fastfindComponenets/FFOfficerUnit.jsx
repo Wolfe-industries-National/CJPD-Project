@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {searchOfficerUnit, getAllOfficerUnits, reset} from "../../features/officerUnit/officerUnitSlice";
+import { Link } from "react-router-dom";
 
 const FFOfficerUnit = () => {
 
@@ -28,7 +29,6 @@ const FFOfficerUnit = () => {
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Officer Unit </h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/officerUnit`}>Switch to Detailed Find</button>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="Officer Unit" onChange={onChange}/>

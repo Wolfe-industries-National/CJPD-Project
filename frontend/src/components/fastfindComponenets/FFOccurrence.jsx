@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchOccurrence, getAllOccurrence, reset} from "../../features/occurrence/occurrenceSlice";
+import { Link } from "react-router-dom";
 
 const FFOccurrence = () => {
 
@@ -30,7 +31,6 @@ const FFOccurrence = () => {
         <div >
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Occurrence</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/occurrence`}>Switch to Detailed Find</button>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="File Number" onChange={onChange}/>

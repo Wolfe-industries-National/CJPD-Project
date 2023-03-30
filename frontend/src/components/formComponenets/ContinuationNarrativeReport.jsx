@@ -14,7 +14,7 @@ const ContinuationNarrativeReport = () => {
             <h3 className="DFUniversalTitle">Continuation Narritive Report</h3>
             <div style={{width: '100%', height: '100vh'}}>
                 <Worker workerUrl='https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.min.js'>
-                    <Viewer fileUrl={'/formsPDF/Consent_for_Release_of_Medical_Information_Updated.pdf'} plugins={[newPlugins]} />
+                    <Viewer fileUrl={'/formsPDF/Continuation_Narrative_Report_Updated.pdf'} plugins={[newPlugins]} />
                 </Worker>
             </div>
         </div>

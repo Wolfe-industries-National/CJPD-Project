@@ -1,6 +1,7 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {searchTelephone, getAllTelephones, resetTelephone} from "../../features/telephone/telephoneSlice";
+import { Link } from "react-router-dom";
 
 const FFTelephone = () => {
 
@@ -28,7 +29,6 @@ const FFTelephone = () => {
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Telephone</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/telephone`}>Switch to Detailed Find</button>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="Telephone" onChange={onChange}/>

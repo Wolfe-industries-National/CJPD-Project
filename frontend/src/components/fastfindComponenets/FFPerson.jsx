@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchPerson, getAllPerson, reset} from "../../features/person/personSlice";
+import { Link } from "react-router-dom";
 
 const FFPerson = () => {
 
@@ -31,7 +32,7 @@ const FFPerson = () => {
         <div style={{marginBottom: '3rem'}}>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Person</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/person`}>Switch to Detailed Find</button>
+                <Link className="DFBottomBarButton2" to='/detailedFind/person'>Switch to Detailed Find</Link>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="Person" onChange={onChange}/>

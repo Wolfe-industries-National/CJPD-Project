@@ -2,6 +2,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {searchVehicle, getAllVehicles, resetVehicles} from "../../features/vehicle/vehicleSlice";
+import { Link } from "react-router-dom";
 
 const FFVehicle = () => {
 
@@ -30,7 +31,7 @@ const FFVehicle = () => {
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
                 <h3 className="FFUniversalTitle">Fast Find Vehicle</h3>
-                <button className="DFBottomBarButton2" to={`/detailedFind/vehicle`}>Switch to Detailed Find</button>
+                <Link className="DFBottomBarButton2" to='/detailedFind/vehicle'>Switch to Detailed Find</Link>
             </div>
             <label>
                 <input className="DFUniversalFields" type="text" name="" placeholder="Vehicle" onChange={onChange}/>

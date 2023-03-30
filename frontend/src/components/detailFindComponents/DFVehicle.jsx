@@ -118,6 +118,44 @@ const DFVehicle = () => {
                     <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
                 </div>
             </div>
+            <div className="FFResultsContainer">
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Owner<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Make<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Model<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Year<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Colour<br/></div>
+                    </div>
+                </div>
+                {
+                    vehicles.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/vehicle/${item._id}`)}>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.makeOfVehicle}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.modelOfVehicle}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.yearOfVehicle}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.colourOfVehicle}<br/></div>
+                        </div>
+                    </div>)
+                }
+            </div>
         </div>
     )
 }

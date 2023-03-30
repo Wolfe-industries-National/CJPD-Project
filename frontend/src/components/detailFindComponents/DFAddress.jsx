@@ -127,6 +127,39 @@ const DFAddress = () => {
                     <button className="DFBottomBarButton1" onClick={onSubmit}>Find Now</button>
                 </div>
             </div>
+
+            <div className="FFResultsContainer">
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Owner / Tenant<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Address<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">Country<br/></div>
+                    </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">City<br/></div>
+                    </div>
+                </div>
+                {
+                    addresses.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/address/${item._id}`)}>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.address}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.country}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.city}<br/></div>
+                        </div>
+                    </div>)
+                }
+            </div>
         </div>
     )
 }
