@@ -203,16 +203,16 @@ const DFPerson = () => {
                 {
                     people.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.name}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.name ? item.name : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.dateOfBirth.split('T')[0]}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.dateOfBirth ? item.dateOfBirth.split('T')[0] : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{(currentYear - item.dateOfBirth.split('-')[0])}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.dateOfBirth ? (currentYear - item.dateOfBirth.split('-')[0]) : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.fps}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.fps ? item.fps : ''}<br/></div>
                         </div>
                     </div>)
                 }

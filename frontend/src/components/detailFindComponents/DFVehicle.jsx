@@ -139,19 +139,19 @@ const DFVehicle = () => {
                 {
                     vehicles.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/vehicle/${item._id}`)}>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.makeOfVehicle}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.makeOfVehicle ? item.makeOfVehicle : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.modelOfVehicle}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.modelOfVehicle ? item.modelOfVehicle : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.yearOfVehicle}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.yearOfVehicle ? item.yearOfVehicle : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.colourOfVehicle}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.colourOfVehicle ? item.colourOfVehicle : ''}<br/></div>
                         </div>
                     </div>)
                 }

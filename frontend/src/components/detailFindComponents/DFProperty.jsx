@@ -112,16 +112,16 @@ const DFProperty = () => {
                 {
                     properties.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.typeOfProperty}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.typeOfProperty ? item.typeOfProperty : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.vinOfProperty}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.vinOfProperty ? item.vinOfProperty : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.valueOfProperty}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.valueOfProperty ? item.valueOfProperty : ''}<br/></div>
                         </div>
                     </div>)
                 }
