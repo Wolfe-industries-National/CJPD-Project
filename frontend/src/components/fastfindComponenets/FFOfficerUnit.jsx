@@ -51,16 +51,16 @@ const FFOfficerUnit = () => {
                 {
                     officerUnitList.map((item) => <div className="DFUniversalRow">
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.name}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.name ? item.name : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.regimentalNumber}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.regimentalNumber ? item.regimentalNumber : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.rank}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.rank ? item.rank : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.unit}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.unit ? item.unit : ''}<br/></div>
                         </div>
                     </div>)
                 }

@@ -54,16 +54,16 @@ const FFAddress = () => {
                 {
                     addressList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/address/${item._id}`)}>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.address}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.address ? item.address : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.country}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.country ? item.country : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.city}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.city ? item.city : ''}<br/></div>
                         </div>
                     </div>)
                 }

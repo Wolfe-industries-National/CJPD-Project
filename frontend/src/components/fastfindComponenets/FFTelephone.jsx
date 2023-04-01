@@ -48,13 +48,13 @@ const FFTelephone = () => {
                 {
                     telephoneList.map((item) => <div className="DFUniversalRow">
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.telephoneNumber}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.telephoneNumber ? item.telephoneNumber : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.typeOfTelephone}<br/></div>
+                            <div className="FFUniversalInnerTitle">{item.typeOfTelephone ? item.typeOfTelephone : ''}<br/></div>
                         </div>
                     </div>)
                 }
