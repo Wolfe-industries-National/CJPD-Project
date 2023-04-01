@@ -18,7 +18,6 @@ const MDAddress = () => {
     const {owner, typeOfBuilding, vacant, country, province, city, address} = formData;
 
     const dispatch = useDispatch();
-    // const {address, isSuccess, isError} = useSelector((state) => state.address);
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -29,18 +28,22 @@ const MDAddress = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createNewAddress(formData));
-        toast.success(`Successfuly created ${address}`);
-        setFormData({
-            owner: '',
-            typeOfBuilding: '',
-            vacant: false,
-            country: '',
-            province: '',
-            city: '',
-            address: ''
-        })
-        console.log(formData);
+        if(owner !== '' || typeOfBuilding !== '' || country !== '' || province !== '' || city !== '' || address !== '' ){
+            dispatch(createNewAddress(formData));
+            toast.success(`Successfuly created ${address}`);
+            setFormData({
+                owner: '',
+                typeOfBuilding: '',
+                vacant: false,
+                country: '',
+                province: '',
+                city: '',
+                address: ''
+            })
+            console.log(formData);
+        }else{
+            toast.error('Cannot create empty Address');
+        }
     }
 
     const clearFields = () => {

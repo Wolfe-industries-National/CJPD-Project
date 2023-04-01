@@ -168,20 +168,24 @@ const MDOccurrence = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createOccurrence(formData));
-        toast.success(`Successfuly created Occurrence ${fileNumber}`);
-        setFormData({
-            fileNumber: '',
-            summary: '',
-            person: '',
-            busOrg: '',
-            property: '',
-            vehicle: '',
-            telephone: '',
-            officerUnit: '',
-            address: ''
-        })
-        console.log(formData);
+        if(fileNumber !== '' && summary !== ''){
+            dispatch(createOccurrence(formData));
+            toast.success(`Successfuly created Occurrence ${fileNumber}`);
+            setFormData({
+                fileNumber: '',
+                summary: '',
+                person: '',
+                busOrg: '',
+                property: '',
+                vehicle: '',
+                telephone: '',
+                officerUnit: '',
+                address: ''
+            })
+            console.log(formData);
+        }else{
+            toast.error('Please add file number and summary to occurrence');
+        }
     }
 
     const onSelectPerson = (value) => {

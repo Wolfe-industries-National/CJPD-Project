@@ -3,31 +3,31 @@ const mongoose = require('mongoose');
 const addressSchema = mongoose.Schema({
     owner: {
         type: String,
-        required: [true, "Please add an owner"],
+        required: false,
     },
     typeOfBuilding: {
         type: String,
-        required: [true, "Please add a type of building"],
+        required: false,
     },
     vacant: {
         type: Boolean,
-        required: [true, "Please add a Vacant"],
+        required: false,
     },
     country: {
         type: String,
-        required: [true, "Please add a Country"],
+        required: false,
     },
     province: {
         type: String,
-        required: [true, "Please add a Province"],
+        required: false,
     },
     city: {
         type: String,
-        required: [true, "Please add a City"],
+        required: false,
     },
     address: {
         type: String,
-        required: [true, "Please add an address"],
+        required: false,
     },
 }, {
     timestamps: true

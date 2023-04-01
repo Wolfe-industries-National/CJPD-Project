@@ -3,29 +3,27 @@ const mongoose = require('mongoose');
 const busOrgSchema = mongoose.Schema({
     owner: {
         type: String,
-        required: [true, "Please add an owner"],
+        required: false,
     },
     name: {
         type: String,
-        required: [true, "Please add a name"]
+        required: false,
     },
     typeOfBusOrg: {
         type: String,
-        required: [true, "Please add a type of Business or Organization"]
+        required: false,
     },
     address: {
         type: String,
-        required: true,
-        ref: 'Address'
+        required: false,
     },
     alarmCompany: {
         type: String,
-        required: [true, "Please add an alarm company"]
+        required: false,
     },
     telephoneNumber: {
         type: String,
-        required: true,
-        ref: 'Telephone'
+        required: false,
     },
 }, {
     timestamps: true

@@ -59,17 +59,6 @@ const FFTelephone = () => {
                     </div>)
                 }
             </div>
-            <div className="DFBottomBar">
-                <div className="DFBottomBarInnerContainer">
-                    <button className="DFBottomBarButton1">Clear All</button>
-                </div>
-                <div className="DFBottomBarInnerContainer">
-                    <button className="DFBottomBarButton1">Find Now</button>
-                </div>
-                <div className="DFBottomBarInnerContainer">
-                    <button className="DFBottomBarButton2" to={`/detailedFind/telephone`}>Switch to Detailed Find</button>
-                </div>
-            </div>
         </div>
     )
 }

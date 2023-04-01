@@ -26,16 +26,20 @@ const MDProperty = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createProperty(formData));
-        toast.success(`Successfuly created Property`);
-        setFormData({
-            owner: '',
-            typeOfProperty: '',
-            vinOfProperty: '',
-            valueOfProperty: '',
-            descriptionOfProperty: '',
-        })
-        console.log(formData);
+        if(typeOfProperty !== ''){
+            dispatch(createProperty(formData));
+            toast.success(`Successfuly created Property`);
+            setFormData({
+                owner: '',
+                typeOfProperty: '',
+                vinOfProperty: '',
+                valueOfProperty: '',
+                descriptionOfProperty: '',
+            })
+            console.log(formData);
+        }else {
+            toast.error('Please add a type of property');
+        }
     }
 
     const clearFields = () => {
@@ -87,7 +91,7 @@ const MDProperty = () => {
                     <div className="DFUniversalData">
                         <label>
                             <div className="DFUniversalInnerTitle">Description<br/></div>
-                            <textarea className="UniversalFieldsTB" name="name" value={descriptionOfProperty} onChange={onChange}></textarea>
+                            <textarea className="UniversalFieldsTB" name="descriptionOfProperty" value={descriptionOfProperty} onChange={onChange}></textarea>
                         </label>
                     </div>
                 </div>

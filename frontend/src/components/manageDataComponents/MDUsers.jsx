@@ -15,7 +15,6 @@ const MDUsers = () => {
     const {name, email, password, userType} = formData;
 
     const dispatch = useDispatch();
-    // const {user, isSuccess, isError} = useSelector((state) => state.auth);
 
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -26,15 +25,18 @@ const MDUsers = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(register(formData));
-        toast.success(`Successfuly created ${name}`);
-        setFormData({
-            email: '',
-            name: '',
-            password: 'Password1',
-            userType: '',
-        })
-        console.log(formData);
+        if(name !== '' && email !== '' && password !== '' && userType !== ''){
+            dispatch(register(formData));
+            toast.success(`Successfuly created ${name}`);
+            setFormData({
+                email: '',
+                name: '',
+                password: 'Password1',
+                userType: '',
+            })
+        }else {
+            toast.error('Cannot create a empty user');
+        }
     }
 
     const clearFields = () => {

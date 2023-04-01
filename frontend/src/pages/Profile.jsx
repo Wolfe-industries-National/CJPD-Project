@@ -31,8 +31,22 @@ const Profile = () => {
             </div>
 
             <div className="profileRightColumn">
-                <h1>Saved Forms</h1>
-                <h3>Investigative Form Name Here</h3>
+                <h1 style={{fontSize: '2rem'}}>Change Password:</h1>
+                <form action="">
+                    <label htmlFor="">
+                        Old Password:
+                        <input type="text" />
+                    </label>
+                    <label htmlFor="">
+                        New Password:
+                        <input type="text" />
+                    </label>
+                    <label htmlFor="">
+                        Confirm New Password:
+                        <input type="text" />
+                    </label>
+                    <button>Submit</button>
+                </form>
             </div>
 
         </div>

@@ -7,15 +7,15 @@ const officerUnitSchema = mongoose.Schema({
     },
     regimentalNumber: {
         type: String,
-        required: [true, "Please add an regimentalNumber"],
+        required: false,
     },
     rank: {
         type: String,
-        required: [true, "Please add an rank"],
+        required: false,
     },
     unit: {
         type: Number,
-        required: [true, "Please add an unit"],
+        required: false,
     }
 }, {
     timestamps: true

@@ -3,22 +3,23 @@ const mongoose = require('mongoose');
 const propertySchema = mongoose.Schema({
     owner: {
         type: String,
-        required: [true, "Please add an owner"],
+        required: false,
     },
     typeOfProperty: {
         type: String,
-        required: [true, "Please add a type of property"],
+        required: true,
     },
     vinOfProperty: {
         type: String,
-        required: [true, "Please add a Serial Number / VIN"],
+        required: false,
     },
     valueOfProperty: {
         type: String,
-        required: [true, "Please add a value to property "],
+        required: false,
     },
     descriptionOfProperty: {
-        type: String
+        type: String,
+        required: false,
     }
 }, {
     timestamps: true

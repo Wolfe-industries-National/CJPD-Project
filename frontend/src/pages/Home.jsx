@@ -48,10 +48,6 @@ const Home = () => {
             value: "person"
         },
         {
-            name: "Occurrence",
-            value: "occurrence"
-        },
-        {
             name: "Bus/Org",
             value: "bus-org"
         },

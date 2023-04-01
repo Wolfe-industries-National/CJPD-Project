@@ -7,51 +7,55 @@ const personSchema = mongoose.Schema({
     },
     dateOfBirth: {
         type: Date,
-        required: [true, "Please add a Date of Birth"],
+        required: false,
     },
     telephone: {
         type: String,
-        required: true,
-        ref: 'Telephone'
+        required: false,
     },
     address: {
         type: String,
-        required: true,
-        ref: 'Address'
+        required: false,
     },
     fps: {
         type: String,
+        required: false,
     },
     height: {
         type: String,
+        required: false,
     },
     weight: {
         type: String,
+        required: false,
     },
     aliases: {
         type: [String],
+        required: false,
     },
     associatedVehicles: {
         type: [String],
-        required: true,
-        ref: 'Vehicle'
+        required: false,
     },
     associates: {
         type: [String],
         required: false,
-        ref: 'Person'
     },
     flags: {
         type: [String],
+        required: false,
     },
     tattoos: {
         type: [String],
+        required: false,
     },
     hairColour: {
         type: String,
+        required: false,
     },
     eyeColour: {
         type: String,
+        required: false,
     },
 }, {
     timestamps: true

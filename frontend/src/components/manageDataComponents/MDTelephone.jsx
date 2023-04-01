@@ -25,14 +25,18 @@ const MDTelephone = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createTelephone(formData));
-        toast.success(`Successfuly created ${telephoneNumber}`);
-        setFormData({
-            owner: '',
-            typeOfTelephone: '',
-            telephoneNumber: ''
-        })
-        console.log(formData);
+        if(owner !== '' || typeOfTelephone !== '' || telephoneNumber !== ''){
+            dispatch(createTelephone(formData));
+            toast.success(`Successfuly created ${telephoneNumber}`);
+            setFormData({
+                owner: '',
+                typeOfTelephone: '',
+                telephoneNumber: ''
+            })
+            console.log(formData);
+        }else {
+            toast.error('Cannot create empty Telephone')
+        }
     }
 
     const clearFields = () => {

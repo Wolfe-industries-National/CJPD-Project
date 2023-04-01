@@ -3,31 +3,31 @@ const mongoose = require('mongoose');
 const vehicleSchema = mongoose.Schema({
     owner: {
         type: String,
-        required: [true, "Please add an owner"],
+        required: false,
     },
     makeOfVehicle: {
         type: String,
-        required: [true, "Please add a make"],
+        required: false,
     },
     modelOfVehicle: {
         type: String,
-        required: [true, "Please add a model"],
+        required: false,
     },
     yearOfVehicle: {
         type: Number,
-        required: [true, "Please add a year"],
+        required: false,
     },
     colourOfVehicle: {
         type: String,
-        required: [true, "Please add a colour"],
+        required: false,
     },
     vinOfVehicle: {
         type: String,
-        required: [true, "Please add a VIN"],
+        required: false,
     },
     plateOfVehicle: {
         type: String,
-        required: [true, "Please add a Plate"],
+        required: false,
     },
 }, {
     timestamps: true

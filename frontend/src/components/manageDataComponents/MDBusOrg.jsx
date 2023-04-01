@@ -84,17 +84,21 @@ const MDBusOrg = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createBusOrg(formData));
-        toast.success(`Successfuly created Business or Organization`);
-        setFormData({
-            owner: '',
-            name: '',
-            typeOfBusOrg: '',
-            address: '',
-            alarmCompany: '',
-            telephoneNumber: ''
-        })
-        console.log(formData);
+        if(owner !== '' || name !== '' || typeOfBusOrg !== '' || address !== '' || alarmCompany !== '' || telephoneNumber !== ''){
+            dispatch(createBusOrg(formData));
+            toast.success(`Successfuly created Business or Organization`);
+            setFormData({
+                owner: '',
+                name: '',
+                typeOfBusOrg: '',
+                address: '',
+                alarmCompany: '',
+                telephoneNumber: ''
+            })
+            console.log(formData);
+        }else{
+            toast.error('Cannot create an empty Business or Organization');
+        }
     }
 
     const clearFields = () => {

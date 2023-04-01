@@ -114,25 +114,29 @@ const MDPerson = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createPerson(formData));
-        toast.success(`Successfuly created ${name}`);
-        setFormData({
-            name: '',
-            dateOfBirth: '',
-            telephone: '',
-            address: '',
-            fps: '',
-            height: '',
-            weight: '',
-            aliases: '',
-            associatedVehicles: '',
-            associates: '',
-            flags: '',
-            tattoos: '',
-            hairColour: '',
-            eyeColour: ''
-        })
-        console.log(formData);
+        if(name !== ''){
+            dispatch(createPerson(formData));
+            toast.success(`Successfuly created ${name}`);
+            setFormData({
+                name: '',
+                dateOfBirth: '',
+                telephone: '',
+                address: '',
+                fps: '',
+                height: '',
+                weight: '',
+                aliases: '',
+                associatedVehicles: '',
+                associates: '',
+                flags: '',
+                tattoos: '',
+                hairColour: '',
+                eyeColour: ''
+            })
+            console.log(formData);
+        }else {
+            toast.error('Add name');
+        }
     }
 
     const onSelectAddress = (value) => {

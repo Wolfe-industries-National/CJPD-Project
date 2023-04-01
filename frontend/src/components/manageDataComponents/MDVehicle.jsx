@@ -28,18 +28,22 @@ const MDVehicle = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createVehicle(formData));
-        toast.success(`Successfuly created vehicle`);
-        setFormData({
-            owner: '',
-            makeOfVehicle: '',
-            modelOfVehicle: '',
-            yearOfVehicle: '',
-            colourOfVehicle: '',
-            vinOfVehicle: '',
-            plateOfVehicle: ''
-        })
-        console.log(formData);
+        if(owner !== '' || makeOfVehicle !== '' || modelOfVehicle !== '' || yearOfVehicle !== '' || colourOfVehicle !== '' || vinOfVehicle !== '' || plateOfVehicle !== ''){
+            dispatch(createVehicle(formData));
+            toast.success(`Successfuly created vehicle`);
+            setFormData({
+                owner: '',
+                makeOfVehicle: '',
+                modelOfVehicle: '',
+                yearOfVehicle: '',
+                colourOfVehicle: '',
+                vinOfVehicle: '',
+                plateOfVehicle: ''
+            })
+            console.log(formData);
+        }else{
+            toast.error('Cannot create empty Vehicle');
+        }
     }
 
     const clearFields = () => {

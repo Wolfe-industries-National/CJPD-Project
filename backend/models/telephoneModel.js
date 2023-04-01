@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const telephoneSchema = mongoose.Schema({
     owner: {
         type: String,
-        required: [true, "Please add an owner"],
+        required: false,
     },
     typeOfTelephone: {
         type: String,
-        required: [true, "Please add an type of telephone"],
+        required: false,
     },
     telephoneNumber: {
         type: String,
-        required: [true, "Please add an Telephone number"],
+        required: false,
     },
 }, {
     timestamps: true

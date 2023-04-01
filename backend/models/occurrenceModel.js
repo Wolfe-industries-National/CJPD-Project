@@ -11,38 +11,31 @@ const occurrenceSchema = mongoose.Schema({
     },
     person: {
         type: String,
-        required: true,
-        ref: 'Person'
+        required: false,
     },
     busOrg: {
         type: [String],
-        required: true,
-        ref: 'BusOrg'
+        required: false,
     },
     property: {
         type: [String],
-        required: true,
-        ref: 'Property'
+        required: false,
     },
     vehicle: {
         type: [String],
-        required: true,
-        ref: 'Vehicle'
+        required: false,
     },
     telephone: {
         type: [String],
-        required: true,
-        ref: 'Telephone'
+        required: false,
     },
     officerUnit: {
         type: [String],
-        required: true,
-        ref: 'OfficerUnit'
+        required: false,
     },
     address: {
         type: [String],
-        required: true,
-        ref: 'Address'
+        required: false,
     }
 }, {
     timestamps: true

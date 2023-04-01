@@ -25,14 +25,18 @@ const MDOfficerUnit = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(createOfficerUnit(formData));
-        toast.success(`Successfuly created ${name}`);
-        setFormData({
-            name: '',
-            regimentalNumber: '',
-            rank: '',
-            unit: ''
-        })
+        if(name !== ''){
+            dispatch(createOfficerUnit(formData));
+            toast.success(`Successfuly created ${name}`);
+            setFormData({
+                name: '',
+                regimentalNumber: '',
+                rank: '',
+                unit: ''
+            })
+        }else{
+            toast.error('To create a officer unit, please add a name')
+        }
         console.log(formData);
     }
 
