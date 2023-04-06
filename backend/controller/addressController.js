@@ -18,13 +18,13 @@ const createAddress = asyncHandler(async (req, res) => {
 
     // Create Address
     const addressUnit = await Address.create({
-        owner,
-        typeOfBuilding,
+        owner: owner.toLowerCase(),
+        typeOfBuilding: typeOfBuilding.toLowerCase(),
         vacant,
-        country,
-        province,
-        city,
-        address
+        country: country.toLowerCase(),
+        province: province.toLowerCase(),
+        city: province.toLowerCase(),
+        address: address.toLowerCase()
     })
 
     if(addressUnit){

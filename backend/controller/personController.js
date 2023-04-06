@@ -18,18 +18,18 @@ const createPerson = asyncHandler(async (req, res) => {
 
     // Create Person
     const person = await Person.create({
-        name,
+        name: name.toLowerCase(),
         dateOfBirth,
         telephone,
-        address,
+        address: address.toLowerCase(),
         fps,
         height,
         weight,
-        aliases,
+        aliases: aliases.toLowerCase(),
         associatedVehicles,
-        associates,
+        associates: associates.toLowerCase(),
         flags,
-        tattoos,
+        tattoos: tattoos.toLowerCase(),
         hairColour,
         eyeColour,
     })

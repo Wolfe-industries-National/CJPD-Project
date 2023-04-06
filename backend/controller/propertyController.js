@@ -18,11 +18,11 @@ const createProperty = asyncHandler(async (req, res) => {
 
     // Create Address
     const property = await Property.create({
-        owner,
-        typeOfProperty,
+        owner: owner.toLowerCase(),
+        typeOfProperty: typeOfProperty.toLowerCase(),
         vinOfProperty,
         valueOfProperty,
-        descriptionOfProperty,
+        descriptionOfProperty: descriptionOfProperty.toLowerCase(),
     })
 
     if(property){

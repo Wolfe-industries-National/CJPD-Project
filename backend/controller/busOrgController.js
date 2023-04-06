@@ -18,11 +18,11 @@ const createBusOrg = asyncHandler(async (req, res) => {
 
     // Create BusOrg
     const busOrg = await BusOrg.create({
-        owner,
-        name,
-        typeOfBusOrg,
-        address,
-        alarmCompany,
+        owner: owner.toLowerCase(),
+        name: name.toLowerCase(),
+        typeOfBusOrg: typeOfBusOrg.toLowerCase(),
+        address: address.toLowerCase(),
+        alarmCompany: alarmCompany.toLowerCase(),
         telephoneNumber
     })
 

@@ -18,11 +18,11 @@ const createVehicle = asyncHandler(async (req, res) => {
 
     // Create Address
     const vehicle = await Vehicle.create({
-        owner,
-        makeOfVehicle,
-        modelOfVehicle,
+        owner: owner.toLowerCase(),
+        makeOfVehicle: makeOfVehicle.toLowerCase(),
+        modelOfVehicle: modelOfVehicle.toLowerCase(),
         yearOfVehicle,
-        colourOfVehicle,
+        colourOfVehicle: colourOfVehicle.toLowerCase(),
         vinOfVehicle,
         plateOfVehicle
     })

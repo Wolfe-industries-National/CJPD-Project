@@ -18,8 +18,8 @@ const createTelephone = asyncHandler(async (req, res) => {
 
     // Create Telephone
     const telephone = await Telephone.create({
-        owner,
-        typeOfTelephone,
+        owner: owner.toLowerCase(),
+        typeOfTelephone: typeOfTelephone.toLowerCase(),
         telephoneNumber
     })
 

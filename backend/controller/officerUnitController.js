@@ -17,7 +17,7 @@ const createOfficerUnit = asyncHandler(async (req, res) => {
 
     // Create Offcicer Unit
     const officerUnit = await OfficerUnit.create({
-        name,
+        name: name.toLowerCase(),
         regimentalNumber,
         rank,
         unit
