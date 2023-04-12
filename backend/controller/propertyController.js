@@ -16,6 +16,12 @@ const createProperty = asyncHandler(async (req, res) => {
         throw new Error('Please include VIN of property');
     }
 
+    let currentCount = await Property.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Property.find({propertyDBID: `PP_${currentCount}`})).length >= 1);
+
     // Create Address
     const property = await Property.create({
         owner: owner.toLowerCase(),
@@ -23,6 +29,7 @@ const createProperty = asyncHandler(async (req, res) => {
         vinOfProperty,
         valueOfProperty,
         descriptionOfProperty: descriptionOfProperty.toLowerCase(),
+        propertyDBID: `PP_${currentCount}`
     })
 
     if(property){

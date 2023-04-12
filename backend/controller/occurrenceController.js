@@ -18,6 +18,12 @@ const createOccurrence = asyncHandler(async (req, res) => {
         throw new Error('Please include fileNumber and summary');
     }
 
+    let currentCount = await Occurrence.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Occurrence.find({occurrenceDBID: `OC_${currentCount}`})).length >= 1);
+
     // Create BusOrg
     const occurrence = await Occurrence.create({
         fileNumber,
@@ -28,7 +34,8 @@ const createOccurrence = asyncHandler(async (req, res) => {
         vehicle,
         telephone,
         officerUnit,
-        address
+        address,
+        occurrenceDBID: `OC_${currentCount}`
     })
 
     if(occurrence){

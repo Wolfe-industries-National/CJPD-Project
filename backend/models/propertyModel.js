@@ -20,6 +20,10 @@ const propertySchema = mongoose.Schema({
     descriptionOfProperty: {
         type: String,
         required: false,
+    },
+    propertyDBID: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

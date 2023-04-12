@@ -25,6 +25,10 @@ const busOrgSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    busOrgDBID: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true
 });

@@ -16,6 +16,10 @@ const officerUnitSchema = mongoose.Schema({
     unit: {
         type: Number,
         required: false,
+    },
+    officerDBID: {
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true

@@ -57,6 +57,10 @@ const personSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    personDBID: {
+        type: String,
+        required: false
+    }
 }, {
     timestamps: true
 });

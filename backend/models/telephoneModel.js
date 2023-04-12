@@ -13,6 +13,10 @@ const telephoneSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    telephoneDBID: {
+        type: String,
+        required: true,
+    }
 }, {
     timestamps: true
 });

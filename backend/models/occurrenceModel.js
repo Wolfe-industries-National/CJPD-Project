@@ -36,6 +36,10 @@ const occurrenceSchema = mongoose.Schema({
     address: {
         type: [String],
         required: false,
+    },
+    occurrenceDBID: {
+        type: String,
+        required: true
     }
 }, {
     timestamps: true

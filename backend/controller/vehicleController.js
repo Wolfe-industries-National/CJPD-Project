@@ -16,6 +16,12 @@ const createVehicle = asyncHandler(async (req, res) => {
         throw new Error('Please include plate');
     }
 
+    let currentCount = await Vehicle.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Vehicle.find({vehicleDBID: `VE_${currentCount}`})).length >= 1);
+
     // Create Address
     const vehicle = await Vehicle.create({
         owner: owner.toLowerCase(),
@@ -24,7 +30,8 @@ const createVehicle = asyncHandler(async (req, res) => {
         yearOfVehicle,
         colourOfVehicle: colourOfVehicle.toLowerCase(),
         vinOfVehicle,
-        plateOfVehicle
+        plateOfVehicle: plateOfVehicle.toLowerCase(),
+        vehicleDBID: `VE_${currentCount}`,
     })
 
     if(vehicle){

@@ -16,11 +16,18 @@ const createTelephone = asyncHandler(async (req, res) => {
         throw new Error('Please include number');
     }
 
+    let currentCount = await Telephone.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Telephone.find({telephoneDBID: `TP_${currentCount}`})).length >= 1);
+
     // Create Telephone
     const telephone = await Telephone.create({
         owner: owner.toLowerCase(),
         typeOfTelephone: typeOfTelephone.toLowerCase(),
-        telephoneNumber
+        telephoneNumber,
+        telephoneDBID: `TP_${currentCount}`,
     })
 
     if(telephone){

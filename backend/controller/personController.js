@@ -15,6 +15,11 @@ const createPerson = asyncHandler(async (req, res) => {
         throw new Error('Please include Name');
     }
 
+    let currentCount = await Person.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Person.find({personDBID: `PE_${currentCount}`})).length >= 1);
 
     // Create Person
     const person = await Person.create({
@@ -22,7 +27,7 @@ const createPerson = asyncHandler(async (req, res) => {
         dateOfBirth,
         telephone,
         address: address.toLowerCase(),
-        fps,
+        fps: fps.toLowerCase(),
         height,
         weight,
         aliases: aliases.toLowerCase(),
@@ -32,6 +37,7 @@ const createPerson = asyncHandler(async (req, res) => {
         tattoos: tattoos.toLowerCase(),
         hairColour,
         eyeColour,
+        personDBID: `PE_${currentCount}`
     })
 
     if(person){

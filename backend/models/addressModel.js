@@ -29,6 +29,10 @@ const addressSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    addressDBID: {
+        type: String,
+        required: true,
+    }
 }, {
     timestamps: true
 });

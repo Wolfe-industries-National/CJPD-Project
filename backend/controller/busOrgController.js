@@ -16,6 +16,12 @@ const createBusOrg = asyncHandler(async (req, res) => {
         throw new Error('Please include name of Business or Organization');
     }
 
+    let currentCount = await BusOrg.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await BusOrg.find({busOrgDBID: `BO_${currentCount}`})).length >= 1);
+
     // Create BusOrg
     const busOrg = await BusOrg.create({
         owner: owner.toLowerCase(),
@@ -23,7 +29,8 @@ const createBusOrg = asyncHandler(async (req, res) => {
         typeOfBusOrg: typeOfBusOrg.toLowerCase(),
         address: address.toLowerCase(),
         alarmCompany: alarmCompany.toLowerCase(),
-        telephoneNumber
+        telephoneNumber,
+        busOrgDBID: `BO_${currentCount}`
     })
 
     if(busOrg){

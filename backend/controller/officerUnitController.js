@@ -15,12 +15,19 @@ const createOfficerUnit = asyncHandler(async (req, res) => {
         throw new Error('Please include name');
     }
 
+    let currentCount = await OfficerUnit.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await OfficerUnit.find({officerDBID: `OU_${currentCount}`})).length >= 1);
+
     // Create Offcicer Unit
     const officerUnit = await OfficerUnit.create({
         name: name.toLowerCase(),
-        regimentalNumber,
-        rank,
-        unit
+        regimentalNumber: regimentalNumber.toLowerCase(),
+        rank: rank.toLowerCase(),
+        unit,
+        officerDBID: `OU_${currentCount}`,
     })
 
     if(officerUnit){

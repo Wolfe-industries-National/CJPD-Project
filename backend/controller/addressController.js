@@ -16,6 +16,13 @@ const createAddress = asyncHandler(async (req, res) => {
         throw new Error('Please include address');
     }
 
+    let currentCount = await Address.estimatedDocumentCount();
+
+    do {
+        currentCount += 1;
+    } while ((await Address.find({addressDBID: `AD_${currentCount}`})).length >= 1);
+    
+
     // Create Address
     const addressUnit = await Address.create({
         owner: owner.toLowerCase(),
@@ -23,8 +30,9 @@ const createAddress = asyncHandler(async (req, res) => {
         vacant,
         country: country.toLowerCase(),
         province: province.toLowerCase(),
-        city: province.toLowerCase(),
-        address: address.toLowerCase()
+        city: city.toLowerCase(),
+        address: address.toLowerCase(),
+        addressDBID: `AD_${currentCount}`,
     })
 
     if(addressUnit){

@@ -29,6 +29,10 @@ const vehicleSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    vehicleDBID: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true
 });
