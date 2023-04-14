@@ -109,21 +109,33 @@ const detailSearchBusOrg = asyncHandler(async (req, res) => {
 
     if(newSearchData.owner === ''){
         delete newSearchData.owner;
+    }else{
+        newSearchData.owner = newSearchData.owner.toLowerCase();
     }
     if(newSearchData.name === ''){
         delete newSearchData.name;
+    }else{
+        newSearchData.name = newSearchData.name.toLowerCase();
     }
     if(newSearchData.typeOfBusOrg === ''){
         delete newSearchData.typeOfBusOrg;
+    }else{
+        newSearchData.typeOfBusOrg = newSearchData.typeOfBusOrg.toLowerCase();
     }
     if(newSearchData.address === ''){
         delete newSearchData.address;
+    }else{
+        newSearchData.address = newSearchData.address.toLowerCase();
     }
     if(newSearchData.alarmCompany === ''){
         delete newSearchData.alarmCompany;
+    }else{
+        newSearchData.alarmCompany = newSearchData.alarmCompany.toLowerCase();
     }
     if(newSearchData.telephoneNumber === ''){
-        delete newSearchData.telephoneNumber
+        delete newSearchData.telephoneNumber;
+    }else{
+        newSearchData.telephoneNumber = newSearchData.telephoneNumber.toLowerCase();
     }
 
     const result = await BusOrg.find(newSearchData);

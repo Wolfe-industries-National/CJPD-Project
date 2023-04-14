@@ -112,24 +112,38 @@ const detailSearchVehicle = asyncHandler(async (req, res) => {
 
     if(newSearchData.owner === ''){
         delete newSearchData.owner;
+    }else{
+        newSearchData.owner = newSearchData.owner.toLowerCase();
     }
     if(newSearchData.makeOfVehicle === ''){
         delete newSearchData.makeOfVehicle;
+    }else{
+        newSearchData.makeOfVehicle = newSearchData.makeOfVehicle.toLowerCase();
     }
     if(newSearchData.modelOfVehicle === ''){
         delete newSearchData.modelOfVehicle;
+    }else{
+        newSearchData.modelOfVehicle = newSearchData.modelOfVehicle.toLowerCase();
     }
     if(newSearchData.yearOfVehicle === ''){
         delete newSearchData.yearOfVehicle;
+    }else{
+        newSearchData.yearOfVehicle = newSearchData.yearOfVehicle.toLowerCase();
     }
     if(newSearchData.colourOfVehicle === ''){
         delete newSearchData.colourOfVehicle;
+    }else{
+        newSearchData.colourOfVehicle = newSearchData.colourOfVehicle.toLowerCase();
     }
     if(newSearchData.vinOfVehicle === ''){
         delete newSearchData.vinOfVehicle;
+    }else{
+        newSearchData.vinOfVehicle = newSearchData.vinOfVehicle.toLowerCase();
     }
     if(newSearchData.plateOfVehicle === ''){
         delete newSearchData.plateOfVehicle;
+    }else{
+        newSearchData.plateOfVehicle = newSearchData.plateOfVehicle.toLowerCase();
     }
 
     const result = await Vehicle.find(newSearchData);

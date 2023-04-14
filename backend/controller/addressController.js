@@ -119,24 +119,38 @@ const detailSearchAddress = asyncHandler(async (req, res) => {
 
     if(newSearchData.owner === ''){
         delete newSearchData.owner;
+    }else{
+        newSearchData.owner = newSearchData.owner.toLowerCase();
     }
     if(newSearchData.typeOfBuilding === ''){
         delete newSearchData.typeOfBuilding;
+    }else{
+        newSearchData.typeOfBuilding = newSearchData.typeOfBuilding.toLowerCase();
     }
     if(newSearchData.vacant === ''){
         delete newSearchData.vacant;
+    }else{
+        newSearchData.vacant = newSearchData.vacant.toLowerCase();
     }
     if(newSearchData.country === ''){
         delete newSearchData.country;
+    }else{
+        newSearchData.country = newSearchData.country.toLowerCase();
     }
     if(newSearchData.province === ''){
         delete newSearchData.province;
+    }else{
+        newSearchData.province = newSearchData.province.toLowerCase();
     }
     if(newSearchData.address === ''){
         delete newSearchData.address;
+    }else{
+        newSearchData.address = newSearchData.address.toLowerCase();
     }
     if(newSearchData.city === ''){
         delete newSearchData.city;
+    }else{
+        newSearchData.city = newSearchData.city.toLowerCase();
     }
 
     console.log('CONTROLLER:',newSearchData);

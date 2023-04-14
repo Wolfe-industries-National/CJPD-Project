@@ -11,9 +11,9 @@ const createProperty = asyncHandler(async (req, res) => {
     const {owner, typeOfProperty, vinOfProperty, valueOfProperty, descriptionOfProperty} = req.body;
 
     // Validation
-    if(!vinOfProperty){
+    if(!typeOfProperty){
         res.status(400);
-        throw new Error('Please include VIN of property');
+        throw new Error('Please include Type of property');
     }
 
     let currentCount = await Property.estimatedDocumentCount();
@@ -93,18 +93,28 @@ const detailSearchProperty = asyncHandler(async (req, res) => {
 
     if(newSearchData.owner === ''){
         delete newSearchData.owner;
+    }else{
+        newSearchData.owner = newSearchData.owner.toLowerCase();
     }
     if(newSearchData.typeOfProperty === ''){
         delete newSearchData.typeOfProperty;
+    }else{
+        newSearchData.typeOfProperty = newSearchData.typeOfProperty.toLowerCase();
     }
     if(newSearchData.vinOfProperty === ''){
         delete newSearchData.vinOfProperty;
+    }else{
+        newSearchData.vinOfProperty = newSearchData.vinOfProperty.toLowerCase();
     }
     if(newSearchData.valueOfProperty === ''){
         delete newSearchData.valueOfProperty;
+    }else{
+        newSearchData.valueOfProperty = newSearchData.valueOfProperty.toLowerCase();
     }
     if(newSearchData.descriptionOfProperty === ''){
         delete newSearchData.descriptionOfProperty;
+    }else{
+        newSearchData.descriptionOfProperty = newSearchData.descriptionOfProperty.toLowerCase();
     }
 
     const result = await Property.find(newSearchData);
