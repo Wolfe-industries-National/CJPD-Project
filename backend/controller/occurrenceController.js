@@ -2,9 +2,13 @@ const asyncHandler = require('express-async-handler');
 const mongoose = require('mongoose');
 
 const Occurrence = require('../models/occurrenceModel');
+const Address = require('../models/addressModel');
+const BusOrg = require('../models/busOrgModel');
 const OfficerUnit = require("../models/officerUnitModel");
 const Person = require("../models/personModel");
-
+const Property = require('../models/propertyModel');
+const Telephone = require('../models/telephoneModel');
+const Vehicle = require('../models/vehicleModel');
 
 // @desc    Create new Occurrence
 // @route   POST /api/v1/occurrence/
@@ -36,7 +40,65 @@ const createOccurrence = asyncHandler(async (req, res) => {
         officerUnit,
         address,
         occurrenceDBID: `OC_${currentCount}`
-    })
+    });
+
+    // Adding Occurrence to all the other objects in the database
+    // Officer Unit
+    if((officerUnit !== '') && (officerUnit.includes('OU'))){
+        const dbid = officerUnit.split(' | ')[1];
+        await OfficerUnit.findOneAndUpdate({officerDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Telephone
+    if((telephone !== '') && (telephone.includes('TP'))){
+        const dbid = telephone.split(' | ')[1];
+        await Telephone.findOneAndUpdate({telephoneDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Address
+    if((address !== '') && (address.includes('AD'))){
+        const dbid = address.split(' | ')[1];
+        await Address.findOneAndUpdate({addressDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Vehicle
+    if((vehicle !== '') && (vehicle.includes('VE'))){
+        const dbid = property.split(' | ')[1];
+        await Vehicle.findOneAndUpdate({vehicleDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Property
+    if((property !== '') && (property.includes('PP'))){
+        const dbid = property.split(' | ')[1];
+        await Property.findOneAndUpdate({propertyDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Bus / Org
+    if((busOrg !== '') && (busOrg.includes('BO'))){
+        const dbid = busOrg.split(' | ')[1];
+        await BusOrg.findOneAndUpdate({busOrgDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
+    // Person
+    if((person !== '') && (person.includes('PE'))){
+        const dbid = person.split(' | ')[1];
+        await Person.findOneAndUpdate({personDBID: dbid}, {
+            $push: { occurrences: fileNumber }
+        })
+    }
+
 
     if(occurrence){
         res.status(201).json({

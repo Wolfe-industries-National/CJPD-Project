@@ -230,6 +230,13 @@ const MDOccurrence = () => {
         }))
     }
 
+    const onSelectOfficerUnit = (value) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            officerUnit: value
+        }))
+    }
+
     const clearFields = () => {
         setFormData({
             fileNumber: '',
@@ -269,109 +276,156 @@ const MDOccurrence = () => {
 
 
                 <div className="DFUniversalRow">
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Person<br/></div>
-                            <input onBlur={() => setShowListPerson(false)} onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="person" placeholder="First & Last Name" value={person} onChange={onChange}/>
-                            {
-                                showListOfPerson && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Person<br/></div>
+                        <input onFocus={() => setShowListPerson(true)} className="DFUniversalFields" type="text" name="person" placeholder="Bill Benson" value={person} onChange={onChange}/>
+                        {
+                            showListOfPerson && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListPerson(false)}>X</div>
                                         {
-                                            peopleList.map((item) => <li onClick={() => onSelectPerson(item.name)}>{item.name}</li>)
+                                            peopleList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectPerson(`${item.name} | ${item.personDBID}`)}>
+                                                    {`${item.name} | ${item.personDBID}`}
+                                                </div>
+                                            </div>)
                                         }
-                                    </ul>
-                            }
-                        </label>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Business / Organization<br/></div>
-                            <input onBlur={() => setShowListOfBusiness(false)} onFocus={() => setShowListOfBusiness(true)} className="DFUniversalFields" type="text" name="busOrg" placeholder="Random Incorporated ltd." value={busOrg} onChange={onChange}/>
-                            {
-                                showListOfBusiness && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+
+
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Business / Organization<br/></div>
+                        <input onFocus={() => setShowListOfBusiness(true)} className="DFUniversalFields" type="text" name="busOrg" placeholder="Random Incorporated ltd." value={busOrg} onChange={onChange}/>
+                        {
+                            showListOfBusiness && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListOfBusiness(false)}>X</div>
                                         {
-                                            busOrgList.map((item) => <li onClick={() => onSelectBusiness(item.name)}>{item.name}</li>)
+                                            busOrgList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectBusiness(`${item.name} | ${item.busOrgDBID}`)}>
+                                                    {`${item.name} | ${item.busOrgDBID}`}
+                                                </div>
+                                            </div>)
                                         }
-                                    </ul>
-                            }
-                        </label>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Property<br/></div>
-                            <input onBlur={() => setShowListProperty(false)} onFocus={() => setShowListProperty(true)} className="DFUniversalFields" type="text" name="property" placeholder="House, Apartment, Hotel, Etc." value={property} onChange={onChange}/>
-                            {
-                                showListProperty && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+
+
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Property<br/></div>
+                        <input onFocus={() => setShowListProperty(true)} className="DFUniversalFields" type="text" name="property" placeholder="House, Apartment, Hotel, Etc." value={property} onChange={onChange}/>
+                        {
+                            showListProperty && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListProperty(false)}>X</div>
                                         {
-                                            propertyList.map((item) => <li onClick={() => onSelectProperty(item.typeOfProperty)}>{item.typeOfProperty}</li>)
+                                            propertyList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectProperty(`${item.typeOfProperty} | ${item.propertyDBID}`)}>
+                                                    {`${item.typeOfProperty} | ${item.propertyDBID}`}
+                                                </div>
+                                            </div>)
                                         }
-                                    </ul>
-                            }
-                        </label>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+
+                </div>
+
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Associated Vehicles<br/></div>
+                        <input onFocus={() => setShowListVehicles(true)} className="DFUniversalFields" type="text" name="vehicle" placeholder="2018 Honda Civic LX" value={vehicle} onChange={onChange}/>
+                        {
+                            showListVehicles && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListVehicles(false)}>X</div>
+                                        {
+                                            vehicleList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectVehicle(`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle} | ${item.vehicleDBID}`)}>
+                                                    {`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle} | ${item.vehicleDBID}`}
+                                                </div>
+                                            </div>)
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Telephone<br/></div>
+                        <input onFocus={() => setShowListTelephones(true)} className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
+                        {
+                            showListTelephones && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListTelephones(false)}>X</div>
+                                        {
+                                            telephoneList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectTelephone(`${item.telephoneNumber} | ${item.telephoneDBID}`)}>
+                                                    {item.telephoneNumber} | {item.telephoneDBID}
+                                                </div>
+                                            </div>)
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Officer Unit<br/></div>
+                        <input onFocus={() => setShowListOfficerUnits(true)} className="DFUniversalFields" type="text" name="officerUnit" placeholder="99" value={officerUnit} onChange={onChange}/>
+                        {
+                            showListOfficerUnits && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px', zIndex: '9999'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListOfficerUnits(false)}>X</div>
+                                        {
+                                            officerUnitList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectOfficerUnit(`${item.unit} | ${item.officerDBID}`)}>
+                                                    {item.unit} | {item.officerDBID}
+                                                </div>
+                                            </div>)
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
 
                 <div className="DFUniversalRow">
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Vehicle<br/></div>
-                            <input onBlur={() => setShowListVehicles(false)} onFocus={() => setShowListVehicles(true)} className="DFUniversalFields" type="text" name="vehicle" placeholder="2018 Honda Civic LX" value={vehicle} onChange={onChange}/>
-                            {
-                                showListVehicles && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Address<br/></div>
+                        <input onFocus={() => setShowListAddress(true)} className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
+                        {
+                            showListAddress && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListAddress(false)}>X</div>
                                         {
-                                            vehicleList.map((item) => <li onClick={() => onSelectVehicle(`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle}`)}>{`${item.yearOfVehicle} ${item.makeOfVehicle} ${item.modelOfVehicle}`}</li>)
+                                            addressList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectAddress(`${item.address} | ${item.addressDBID}`)}>
+                                                    {item.address} | {item.addressDBID}
+                                                </div>
+                                            </div>)
                                         }
-                                    </ul>
-                            }
-                        </label>
-                    </div>
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input onBlur={() => setShowListTelephones(false)} onFocus={() => setShowListTelephones(true)} className="DFUniversalFields" type="text" name="telephone" placeholder="(000) 000-0000" value={telephone} onChange={onChange}/>
-                            {
-                                showListTelephones && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
-                                        {
-                                            telephoneList.map((item) => <li onClick={() => onSelectTelephone(item.telephoneNumber)}>{item.telephoneNumber}</li>)
-                                        }
-                                    </ul>
-                            }
-                        </label>
-                    </div>
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Officer / Unit<br/></div>
-                            <input onBlur={() => setShowListOfficerUnits(false)} onFocus={() => setShowListOfficerUnits(true)} className="DFUniversalFields" type="number" name="officerUnit" placeholder="1234567" value={officerUnit} onChange={onChange}/>
-                            {/* {
-                                showListOfficerUnits && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
-                                        {
-                                            officerUnitList.map((item) => <li onClick={() => onSelectTelephone(item.name)}>{item.name}</li>)
-                                        }
-                                    </ul>
-                            } */}
-                        </label>
-                    </div>
-                </div>
-
-                <div className="DFUniversalRow">
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Address<br/></div>
-                            <input onBlur={() => setShowListAddress(false)} onFocus={() => setShowListAddress(true)} className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
-                            {
-                                showListAddress && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
-                                        {
-                                            addressList.map((item) => <li onClick={() => onSelectAddress(item.address)}>{item.address}</li>)
-                                        }
-                                    </ul>
-                            }
-                        </label>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </form>

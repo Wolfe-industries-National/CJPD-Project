@@ -53,9 +53,12 @@ const FFBusOrg = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Telephone<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    businessList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/bus-org/${item._id}`)}>
+                    businessList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }} onClick={() => navigate(`/queryResultPage/bus-org/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
@@ -70,6 +73,9 @@ const FFBusOrg = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.telephoneNumber ? item.telephoneNumber : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.busOrgDBID ? item.busOrgDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }

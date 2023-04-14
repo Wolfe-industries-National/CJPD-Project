@@ -32,17 +32,9 @@ const QRPerson = ({id}) => {
                                 <div class="QRTitle">Aliases:</div>
                                 <div class="QRResultText" name="aliases">{showPerson.aliases && showPerson.aliases[0]}</div>
                             </div>
-                            <div class="QRData">
-                                <div class="QRTitle">Sex:</div>
-                                <div class="QRResultText" name="sex">Male</div>
-                            </div>
                         </div>
 
                         <div class="QRRow">
-                            <div class="QRData">
-                                <div class="QRTitle">Ethnicity:</div>
-                                <div class="QRResultText" name="ethnicity">Caucasian</div>
-                            </div>
                             <div class="QRData">
                                 <div class="QRTitle">Age:</div>
                                 <div class="QRResultText" name="age">{showPerson.dateOfBirth && (currentYear - showPerson.dateOfBirth.split('-')[0])}</div>
@@ -79,7 +71,7 @@ const QRPerson = ({id}) => {
                             </div>
                             <div className="QRData">
                                 <div className="QRTitle">Occurrence Number:</div>
-                                <div className="QRResultText" name="occurrenceNumber">123456789</div>
+                                <div className="QRResultText" name="occurrenceNumber">{`${showPerson.occurrences}`}</div>
                             </div>
                         </div>
 

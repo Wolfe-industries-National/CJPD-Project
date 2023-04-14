@@ -43,14 +43,20 @@ const FFOccurrence = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Description<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    occurrenceList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/occurrence/${item._id}`)}>
+                    occurrenceList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }} onClick={() => navigate(`/queryResultPage/occurrence/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.fileNumber}<br/></div>
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.summary}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.occurrenceDBID}<br/></div>
                         </div>
                     </div>)
                 }

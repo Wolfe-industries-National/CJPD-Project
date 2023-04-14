@@ -51,9 +51,12 @@ const FFPerson = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Fingerprint Section<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    personList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
+                    personList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }} onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.name}<br/></div>
                         </div>
@@ -65,6 +68,9 @@ const FFPerson = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.fps ? item.fps : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.personDBID ? item.personDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }

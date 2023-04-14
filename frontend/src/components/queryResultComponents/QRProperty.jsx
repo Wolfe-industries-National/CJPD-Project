@@ -48,6 +48,17 @@ const QRProperty = ({id}) => {
                 </div>
             </div>
 
+            <div class="QRRow">
+                <div class="QRData">
+                    <div class="QRTitle">DBID:</div>
+                    <div class="QRResultText" name="address">{showProperty.propertyDBID}</div>
+                </div>
+                <div className="QRData">
+                    <div className="QRTitle">Occurrence Number:</div>
+                    <div className="QRResultText" name="occurrenceNumber">{`${showProperty.occurrences}`}</div>
+                </div>
+            </div>
+
         </div>
     )
 }

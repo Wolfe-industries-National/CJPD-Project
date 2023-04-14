@@ -32,6 +32,10 @@ const addressSchema = mongoose.Schema({
     addressDBID: {
         type: String,
         required: true,
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

@@ -32,6 +32,10 @@ const vehicleSchema = mongoose.Schema({
     vehicleDBID: {
         type: String,
         required: true
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

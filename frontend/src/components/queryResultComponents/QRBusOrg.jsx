@@ -52,6 +52,17 @@ const QRBusOrg = ({id}) => {
                 </div>
             </div>
 
+            <div class="QRRow">
+                <div class="QRData">
+                    <div class="QRTitle">DBID:</div>
+                    <div class="QRResultText" name="address">{showBusOrg.busOrgDBID}</div>
+                </div>
+                <div className="QRData">
+                    <div className="QRTitle">Occurrence Number:</div>
+                    <div className="QRResultText" name="occurrenceNumber">{`${showBusOrg.occurrences}`}</div>
+                </div>
+            </div>
+
         </div>
     )
 }

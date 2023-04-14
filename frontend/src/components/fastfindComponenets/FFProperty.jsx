@@ -50,9 +50,12 @@ const FFProperty = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Value<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    propertyList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
+                    propertyList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }} onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.typeOfProperty ? item.typeOfProperty : ''}<br/></div>
                         </div>
@@ -64,6 +67,9 @@ const FFProperty = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.valueOfProperty ? item.valueOfProperty : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.propertyDBID ? item.propertyDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }

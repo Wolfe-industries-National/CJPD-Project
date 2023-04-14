@@ -47,9 +47,12 @@ const FFOfficerUnit = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Unit<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    officerUnitList.map((item) => <div className="DFUniversalRow">
+                    officerUnitList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.name ? item.name : ''}<br/></div>
                         </div>
@@ -61,6 +64,9 @@ const FFOfficerUnit = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.unit ? item.unit : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.officerDBID ? item.officerDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }

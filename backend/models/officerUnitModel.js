@@ -20,6 +20,10 @@ const officerUnitSchema = mongoose.Schema({
     officerDBID: {
         type: String,
         required: true,
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

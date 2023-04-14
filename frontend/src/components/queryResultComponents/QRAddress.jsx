@@ -30,7 +30,7 @@ const QRAddress = ({id}) => {
                 </div>
                 <div class="QRData">
                     <div class="QRTitle">Vacant:</div>
-                    <div class="QRResultText" name="vacant">{showAddress.vacant}</div>
+                    <div class="QRResultText" name="vacant">{showAddress.vacant ? 'Yes' : 'No'}</div>
                 </div>
             </div>
 
@@ -55,6 +55,18 @@ const QRAddress = ({id}) => {
                     <div class="QRResultText" name="address">{showAddress.address}</div>
                 </div>
             </div>
+
+            <div class="QRRow">
+                <div class="QRData">
+                    <div class="QRTitle">DBID:</div>
+                    <div class="QRResultText" name="address">{showAddress.addressDBID}</div>
+                </div>
+                <div className="QRData">
+                    <div className="QRTitle">Occurrence Number:</div>
+                    <div className="QRResultText" name="occurrenceNumber">{`${showAddress.occurrences}`}</div>
+                </div>
+            </div>
+            
 
         </div>
     )

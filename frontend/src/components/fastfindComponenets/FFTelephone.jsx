@@ -44,9 +44,12 @@ const FFTelephone = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Type<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    telephoneList.map((item) => <div className="DFUniversalRow">
+                    telephoneList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.telephoneNumber ? item.telephoneNumber : ''}<br/></div>
                         </div>
@@ -55,6 +58,9 @@ const FFTelephone = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.typeOfTelephone ? item.typeOfTelephone : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.telephoneDBID ? item.telephoneDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }

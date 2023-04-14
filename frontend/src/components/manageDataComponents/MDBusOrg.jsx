@@ -69,10 +69,12 @@ const MDBusOrg = () => {
     }
 
     const onSelectAddress = (value) => {
+        console.log('TEST')
         setFormData((prevState) => ({
             ...prevState,
             address: value
         }))
+        console.log(formData);
     }
 
     const onSelectTelephone = (value) => {
@@ -139,19 +141,25 @@ const MDBusOrg = () => {
                 </div>
 
                 <div className="DFUniversalRow">
-                    <div className="DFUniversalData">
-                        <label style={{position: 'relative'}}>
-                            <div className="DFUniversalInnerTitle">Address<br/></div>
-                            <input onBlur={() => setShowListAddress(false)} onFocus={() => setShowListAddress(true)} className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
-                                {
-                                    showListAddress && 
-                                        <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
-                                            {
-                                                addressList.map((item) => <li onClick={() => onSelectAddress(item.address)}>{item.address}</li>)
-                                            }
-                                        </ul>
-                                }
-                        </label>
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Address<br/></div>
+                        <input onFocus={() => setShowListAddress(true)} className="DFUniversalFields" type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address} onChange={onChange}/>
+                        {
+                            showListAddress && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListAddress(false)}>X</div>
+                                        {
+                                            addressList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectAddress(`${item.address} | ${item.addressDBID}`)}>
+                                                    {item.address} | {item.addressDBID}
+                                                </div>
+                                            </div>)
+                                        }
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
 
@@ -162,19 +170,26 @@ const MDBusOrg = () => {
                             <input className="DFUniversalFields" type="text" name="alarmCompany" placeholder="Telus Security"  value={alarmCompany} onChange={onChange}/>
                         </label>
                     </div>
-                    <div className="DFUniversalData">
-                        <label>
-                            <div className="DFUniversalInnerTitle">Telephone<br/></div>
-                            <input onBlur={() => setShowListTelephone(false)} onFocus={() => setShowListTelephone(true)} className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber} onChange={onChange}/>
-                            {
-                                showListTelephone && 
-                                    <ul style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+
+                    <div className="DFUniversalData" style={{position: 'relative', display: 'block'}}>
+                        <div className="DFUniversalInnerTitle">Telephone<br/></div>
+                        <input onFocus={() => setShowListTelephone(true)} className="DFUniversalFields" type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber} onChange={onChange}/>
+                        {
+                            showListTelephone && (
+                                <div>
+                                    <div style={{position: 'absolute', boxShadow: '5px 10px 10px grey', backgroundColor: 'lightgrey', listStyle: 'none', maxHeight: '100px', overflowY: 'scroll', padding: '0.5rem 1rem', borderRadius: '10px'}}>
+                                        <div key={'close'} style={{color: 'red'}} onClick={() => setShowListTelephone(false)}>X</div>
                                         {
-                                            telephoneList.map((item) => <li onClick={() => onSelectTelephone(item.telephoneNumber)}>{item.telephoneNumber}</li>)
+                                            telephoneList.map((item, index) => <div>
+                                                <div key={index} onClick={() => onSelectTelephone(`${item.telephoneNumber} | ${item.telephoneDBID}`)}>
+                                                    {item.telephoneNumber} | {item.telephoneDBID}
+                                                </div>
+                                            </div>)
                                         }
-                                    </ul>
-                            }
-                        </label>
+                                    </div>
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             </form>

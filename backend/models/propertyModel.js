@@ -24,6 +24,10 @@ const propertySchema = mongoose.Schema({
     propertyDBID: {
         type: String,
         required: true
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

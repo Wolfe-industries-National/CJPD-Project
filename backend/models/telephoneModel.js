@@ -16,6 +16,10 @@ const telephoneSchema = mongoose.Schema({
     telephoneDBID: {
         type: String,
         required: true,
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

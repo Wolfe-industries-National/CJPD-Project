@@ -60,6 +60,10 @@ const personSchema = mongoose.Schema({
     personDBID: {
         type: String,
         required: false
+    },
+    occurrences: {
+        type: [String],
+        required: false
     }
 }, {
     timestamps: true

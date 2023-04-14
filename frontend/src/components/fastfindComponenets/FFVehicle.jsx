@@ -53,9 +53,12 @@ const FFVehicle = () => {
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Colour<br/></div>
                     </div>
+                    <div className="DFUniversalData">
+                        <div className="FFUniversalInnerTitle">DBID<br/></div>
+                    </div>
                 </div>
                 {
-                    vehicleList.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/vehicle/${item._id}`)}>
+                    vehicleList.map((item, index) => <div className="DFUniversalRow" style={{ backgroundColor: index%2===0 && 'lightblue' }} onClick={() => navigate(`/queryResultPage/vehicle/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
@@ -70,6 +73,9 @@ const FFVehicle = () => {
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.colourOfVehicle ? item.colourOfVehicle : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.vehicleDBID ? item.vehicleDBID : ''}<br/></div>
                         </div>
                     </div>)
                 }
