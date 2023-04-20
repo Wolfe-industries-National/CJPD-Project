@@ -131,10 +131,10 @@ const DFAddress = () => {
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">
                     <div className="DFUniversalData">
-                        <div className="FFUniversalInnerTitle">Owner / Tenant<br/></div>
+                        <div className="FFUniversalInnerTitle">Address<br/></div>
                     </div>
                     <div className="DFUniversalData">
-                        <div className="FFUniversalInnerTitle">Address<br/></div>
+                        <div className="FFUniversalInnerTitle">Owner / Tenant<br/></div>
                     </div>
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Country<br/></div>
@@ -144,12 +144,12 @@ const DFAddress = () => {
                     </div>
                 </div>
                 {
-                    addresses.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/address/${item._id}`)}>
-                        <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
-                        </div>
+                    addresses.map((item, index) => <div style={{ backgroundColor: index%2===0 && 'lightblue', cursor: 'pointer' }} className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/address/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.address ? item.address : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.country ? item.country : ''}<br/></div>

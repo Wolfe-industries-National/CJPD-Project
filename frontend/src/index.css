@@ -16,6 +16,62 @@ body, html
     height: 100%;
     max-height: 100%;
 }
+.homeLinkBtn {
+    margin-bottom: 0.7rem; 
+    padding: 0.8rem 0; 
+    border-radius: 5px;
+    font-size: 1.2rem; 
+    text-decoration: none; 
+    display: block;
+}
+.homeLinkBtnFastFind {
+    background-color: #01244C;
+    color: #DDBA2C;
+}
+.homeLinkBtnFastFind:hover {
+    background-color: #DDBA2C;
+    color: #01244C;
+}
+.homeLinkBtnDetailedFind {
+    background-color: #DDBA2C;
+    color: #01244C;
+}
+.homeLinkBtnDetailedFind:hover {
+    background-color: #01244C;
+    color: #DDBA2C;
+}
+
+.editBtn {
+    margin-bottom: 0.7rem; 
+    padding: 0.8rem 0; 
+    border-radius: 5px;
+    font-size: 1.2rem; 
+    text-decoration: none; 
+    display: block;
+    background-color: #DDBA2C;
+    color: #01244C;
+}
+.editBtn:hover {
+    background-color: #01244C;
+    color: #DDBA2C;
+    border: 2px solid #DDBA2C !important;
+}
+.deleteBtn {
+    margin-bottom: 0.7rem; 
+    padding: 0.8rem 0; 
+    border-radius: 5px;
+    font-size: 1.2rem; 
+    text-decoration: none; 
+    display: block;
+    background-color: #dd2c2c;
+    color: #e9edf2;
+}
+.deleteBtn:hover {
+    background-color: #01244C;
+    color: #dd2c2c;
+    border: 2px solid #dd2c2c !important;
+}
+
 .UniversalFieldsTB
 {
     border-radius: 5px;

@@ -86,7 +86,7 @@ const Home = () => {
                     </div>
                     <ul style={{listStyle: 'none', textAlign: 'center', width: '12rem'}}>
                         {fastFindChoicesList.map((item, index) => {
-                            return (<Link style={{marginBottom: '0.7rem', backgroundColor: '#01244C', padding: '0.8rem 0', borderRadius: '5px',fontSize: '1.2rem', textDecoration: 'none', color: '#DDBA2C', display: 'block'}} key={index} to={`/fastFind/${item.value}`}>{item.name}</Link>);
+                            return (<Link className="homeLinkBtn homeLinkBtnFastFind" key={index} to={`/fastFind/${item.value}`}>{item.name}</Link>);
                         })}
                     </ul>
                 </div>
@@ -102,7 +102,7 @@ const Home = () => {
                     </div>
                     <ul style={{listStyle: 'none', textAlign: 'center', width: '12rem', marginLeft: '0.3rem'}}>
                         {detailedFindChoicesList.map((item, index) => {
-                            return (<Link style={{marginBottom: '0.7rem', backgroundColor: '#DDBA2C', padding: '0.8rem 0', borderRadius: '5px',fontSize: '1.2rem', textDecoration: 'none', color: '#01244C', display: 'block'}} key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link>);
+                            return (<Link className="homeLinkBtn homeLinkBtnDetailedFind" key={index} to={`/detailedFind/${item.value}`}>{item.name}</Link>);
                         })}
                     </ul>
                 </div>

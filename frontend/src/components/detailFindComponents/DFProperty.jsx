@@ -110,7 +110,7 @@ const DFProperty = () => {
                     </div>
                 </div>
                 {
-                    properties.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
+                    properties.map((item, index) => <div style={{ backgroundColor: index%2===0 && 'lightblue', cursor: 'pointer' }} className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/property/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.typeOfProperty ? item.typeOfProperty : ''}<br/></div>
                         </div>

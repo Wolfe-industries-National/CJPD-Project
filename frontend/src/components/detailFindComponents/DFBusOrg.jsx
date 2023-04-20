@@ -114,10 +114,10 @@ const DFBusOrg = () => {
             <div className="FFResultsContainer">
                 <div className="DFUniversalRow">
                     <div className="DFUniversalData">
-                        <div className="FFUniversalInnerTitle">Owner<br/></div>
+                        <div className="FFUniversalInnerTitle">Business<br/></div>
                     </div>
                     <div className="DFUniversalData">
-                        <div className="FFUniversalInnerTitle">Business<br/></div>
+                        <div className="FFUniversalInnerTitle">Owner<br/></div>
                     </div>
                     <div className="DFUniversalData">
                         <div className="FFUniversalInnerTitle">Type<br/></div>
@@ -130,12 +130,12 @@ const DFBusOrg = () => {
                     </div>
                 </div>
                 {
-                    busOrgs.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/bus-org/${item._id}`)}>
-                        <div className="DFUniversalData">
-                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
-                        </div>
+                    busOrgs.map((item, index) => <div style={{ backgroundColor: index%2===0 && 'lightblue', cursor: 'pointer' }} className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/bus-org/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.name ? item.name : ''}<br/></div>
+                        </div>
+                        <div className="DFUniversalData">
+                            <div className="FFUniversalInnerTitle">{item.owner ? item.owner : ''}<br/></div>
                         </div>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.typeOfBusOrg ? item.typeOfBusOrg : ''}<br/></div>

@@ -1,13 +1,36 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getBusOrg} from "../../features/busOrg/busOrgSlice";
 
 const QRBusOrg = ({id}) => {
 
+    const [edit, setEdit] = useState(false);
+    const [formData, setFormData] = useState({
+        owner: '',
+        name: '',
+        typeOfBusOrg: '',
+        address: '',
+        alarmCompany: '',
+        telephoneNumber: ''
+    });
+
+    const {owner, name, typeOfBusOrg, address, alarmCompany, telephoneNumber} = formData;
+
     console.log(id);
     const dispatch = useDispatch();
     const {busOrg} = useSelector((state) => state.busOrg);
     let showBusOrg = {}
+
+    useEffect(() => {
+        setFormData({
+            owner: busOrg.owner,
+            name: busOrg.name,
+            typeOfBusOrg: busOrg.typeOfBusOrg,
+            address: busOrg.address,
+            alarmCompany: busOrg.alarmCompany,
+            telephoneNumber: busOrg.telephoneNumber
+        });
+    }, [busOrg.owner, busOrg.name, busOrg.typeOfBusOrg, busOrg.address, busOrg.alarmCompany, busOrg.telephoneNumber]);
 
     useEffect(() => {
         dispatch(getBusOrg(id));
@@ -22,33 +45,33 @@ const QRBusOrg = ({id}) => {
             <div class="QRRow">
                 <div class="QRData">
                     <div class="QRTitle">Owner:</div>
-                    <div class="QRResultText" name="owner">{showBusOrg.owner}</div>
+                    {edit ? <input type="text" name="owner" placeholder="First & Last Name" value={owner}/> : <div class="QRResultText" name="owner">{showBusOrg.owner}</div>}
                 </div>
                 <div class="QRData">
                     <div class="QRTitle">Business:</div>
-                    <div class="QRResultText" name="name">{showBusOrg.name}</div>
+                    {edit ? <input type="text" name="name" placeholder="Random Incorporated ltd." value={name}/> : <div class="QRResultText" name="name">{showBusOrg.name}</div>}
                 </div>
                 <div class="QRData">
                     <div class="QRTitle">Business Type:</div>
-                    <div class="QRResultText" name="typeOfBusOrg">{showBusOrg.typeOfBusOrg}</div>
+                    {edit ? <input type="text" name="typeOfBusOrg" placeholder="Convenience Store" value={typeOfBusOrg}/> : <div class="QRResultText" name="typeOfBusOrg">{showBusOrg.typeOfBusOrg}</div>}
                 </div>
             </div>
 
             <div class="QRRow">
                 <div class="QRData">
                     <div class="QRTitle">Address:</div>
-                    <div class="QRResultText" name="address">{showBusOrg.address}</div>
+                    {edit ? <input type="text" name="address" placeholder="123 Random Place Blvd. W, Lethbridge AB" value={address}/> : <div class="QRResultText" name="address">{showBusOrg.address}</div>}
                 </div>
                 <div class="QRData">
                     <div class="QRTitle">Telephone:</div>
-                    <div class="QRResultText" name="alarmCompany">{showBusOrg.telephoneNumber}</div>
+                    {edit ? <input type="text" name="telephoneNumber" placeholder="(000) 000-0000" value={telephoneNumber}/> : <div class="QRResultText" name="alarmCompany">{showBusOrg.telephoneNumber}</div>}
                 </div>
             </div>
 
             <div class="QRRow">
                 <div class="QRData">
                     <div class="QRTitle">Alarm Company:</div>
-                    <div class="QRResultText" name="telephoneNumber">{showBusOrg.alarmCompany}</div>
+                    {edit ? <input type="text" name="alarmCompany" placeholder="Telus Security"  value={alarmCompany} /> : <div class="QRResultText" name="telephoneNumber">{showBusOrg.alarmCompany}</div>}
                 </div>
             </div>
 
@@ -62,6 +85,18 @@ const QRBusOrg = ({id}) => {
                     <div className="QRResultText" name="occurrenceNumber">{`${showBusOrg.occurrences}`}</div>
                 </div>
             </div>
+
+            {edit ?
+                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
+                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
+                </div>
+            : 
+                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
+                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                </div>
+            }
 
         </div>
     )

@@ -201,7 +201,7 @@ const DFPerson = () => {
                     </div>
                 </div>
                 {
-                    people.map((item) => <div className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
+                    people.map((item, index) => <div style={{ backgroundColor: index%2===0 && 'lightblue', cursor: 'pointer' }} className="DFUniversalRow" onClick={() => navigate(`/queryResultPage/person/${item._id}`)}>
                         <div className="DFUniversalData">
                             <div className="FFUniversalInnerTitle">{item.name ? item.name : ''}<br/></div>
                         </div>
