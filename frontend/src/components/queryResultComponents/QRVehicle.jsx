@@ -20,19 +20,20 @@ const QRVehicle = ({id}) => {
     console.log(id);
     const dispatch = useDispatch();
     const {vehicle} = useSelector((state) => state.vehicle);
+    const {user} = useSelector((state) => state.auth);
     let showVehicle = {}
 
     useEffect(() => {
         setFormData({
-            owner: vehicle.owner,
-            makeOfVehicle: vehicle.makeOfVehicle,
-            modelOfVehicle: vehicle.modelOfVehicle,
-            yearOfVehicle: vehicle.yearOfVehicle,
-            colourOfVehicle: vehicle.colourOfVehicle,
-            vinOfVehicle: vehicle.vinOfVehicle,
-            plateOfVehicle: vehicle.plateOfVehicle
+            owner: vehicle?.owner,
+            makeOfVehicle: vehicle?.makeOfVehicle,
+            modelOfVehicle: vehicle?.modelOfVehicle,
+            yearOfVehicle: vehicle?.yearOfVehicle,
+            colourOfVehicle: vehicle?.colourOfVehicle,
+            vinOfVehicle: vehicle?.vinOfVehicle,
+            plateOfVehicle: vehicle?.plateOfVehicle
         });
-    }, [vehicle.owner, vehicle.makeOfVehicle, vehicle.modelOfVehicle, vehicle.yearOfVehicle, vehicle.colourOfVehicle, vehicle.vinOfVehicle, vehicle.plateOfVehicle]);
+    }, [vehicle?.owner, vehicle?.makeOfVehicle, vehicle?.modelOfVehicle, vehicle?.yearOfVehicle, vehicle?.colourOfVehicle, vehicle?.vinOfVehicle, vehicle?.plateOfVehicle]);
 
     useEffect(() => {
         dispatch(getVehicle(id));
@@ -92,16 +93,20 @@ const QRVehicle = ({id}) => {
                 </div>
             </div>
 
-            {edit ?
-                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
-                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
-                </div>
-            : 
-                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
-                </div>
+            {user.userType !== 'Student' && 
+                <>
+                    {edit ?
+                        <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                            <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
+                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
+                        </div>
+                    : 
+                        <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                            <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
+                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                        </div>
+                    }
+                </>
             }
 
         </div>

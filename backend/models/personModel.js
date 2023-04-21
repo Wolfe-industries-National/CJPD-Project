@@ -29,6 +29,15 @@ const personSchema = mongoose.Schema({
         type: String,
         required: false,
     },
+    race: {
+        type: String,
+        required: false,
+    },
+    gender: {
+        type: String,
+        enum: ['Male', 'Female', 'X'],
+        required: false,
+    },
     aliases: {
         type: [String],
         required: false,

@@ -7,7 +7,7 @@ const Person = require('../models/personModel');
 // @route   POST /api/v1/person/
 // @access  Private
 const createPerson = asyncHandler(async (req, res) => {
-    const {name, dateOfBirth, telephone, address, fps, height, weight, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = req.body;
+    const {name, dateOfBirth, telephone, address, fps, height, weight, race, gender, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = req.body;
 
     // Validation
     if(!name){
@@ -30,6 +30,8 @@ const createPerson = asyncHandler(async (req, res) => {
         fps: fps.toLowerCase(),
         height,
         weight,
+        race,
+        gender,
         aliases: aliases.toLowerCase(),
         associatedVehicles,
         associates: associates.toLowerCase(),
@@ -50,6 +52,8 @@ const createPerson = asyncHandler(async (req, res) => {
             fps: person.fps,
             height: person.height,
             weight: person.weight,
+            race: person.race,
+            gender: person.gender,
             aliases: person.aliases,
             associatedVehicles: person.associatedVehicles,
             associates: person.associates,
@@ -142,6 +146,12 @@ const detailSearchPerson = asyncHandler(async (req, res) => {
     }
     if(newSearchData.weight === ''){
         delete newSearchData.weight;
+    }
+    if(newSearchData.race === ''){
+        delete newSearchData.race;
+    }
+    if(newSearchData.gender === ''){
+        delete newSearchData.gender;
     }
     if(newSearchData.aliases[0] === ''){
         delete newSearchData.aliases;

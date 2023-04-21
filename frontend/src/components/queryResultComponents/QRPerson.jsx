@@ -13,6 +13,8 @@ const QRPerson = ({id}) => {
         fps: '',
         height: '',
         weight: '',
+        race: '',
+        gender: '',
         aliases: '',
         associatedVehicles: '',
         associates: '',
@@ -21,32 +23,35 @@ const QRPerson = ({id}) => {
         hairColour: '',
         eyeColour: ''
     });
-    const {name, dateOfBirth, telephone, address, fps, height, weight, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = formData;
+    const {name, dateOfBirth, telephone, address, fps, height, weight, race, gender, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = formData;
 
     console.log(id);
     const dispatch = useDispatch();
     const {person} = useSelector((state) => state.person);
+    const {user} = useSelector((state) => state.auth);
     let showPerson = {}
     const currentYear = new Date().getFullYear();
 
     useEffect(() => {
         setFormData({
-            name: person.name,
-            dateOfBirth: person.dateOfBirth,
-            telephone: person.telephone,
-            address: person.address,
-            fps: person.fps,
-            height: person.height,
-            weight: person.weight,
-            aliases: person.aliases,
-            associatedVehicles: person.associatedVehicles,
-            associates: person.associates,
-            flags: person.flags,
-            tattoos: person.tattoos,
-            hairColour: person.hairColour,
-            eyeColour: person.eyeColour
+            name: person?.name,
+            dateOfBirth: person?.dateOfBirth,
+            telephone: person?.telephone,
+            address: person?.address,
+            fps: person?.fps,
+            height: person?.height,
+            weight: person?.weight,
+            race: person?.race,
+            gender: person?.gender,
+            aliases: person?.aliases,
+            associatedVehicles: person?.associatedVehicles,
+            associates: person?.associates,
+            flags: person?.flags,
+            tattoos: person?.tattoos,
+            hairColour: person?.hairColour,
+            eyeColour: person?.eyeColour
         });
-    }, [person.name, person.dateOfBirth, person.telephone, person.address, person.fps, person.height, person.weight, person.aliases, person.associatedVehicles, person.associates, person.flags, person.tattoos, person.hairColour, person.eyeColour]);
+    }, [person?.name, person?.dateOfBirth, person?.telephone, person?.address, person?.fps, person?.height, person?.weight, person?.race, person?.gender, person?.aliases, person?.associatedVehicles, person?.associates, person?.flags, person?.tattoos, person?.hairColour, person?.eyeColour]);
 
     useEffect(() => {
         dispatch(getPerson(id));
@@ -70,6 +75,10 @@ const QRPerson = ({id}) => {
                                 <div class="QRTitle">Aliases:</div>
                                 {edit ? <input type="text" name="aliases" placeholder="Ice" value={aliases}/> : <div class="QRResultText" name="aliases">{showPerson.aliases && showPerson.aliases[0]}</div>}
                             </div>
+                            <div class="QRData">
+                                <div class="QRTitle">Race:</div>
+                                {edit ? <input type="text" name="race" placeholder="White" value={race}/> : <div class="QRResultText" name="race">{showPerson.race && showPerson.race}</div>}
+                            </div>
                         </div>
 
                         <div class="QRRow">
@@ -80,6 +89,10 @@ const QRPerson = ({id}) => {
                             <div class="QRData">
                                 <div class="QRTitle">Height:</div>
                                 {edit ? <input type="number" name="height" placeholder="188 cm" value={height}/> : <div class="QRResultText" name="height">{showPerson.height} cm</div>}
+                            </div>
+                            <div class="QRData">
+                                <div class="QRTitle">Gender:</div>
+                                {edit ? <input type="text" name="gender" placeholder="Male" value={gender}/> : <div class="QRResultText" name="gender">{showPerson.gender && showPerson.gender}</div>}
                             </div>
                         </div>
 
@@ -140,16 +153,20 @@ const QRPerson = ({id}) => {
                         </div>
 
                         <div class="QRRow" style={{border: 'none'}}>
-                        {edit ?
-                            <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                                <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
-                                <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
-                            </div>
-                        : 
-                            <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                                <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                                <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
-                            </div>
+                        {user.userType !== 'Student' && 
+                            <>
+                                {edit ?
+                                    <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                                        <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
+                                        <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
+                                    </div>
+                                : 
+                                    <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                                        <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
+                                        <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                                    </div>
+                                }
+                            </>
                         }
                         </div>
                         <div class="QRRow" style={{border: 'none'}}/>

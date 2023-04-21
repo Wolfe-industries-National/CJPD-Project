@@ -30,24 +30,26 @@ const Profile = () => {
 
             </div>
 
-            <div className="profileRightColumn" style={{color: 'white'}}>
-                <h1 style={{fontSize: '2rem'}}>Change Password:</h1>
-                <form action="">
-                    <label htmlFor="">
-                        Old Password:
-                        <input type="text" />
-                    </label><br />
-                    <label htmlFor="">
-                        New Password:
-                        <input type="text" />
-                    </label><br />
-                    <label htmlFor="">
-                        Confirm New Password:
-                        <input type="text" />
-                    </label><br />
-                    <button>Submit</button>
-                </form>
-            </div>
+            { user.userType !== 'Student' && 
+                <div className="profileRightColumn" style={{color: 'white'}}>
+                    <h1 style={{fontSize: '2rem'}}>Change Password:</h1>
+                    <form action="">
+                        <label htmlFor="">
+                            Old Password:
+                            <input type="text" />
+                        </label><br />
+                        <label htmlFor="">
+                            New Password:
+                            <input type="text" />
+                        </label><br />
+                        <label htmlFor="">
+                            Confirm New Password:
+                            <input type="text" />
+                        </label><br />
+                        <button>Submit</button>
+                    </form>
+                </div>
+            }
 
         </div>
 

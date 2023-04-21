@@ -17,6 +17,8 @@ const MDPerson = () => {
         fps: '',
         height: '',
         weight: '',
+        race: '',
+        gender: '',
         aliases: '',
         associatedVehicles: '',
         associates: '',
@@ -30,7 +32,7 @@ const MDPerson = () => {
     const [showListVehicles, setShowListVehicles] = useState(false);
     const [showListOfPerson, setShowListPerson] = useState(false);
 
-    const {name, dateOfBirth, telephone, address, fps, height, weight, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = formData;
+    const {name, dateOfBirth, telephone, address, fps, height, weight, race, gender, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = formData;
     const {addresses} = useSelector((state) => state.address);
     const {telephones} = useSelector((state) => state.telephone);
     const {vehicles} = useSelector((state) => state.vehicle);
@@ -264,7 +266,7 @@ const MDPerson = () => {
                     </div>
                     <div className="DFUniversalData">
                         <label>
-                            <div className="DFUniversalInnerTitle">Weight (lbs)<br/></div>
+                            <div className="DFUniversalInnerTitle">Weight (kb)<br/></div>
                             <input className="DFUniversalFields" type="number" name="weight" placeholder="203 lbs." value={weight} onChange={onChange}/>
                         </label>
                     </div>
@@ -272,6 +274,25 @@ const MDPerson = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">Aliases<br/></div>
                             <input className="DFUniversalFields" type="text" name="aliases" placeholder="Ice" value={aliases} onChange={onChange}/>
+                        </label>
+                    </div>
+                </div>
+
+                <div className="DFUniversalRow">
+                    <div className="DFUniversalData">
+                        <label>
+                            <div className="DFUniversalInnerTitle">Race<br/></div>
+                            <input className="DFUniversalFields" type="text" name="race" placeholder="White" value={race} onChange={onChange}/>
+                        </label>
+                    </div>
+                    <div className="DFUniversalData">
+                        <label>
+                            <div className="DFUniversalInnerTitle">Gender<br/></div>
+                            <select className="DFUniversalFields" name="gender" value={gender} onChange={onChange}>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="X">X</option>
+                            </select>
                         </label>
                     </div>
                 </div>

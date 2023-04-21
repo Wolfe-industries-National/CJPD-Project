@@ -70,7 +70,6 @@ const MDUsers = () => {
                         <label>
                             <div className="DFUniversalInnerTitle">User Type<br/></div>
                             <select className="DFUniversalFields" name="userType" value={userType} onChange={onChange}>
-                                <option value="Student">Select Type of User</option>
                                 <option value="Admin">Admin</option>
                                 <option value="Instructor">Instructor</option>
                                 <option value="Student">Student</option>

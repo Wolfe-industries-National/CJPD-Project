@@ -28,6 +28,8 @@ const Header = () => {
                             <div className="navElementContainer">
                                 <Link className="navElement2" style={{paddingTop: 0, paddingBottom: 0}} to="/"><img className="navElement1" src={logo} alt="Logo" height={60} /></Link>
                                 <Link className="navElement3" to="/">Home</Link>
+                                <Link className="navElement4" to="/fastFind/person">Fast Find</Link>
+                                <Link className="navElement4" to="/detailedFind/person">Detailed Find</Link>
                                 <Link className="navElement4" to="/reportPage/consenttosearch">Investigation Forms</Link>
                                 {user.userType === "Admin" && <Link className="navElement5" to="ManageData/person">Manage Data</Link>}
                                 <Link className="navElement6" to="/profile">{user.name}</Link>

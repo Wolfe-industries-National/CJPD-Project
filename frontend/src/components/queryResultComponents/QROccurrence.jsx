@@ -27,17 +27,17 @@ const QROccurrence = ({id}) => {
 
     useEffect(() => {
         setFormData({
-            fileNumber: occurrence.fileNumber,
-            summary: occurrence.summary,
-            person: occurrence.person,
-            busOrg: occurrence.busOrg,
-            property: occurrence.property,
-            vehicle: occurrence.vehicle,
-            telephone: occurrence.telephone,
-            officerUnit: occurrence.officerUnit,
-            address: occurrence.address
+            fileNumber: occurrence?.fileNumber,
+            summary: occurrence?.summary,
+            person: occurrence?.person,
+            busOrg: occurrence?.busOrg,
+            property: occurrence?.property,
+            vehicle: occurrence?.vehicle,
+            telephone: occurrence?.telephone,
+            officerUnit: occurrence?.officerUnit,
+            address: occurrence?.address
         });
-    }, [occurrence.fileNumber, occurrence.summary, occurrence.person, occurrence.busOrg, occurrence.property, occurrence.vehicle, occurrence.telephone, occurrence.officerUnit, occurrence.address]);
+    }, [occurrence?.fileNumber, occurrence?.summary, occurrence?.person, occurrence?.busOrg, occurrence?.property, occurrence?.vehicle, occurrence?.telephone, occurrence?.officerUnit, occurrence?.address]);
 
     useEffect(() => {
         dispatch(getOccurrence(id));
@@ -112,16 +112,20 @@ const QROccurrence = ({id}) => {
                 )
             }
 
-            {edit ?
-                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
-                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
-                </div>
-            : 
-                <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
-                    <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                    <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
-                </div>
+            {user.userType !== 'Student' && 
+                <>
+                    {edit ?
+                        <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                            <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
+                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(false)}>Cancel Changes</button>
+                        </div>
+                    : 
+                        <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
+                            <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
+                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                        </div>
+                    }
+                </>
             }
 
         </div>

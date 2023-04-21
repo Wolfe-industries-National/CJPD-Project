@@ -49,7 +49,53 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new Error('Invalid user data')
     }
 
+});
+
+// @desc Change Password User
+// @route POST /api/v1/users/changePassword
+// @access Public
+const changePasswordUser = asyncHandler(async (req, res) => {
+
+    const {newPassword} = req.body;
+
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    const updatedUser = await User.findByIdAndUpdate(req.user._id, {password: hashedPassword});
+
+    if(updatedUser){
+        res.status(201).json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            userType: updatedUser.userType,
+            // token: generateToken(user._id),
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid user data');
+    }
+});
+
+
+// @desc Send Request to Reset Password
+// @route POST /api/v1/users/requestReset
+// @access PUBLIC
+const requestReset = asyncHandler(async (req, res) => {
+
 })
+
+
+
+// @desc Reseting Password
+// @route POST /api/v1/users/resetPassword
+// @access PUBLIC
+const resetPassword = asyncHandler(async (req, res) => {
+     
+})
+
+
 
 // @desc    Login User
 // @route   POST /api/v1/users/login
