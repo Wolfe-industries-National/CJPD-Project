@@ -167,10 +167,19 @@ const searchOccurrence = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Delete occurrence
+// @route   DELETE /api/v1/occurrence/delete
+// @access  Private
+const deleteOccurrence = asyncHandler(async (req, res) => {
+    const { occurrenceId } = req.body;
+    await Occurrence.findByIdAndDelete(occurrenceId);
+});
+
 
 module.exports = {
     createOccurrence,
     getAllOccurrence,
     getOccurrence,
-    searchOccurrence
+    searchOccurrence,
+    deleteOccurrence
 }

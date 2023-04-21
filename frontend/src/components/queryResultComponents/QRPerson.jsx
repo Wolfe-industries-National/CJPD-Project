@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getPerson} from "../../features/person/personSlice";
+import { useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getPerson, deletePerson} from "../../features/person/personSlice";
 
 const QRPerson = ({id}) => {
 
@@ -27,6 +29,7 @@ const QRPerson = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {person} = useSelector((state) => state.person);
     const {user} = useSelector((state) => state.auth);
     let showPerson = {}
@@ -163,7 +166,7 @@ const QRPerson = ({id}) => {
                                 : 
                                     <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                                         <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                                        <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                                        <button onClick={() => {dispatch(deletePerson({personId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                                     </div>
                                 }
                             </>

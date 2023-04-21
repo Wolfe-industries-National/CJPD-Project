@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getProperty} from "../../features/property/propertySlice";
+import { useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getProperty, deleteProperty} from "../../features/property/propertySlice";
 
 const QRProperty = ({id}) => {
 
@@ -18,6 +20,7 @@ const QRProperty = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {property} = useSelector((state) => state.property);
     const {user} = useSelector((state) => state.auth);
     let showProperty = {};
@@ -92,7 +95,7 @@ const QRProperty = ({id}) => {
                     : 
                         <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                             <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                            <button onClick={() => {dispatch(deleteProperty({propertyId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                         </div>
                     }
                 </>

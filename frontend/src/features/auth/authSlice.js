@@ -6,6 +6,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 const initialState = {
     user: user ? user : null,
+    users: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -33,6 +34,33 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
 export const logout = createAsyncThunk('auth/logout', async () => {
     await authService.logout();
 });
+
+export const changePasswordUser = createAsyncThunk('auth/changePassword', async (userData, thunkAPI) => {
+    try {
+        return await authService.changePasswordUser(userData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+export const resetPassword = createAsyncThunk('auth/reset', async (userData, thunkAPI) => {
+    try {
+        return await authService.resetPassword(userData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+export const getAll = createAsyncThunk('auth/getAll', async (_, thunkAPI) => {
+    try {
+        return await authService.getAll();
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+})
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -75,6 +103,43 @@ export const authSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.user = null
+            })
+            .addCase(changePasswordUser.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(changePasswordUser.fulfilled, (state, action) => {
+                state.isLoading = true
+                state.isSuccess = true
+            })
+            .addCase(changePasswordUser.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(resetPassword.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(resetPassword.fulfilled, (state, action) => {
+                state.isLoading = true
+                state.isSuccess = true
+            })
+            .addCase(resetPassword.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+            })
+            .addCase(getAll.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.isLoading = true
+                state.isSuccess = true
+                state.users = action.payload
+            })
+            .addCase(getAll.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })

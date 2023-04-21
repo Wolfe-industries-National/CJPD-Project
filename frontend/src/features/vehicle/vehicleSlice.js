@@ -59,6 +59,16 @@ export const detailSearchVehicle = createAsyncThunk('vehicle/detailSearch', asyn
     }
 });
 
+
+export const deleteVehicle = createAsyncThunk('vehicle/delete', async (userData, thunkAPI) => {
+    try {
+        return await vehicleService.deleteVehicle(userData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const vehicleSlice = createSlice({
     name: 'vehicle',
     initialState,
@@ -128,6 +138,18 @@ export const vehicleSlice = createSlice({
                 state.vehicles = action.payload
             })
             .addCase(detailSearchVehicle.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.vehicles = null
+            })
+            .addCase(deleteVehicle.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteVehicle.fulfilled, (state, action) => {
+                state.isSuccess = true
+            })
+            .addCase(deleteVehicle.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

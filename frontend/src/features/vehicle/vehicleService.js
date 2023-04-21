@@ -33,12 +33,19 @@ const detailSearchVehicle = async (searchData) => {
     return response.data;
 }
 
+// delete search Vehicle
+const deleteVehicle = async (userData) => {
+    const response = await axios.post(API_URI+'delete', userData);
+    return response.data;
+}
+
 const vehicleService = {
     createVehicle,
     getAllVehicles,
     getVehicle,
     searchVehicle,
-    detailSearchVehicle
+    detailSearchVehicle,
+    deleteVehicle
 }
 
 export default vehicleService;

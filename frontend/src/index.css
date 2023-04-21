@@ -193,19 +193,34 @@ body, html
     width: 100%;
     align-items: center;
 }
-.navElement2
+.navElement1
 {
     color: white;
     padding: 1vw;
     margin-right: auto;
     text-decoration: none;
+    font-size: 1vw;
 }
-.navElement3
+.navElement2
 {
     color: white;
     padding: 1vw;
     margin: 1vw;
     text-decoration: none;
+    font-size: 1vw;
+}
+.navElement2:focus
+{
+    color: #DDBA2C;
+    font-weight: 800;
+}
+.navElement3
+{
+    color: white;
+    padding: 1vw;
+    margin-left: auto;
+    text-decoration: none;
+    font-size: 1vw;
 }
 .navElement3:focus
 {
@@ -214,15 +229,14 @@ body, html
 }
 .navElement4
 {
-    color: white;
-    padding: 1vw;
-    margin: 1vw;
-    text-decoration: none;
+    font-weight: 700;
+    padding: 3px;
+    border: 2px solid black;
+    font-size: 1vw;
 }
-.navElement4:focus
+.navElement4:hover
 {
-    color: #DDBA2C;
-    font-weight: 800;
+    background-color: #DDBA2C;
 }
 .navElement5
 {
@@ -240,44 +254,11 @@ body, html
 {
     color: white;
     padding: 1vw;
-    margin-left: auto;
+    margin: 1vw;
     text-decoration: none;
+    border: none;
 }
 .navElement6:focus
-{
-    color: #DDBA2C;
-    font-weight: 800;
-}
-.navElement7
-{
-    font-weight: 700;
-    padding: 3px;
-    border: 2px solid black;
-}
-.navElement7:hover
-{
-    background-color: #DDBA2C;
-}
-.navElement8
-{
-    color: white;
-    padding: 1vw;
-    margin: 1vw;
-    text-decoration: none;
-}
-.navElement8:focus
-{
-    color: #DDBA2C;
-    font-weight: 800;
-}
-.navElement9
-{
-    color: white;
-    padding: 1vw;
-    margin: 1vw;
-    text-decoration: none;
-}
-.navElement9:focus
 {
     color: #DDBA2C;
     font-weight: 800;
@@ -863,6 +844,8 @@ body, html
     margin: auto;
 }
 
+
+
 /* Query Result */
 
 .QRContainer
@@ -915,6 +898,8 @@ body, html
     margin: 0.5% 0;
 }
 
+
+
 /* Consent for Release of Medical Information */
 
 .CRMICheckboxFix
@@ -923,4 +908,74 @@ body, html
     width: 25%;
     height: 6vh;
     accent-color: #01244C;
+}
+
+
+
+/* About Page */
+
+.AboutContainer
+{
+    margin: 2.5% 2.5%;
+    min-height: 500px;
+    background-color: #01244C;
+    border-radius: 20px;
+    height: auto;
+    display: block;
+    text-align: center;
+    border: 5px solid #DDBA2C;
+}
+.AboutRow
+{
+    display: inline-flex;
+    width: 100%;
+}
+.AboutData
+{
+    width: 50%;
+    align-items: center;
+}
+.AboutTitle1
+{
+    display: flex;
+    color: #DDBA2C;
+    padding-top: 4vw;
+    font-size: 3vw;
+    justify-content: center;
+    align-items: center;
+}
+.AboutTitle2
+{
+    display: flex;
+    color: #DDBA2C;
+    padding-bottom: 4vw;
+    font-size: 2.5vw;
+    justify-content: center;
+    align-items: center;
+}
+.AboutName
+{
+    display: flex;
+    color: #FFFFFF;
+    font-size: 2vw;
+    padding-bottom: 2vw;
+    text-decoration: underline;
+    justify-content: center;
+    align-items: center;
+}
+.AboutDescription
+{
+    display: flex;
+    color: #FFFFFF;
+    font-size: 1vw;
+    padding-bottom: 7vw;
+    justify-content: center;
+    align-items: center;
+}
+.AboutIcon
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 1vw;
 }

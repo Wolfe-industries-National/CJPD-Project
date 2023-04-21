@@ -151,11 +151,20 @@ const detailSearchVehicle = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Delete vehicle
+// @route   GET /api/v1/vehicle/delete
+// @access  Private
+const deleteVehicle = asyncHandler(async (req, res) => {
+    const { vehicleId } = req.body;
+    await Vehicle.findByIdAndDelete(vehicleId);
+});
+
 
 module.exports = {
     createVehicle,
     getAllVehicles,
     getVehicle,
     searchVehicle,
-    detailSearchVehicle
+    detailSearchVehicle,
+    deleteVehicle
 }

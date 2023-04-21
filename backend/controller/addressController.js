@@ -160,10 +160,21 @@ const detailSearchAddress = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Delete address
+// @route   GET /api/v1/address/delete
+// @access  Private
+const deleteAddress = asyncHandler(async (req, res) => {
+    const { addressId } = req.body;
+    console.log('ADDRESS ID:', addressId);
+    await Address.findByIdAndDelete(addressId);
+});
+
+
 module.exports = {
     createAddress,
     getAllAddresses,
     getAddress,
     searchAddress,
-    detailSearchAddress
+    detailSearchAddress,
+    deleteAddress
 }

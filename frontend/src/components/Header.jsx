@@ -26,20 +26,20 @@ const Header = () => {
                     user ? (
                         <>
                             <div className="navElementContainer">
-                                <Link className="navElement2" style={{paddingTop: 0, paddingBottom: 0}} to="/"><img className="navElement1" src={logo} alt="Logo" height={60} /></Link>
-                                <Link className="navElement3" to="/">Home</Link>
-                                <Link className="navElement4" to="/fastFind/person">Fast Find</Link>
-                                <Link className="navElement4" to="/detailedFind/person">Detailed Find</Link>
-                                <Link className="navElement4" to="/reportPage/consenttosearch">Investigation Forms</Link>
-                                {user.userType === "Admin" && <Link className="navElement5" to="ManageData/person">Manage Data</Link>}
-                                <Link className="navElement6" to="/profile">{user.name}</Link>
-                                <button className="navElement7" onClick={onLogout}>Logout</button>
+                                <Link className="navElement1" style={{paddingTop: 0, paddingBottom: 0}} to="/"><img className="navElement1" src={logo} alt="Logo" height={60} /></Link>
+                                <Link className="navElement2" to="/">Home</Link>
+                                <Link className="navElement2" to="/fastFind/person">Fast Find</Link>
+                                <Link className="navElement2" to="/detailedFind/person">Detailed Find</Link>
+                                <Link className="navElement2" to="/reportPage/consenttosearch">Investigation Forms</Link>
+                                {user.userType === "Admin" && <Link className="navElement2" to="ManageData/person">Manage Data</Link>}
+                                <Link className="navElement3" to="/profile">{user.name}</Link>
+                                <button className="navElement4" onClick={onLogout}>Logout</button>
                             </div>
                         </>
                     ) : (
                         <>
-                            <Link className="navElement8" to="/login">Login</Link>
-                            <Link className="navElement9" to="/register">Register</Link>
+                            <Link className="navElement5" to="/login">Login</Link>
+                            <Link className="navElement6" to="/register">Register</Link>
                         </>
                     )}
             </div>

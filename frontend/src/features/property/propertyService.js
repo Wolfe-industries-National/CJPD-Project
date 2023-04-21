@@ -33,12 +33,19 @@ const detailSearchProperty = async (searchData) => {
     return response.data;
 }
 
+// delete search Property
+const deleteProperty = async (userData) => {
+    const response = await axios.post(API_URI+'delete', userData);
+    return response.data;
+}
+
 const propertyService = {
     createProperty,
     getAllProperties,
     getProperty,
     searchProperty,
-    detailSearchProperty
+    detailSearchProperty,
+    deleteProperty
 }
 
 export default propertyService;

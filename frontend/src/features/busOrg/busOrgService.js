@@ -33,12 +33,19 @@ const detailSearchBusOrg = async (searchData) => {
     return response.data;
 }
 
+// delete search Bus Org
+const deleteBusOrg = async (userData) => {
+    const response = await axios.post(API_URI+'delete', userData);
+    return response.data;
+}
+
 const busOrgService = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
     searchBusOrg,
-    detailSearchBusOrg
+    detailSearchBusOrg,
+    deleteBusOrg
 }
 
 export default busOrgService;

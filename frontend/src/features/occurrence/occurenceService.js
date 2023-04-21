@@ -27,11 +27,18 @@ const searchOccurrence = async (searchQuery) => {
     return response.data;
 }
 
+// delete search Occurrence
+const deleteOccurrence = async (userData) => {
+    const response = await axios.post(API_URI+'delete', userData);
+    return response.data;
+}
+
 const occurrenceService = {
     createOccurrence,
     getAllOccurrence,
     getOccurrence,
-    searchOccurrence
+    searchOccurrence,
+    deleteOccurrence
 }
 
 export default occurrenceService;

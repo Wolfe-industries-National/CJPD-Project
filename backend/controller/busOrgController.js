@@ -143,11 +143,20 @@ const detailSearchBusOrg = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Delete busOrg
+// @route   DELETE /api/v1/busOrg/delete
+// @access  Private
+const deleteBusOrg = asyncHandler(async (req, res) => {
+    const { busOrgId } = req.body;
+    await BusOrg.findByIdAndDelete(busOrgId);
+});
+
 
 module.exports = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
     searchBusOrg,
-    detailSearchBusOrg
+    detailSearchBusOrg,
+    deleteBusOrg
 }

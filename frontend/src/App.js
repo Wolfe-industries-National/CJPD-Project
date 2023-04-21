@@ -13,6 +13,7 @@ import ReportPage from "./pages/ReportPage";
 import Profile from "./pages/Profile";
 import DownloadReportPage from "./pages/DownloadReportPage";
 import ManageData from "./pages/ManageData";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path='/register' element={<Register/>} />
               <Route path='/login' element={<Login/>} />
               <Route path='/profile' element={<Profile/>} />
+              <Route path='/aboutus' element={<AboutUs/>} />
 
               <Route path='/fastFind/:itemForSearch' element={<FastFind/>} />
               <Route path='/detailedFind/:itemForSearch' element={<DetailedFind/>} />

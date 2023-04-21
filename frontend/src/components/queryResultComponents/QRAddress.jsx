@@ -1,6 +1,8 @@
 import React, { useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getAddress} from "../../features/address/addressSlice";
+import { useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getAddress, deleteAddress} from "../../features/address/addressSlice";
 
 const QRAddress = ({id}) => {
 
@@ -18,6 +20,7 @@ const QRAddress = ({id}) => {
 
     const {owner, typeOfBuilding, vacant, country, province, city, formaddress} = formData;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {address} = useSelector((state) => state.address);
     const {user} = useSelector((state) => state.auth);
     let showAddress = {};
@@ -39,6 +42,8 @@ const QRAddress = ({id}) => {
         });
     }, [showAddress?.owner, showAddress?.typeOfBuilding, showAddress?.vacant, showAddress?.country, showAddress?.province, showAddress?.city, showAddress?.address]);
 
+    
+    
     return (
         <div class="QRCContainer">
 
@@ -111,7 +116,7 @@ const QRAddress = ({id}) => {
                     : 
                         <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                             <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                            <button onClick={() => {dispatch(deleteAddress({addressId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                         </div>
                     }
                 </>

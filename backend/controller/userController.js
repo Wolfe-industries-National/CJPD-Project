@@ -56,13 +56,15 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access Public
 const changePasswordUser = asyncHandler(async (req, res) => {
 
-    const {newPassword} = req.body;
+    const {userId, newPassword} = req.body;
+
+    console.log(userId, newPassword);
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(newPassword, salt);
 
-    const updatedUser = await User.findByIdAndUpdate(req.user._id, {password: hashedPassword});
+    const updatedUser = await User.findByIdAndUpdate(userId, {password: hashedPassword});
 
     if(updatedUser){
         res.status(201).json({
@@ -70,7 +72,7 @@ const changePasswordUser = asyncHandler(async (req, res) => {
             name: updatedUser.name,
             email: updatedUser.email,
             userType: updatedUser.userType,
-            // token: generateToken(user._id),
+            token: generateToken(user._id),
         })
     } else {
         res.status(400);
@@ -79,20 +81,31 @@ const changePasswordUser = asyncHandler(async (req, res) => {
 });
 
 
-// @desc Send Request to Reset Password
-// @route POST /api/v1/users/requestReset
-// @access PUBLIC
-const requestReset = asyncHandler(async (req, res) => {
-
-})
-
-
 
 // @desc Reseting Password
 // @route POST /api/v1/users/resetPassword
 // @access PUBLIC
 const resetPassword = asyncHandler(async (req, res) => {
-     
+     const { userID } = req.body;
+
+     // Hash password
+     const salt = await bcrypt.genSalt(10);
+     const hashedPassword = await bcrypt.hash('Password1', salt);
+
+     const updatedUser = await User.findByIdAndUpdate(userID, {password: hashedPassword});
+
+     if(updatedUser){
+        res.status(201).json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            userType: updatedUser.userType,
+            token: generateToken(user._id),
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid user data');
+    }
 })
 
 
@@ -134,6 +147,14 @@ const getMe = asyncHandler(async (req, res) => {
     res.status(200).json(user);
 });
 
+// @desc    Get All Users
+// @route   GET /api/v1/users/all
+// @access  Private
+const getAll = asyncHandler(async (req, res) => {
+    const allUsers = await User.find();
+    res.status(200).json(allUsers);
+});
+
 // Generate Token
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
@@ -145,4 +166,7 @@ module.exports = {
     registerUser,
     loginUser,
     getMe,
+    changePasswordUser,
+    resetPassword,
+    getAll
 }

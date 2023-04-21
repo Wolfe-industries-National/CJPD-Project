@@ -181,11 +181,20 @@ const detailSearchPerson = asyncHandler(async (req, res) => {
     res.status(200).json(result);
 });
 
+// @desc    Delete Person
+// @route   DELETE /api/v1/person/delete
+// @access  Private
+const deletePerson = asyncHandler(async (req, res) => {
+    const { personId } = req.body;
+    await Person.findByIdAndDelete(personId);
+});
+
 
 module.exports = {
     createPerson,
     getAllPerson,
     getPerson,
     searchPerson,
-    detailSearchPerson
+    detailSearchPerson,
+    deletePerson
 }

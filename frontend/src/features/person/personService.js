@@ -33,12 +33,19 @@ const detailSearchPerson = async (searchData) => {
     return response.data;
 }
 
+// delete search Person
+const deletePerson = async (userData) => {
+    const response = await axios.post(API_URI+'delete', userData);
+    return response.data;
+}
+
 const personService = {
     createPerson,
     getAllPerson,
     getPerson,
     searchPerson,
-    detailSearchPerson
+    detailSearchPerson,
+    deletePerson
 }
 
 export default personService;

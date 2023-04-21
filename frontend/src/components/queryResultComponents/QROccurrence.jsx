@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getOccurrence} from "../../features/occurrence/occurrenceSlice";
+import { useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getOccurrence, deleteOccurrence} from "../../features/occurrence/occurrenceSlice";
 
 const QROccurrence = ({id}) => {
 
@@ -21,6 +23,7 @@ const QROccurrence = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {occurrence} = useSelector((state) => state.occurrence);
     const {user} = useSelector((state) => state.auth);
     let showOccurrence = {}
@@ -122,7 +125,7 @@ const QROccurrence = ({id}) => {
                     : 
                         <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                             <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                            <button onClick={() => {dispatch(deleteOccurrence({occurrenceId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                         </div>
                     }
                 </>

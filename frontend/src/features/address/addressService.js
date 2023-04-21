@@ -34,12 +34,21 @@ const detailSearchAddress = async (searchData) => {
     return response.data;
 }
 
+// delete search Address
+const deleteAddress = async (userData) => {
+    console.log('DELETE ADDRESS');
+    const response = await axios.post(API_URI+'delete', userData);
+    console.log(response.data);
+    return response.data;
+}
+
 const addressService = {
     createNewAddress,
     getAllAddresses,
     getAddress,
     searchAddress,
-    detailSearchAddress
+    detailSearchAddress,
+    deleteAddress
 }
 
 export default addressService;

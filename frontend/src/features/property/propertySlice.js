@@ -59,6 +59,15 @@ export const detailSearchProperty = createAsyncThunk('property/detailSearch', as
     }
 });
 
+export const deleteProperty = createAsyncThunk('property/delete', async (userData, thunkAPI) => {
+    try {
+        return await propertyService.deleteProperty(userData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const propertySlice = createSlice({
     name: 'property',
     initialState,
@@ -128,6 +137,18 @@ export const propertySlice = createSlice({
                 state.properties = action.payload
             })
             .addCase(detailSearchProperty.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.properties = null
+            })
+            .addCase(deleteProperty.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(deleteProperty.fulfilled, (state, action) => {
+                state.isSuccess = true
+            })
+            .addCase(deleteProperty.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

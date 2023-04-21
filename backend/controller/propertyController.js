@@ -123,10 +123,20 @@ const detailSearchProperty = asyncHandler(async (req, res) => {
 });
 
 
+// @desc    Delete Property
+// @route   DELETE /api/v1/property/delete
+// @access  Private
+const deleteProperty = asyncHandler(async (req, res) => {
+    const { propertyId } = req.body;
+    await Property.findByIdAndDelete(propertyId);
+});
+
+
 module.exports = {
     createProperty,
     getAllProperties,
     getProperty,
     searchProperty,
-    detailSearchProperty
+    detailSearchProperty,
+    deleteProperty
 }

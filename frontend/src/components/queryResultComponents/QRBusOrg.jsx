@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getBusOrg} from "../../features/busOrg/busOrgSlice";
+import { useNavigate} from "react-router-dom";
+import {toast} from "react-toastify";
+import {getBusOrg, deleteBusOrg} from "../../features/busOrg/busOrgSlice";
 
 const QRBusOrg = ({id}) => {
 
@@ -18,6 +20,7 @@ const QRBusOrg = ({id}) => {
 
     console.log(id);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {busOrg} = useSelector((state) => state.busOrg);
     const {user} = useSelector((state) => state.auth);
     let showBusOrg = {}
@@ -97,7 +100,7 @@ const QRBusOrg = ({id}) => {
                     : 
                         <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                             <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Edit</button>
-                            <button className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
+                            <button onClick={() => {dispatch(deleteBusOrg({busOrgId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                         </div>
                     }
                 </>
