@@ -52,8 +52,8 @@ const Login = () => {
             <div className="loginFormContainer">
                 <form onSubmit={onSubmit}>
                     <label className="loginLabel" htmlFor="email">
-                        LC Email<br/>
-                        <input className="loginTextFields" type="email" id="email" name="email" value={email} onChange={onChange} />
+                        Email / Username<br/>
+                        <input className="loginTextFields" type="text" id="email" name="email" value={email} onChange={onChange} />
                     </label><br />
                     <label className="loginLabel" htmlFor="password">
                         Password<br/>
