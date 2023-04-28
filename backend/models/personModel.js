@@ -35,7 +35,6 @@ const personSchema = mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ['Male', 'Female', 'X'],
         required: false,
     },
     aliases: {

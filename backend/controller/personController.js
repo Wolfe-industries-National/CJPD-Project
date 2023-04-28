@@ -8,7 +8,7 @@ const Person = require('../models/personModel');
 // @access  Private
 const createPerson = asyncHandler(async (req, res) => {
     const {name, dateOfBirth, telephone, address, fps, height, weight, race, gender, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = req.body;
-
+    console.log(req.body);
     // Validation
     if(!name){
         res.status(400);
@@ -32,9 +32,9 @@ const createPerson = asyncHandler(async (req, res) => {
         weight,
         race,
         gender,
-        aliases: aliases.toLowerCase(),
-        associatedVehicles,
-        associates: associates.toLowerCase(),
+        aliases: aliases.length > 0 ? aliases[0].toLowerCase() : aliases,
+        associatedVehicles: associatedVehicles.length > 0 ? associatedVehicles[0].toLowerCase() : aliases,
+        associates: associates.length > 0 ? associates[0].toLowerCase() : aliases,
         flags,
         tattoos: tattoos.toLowerCase(),
         hairColour,
