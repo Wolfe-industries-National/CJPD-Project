@@ -266,8 +266,8 @@ const MDPerson = () => {
                     </div>
                     <div className="DFUniversalData">
                         <label>
-                            <div className="DFUniversalInnerTitle">Weight (kb)<br/></div>
-                            <input className="DFUniversalFields" type="number" name="weight" placeholder="203 lbs." value={weight} onChange={onChange}/>
+                            <div className="DFUniversalInnerTitle">Weight (kg)<br/></div>
+                            <input className="DFUniversalFields" type="number" name="weight" placeholder="203 kg." value={weight} onChange={onChange}/>
                         </label>
                     </div>
                     <div className="DFUniversalData">

@@ -31,7 +31,7 @@ const Header = () => {
                                 <Link className="navElement2" to="/fastFind/person">Fast Find</Link>
                                 <Link className="navElement2" to="/detailedFind/person">Detailed Find</Link>
                                 <Link className="navElement2" to="/reportPage/consenttosearch">Investigation Forms</Link>
-                                {user.userType === "Admin" && <Link className="navElement2" to="ManageData/person">Manage Data</Link>}
+                                {(user.userType === "Admin" || user.userType === "Instructor") && <Link className="navElement2" to="ManageData/person">Manage Data</Link>}
                                 <Link className="navElement3" to="/profile">{user.name}</Link>
                                 <button className="navElement4" onClick={onLogout}>Logout</button>
                             </div>

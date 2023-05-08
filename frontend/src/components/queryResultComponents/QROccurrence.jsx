@@ -50,7 +50,7 @@ const QROccurrence = ({id}) => {
     console.log(showOccurrence);
 
     return (
-        <div class="QRCContainer">
+        <div class="QRCContainer" >
 
             {
                 showOccurrence && (
@@ -70,7 +70,7 @@ const QROccurrence = ({id}) => {
                         </div>
 
                         {
-                            user.userType === "Admin" && (
+                            user.userType !== 'Student' && (
                                 <div>
                                     <div class="QRRow">
                                         <div class="QRData">
@@ -102,7 +102,7 @@ const QROccurrence = ({id}) => {
                                         </div>
                                     </div>
 
-                                    <div class="QRRow">
+                                    <div class="QRRow" >
                                         <div class="QRData">
                                             <div class="QRTitle">Address:</div>
                                             {edit ? <input type="text" name="address" placeholder="123 Random Place W." value={address} /> : <div class="QRResultText" name="address">{showOccurrence.address && showOccurrence.address[0]}</div>}
@@ -116,7 +116,7 @@ const QROccurrence = ({id}) => {
             }
 
             {user.userType !== 'Student' && 
-                <>
+                <div style={{height: '4rem'}}>
                     {edit ?
                         <div style={{position: 'absolute', right: '5rem', display: 'flex', gap: '1.5rem'}}>
                             <button className="editBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}} onClick={() => setEdit(true)}>Save Changes</button>
@@ -128,7 +128,7 @@ const QROccurrence = ({id}) => {
                             <button onClick={() => {dispatch(deleteOccurrence({occurrenceId: id})); navigate('/')}} className="deleteBtn" style={{border: 'none', paddingLeft: '2rem', paddingRight: '2rem', cursor: 'pointer'}}>Delete</button>
                         </div>
                     }
-                </>
+                </div>
             }
 
         </div>

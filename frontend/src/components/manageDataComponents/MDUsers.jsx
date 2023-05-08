@@ -9,7 +9,7 @@ const MDUsers = () => {
         email: '',
         name: '',
         password: 'Password1',
-        userType: '',
+        userType: 'Admin',
     })
 
     const {name, email, password, userType} = formData;

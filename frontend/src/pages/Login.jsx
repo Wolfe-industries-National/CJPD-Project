@@ -53,14 +53,14 @@ const Login = () => {
                 <form onSubmit={onSubmit}>
                     <label className="loginLabel" htmlFor="email">
                         Email / Username<br/>
-                        <input className="loginTextFields" type="text" id="email" name="email" value={email} onChange={onChange} />
+                        <input style={{backgroundColor: 'white', borderColor: 'white', color: 'black'}} className="loginTextFields" type="text" id="email" name="email" value={email} onChange={onChange} />
                     </label><br />
                     <label className="loginLabel" htmlFor="password">
                         Password<br/>
-                        <input className="loginTextFields" type="password" id="password" name="password" value={password} onChange={onChange} />
+                        <input style={{backgroundColor: 'white', borderColor: 'white'}} className="loginTextFields" type="password" id="password" name="password" value={password} onChange={onChange} />
                     </label><br />
                     <div className="loginButtonContainer">
-                        <button className="loginButton">Login</button>
+                        <button style={{backgroundColor: 'white', borderColor: 'white'}} className="loginButton">Login</button>
                     </div>
                 </form>
             </div>
