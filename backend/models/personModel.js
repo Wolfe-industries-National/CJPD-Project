@@ -38,23 +38,23 @@ const personSchema = mongoose.Schema({
         required: false,
     },
     aliases: {
-        type: [String],
+        type: String,
         required: false,
     },
     associatedVehicles: {
-        type: [String],
+        type: String,
         required: false,
     },
     associates: {
-        type: [String],
+        type: String,
         required: false,
     },
     flags: {
-        type: [String],
+        type: String,
         required: false,
     },
     tattoos: {
-        type: [String],
+        type: String,
         required: false,
     },
     hairColour: {

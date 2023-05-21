@@ -67,6 +67,16 @@ export const deletePerson = createAsyncThunk('person/delete', async (userData, t
     }
 });
 
+export const updatePerson = createAsyncThunk('person/update', async (personData, thunkAPI) => {
+    try {
+        console.log('Person DATA ON SLICE:', personData);
+        return await personService.updatePerson(personData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const personSlice = createSlice({
     name: 'person',
     initialState,
@@ -153,6 +163,17 @@ export const personSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.people = null
+            })
+            .addCase(updatePerson.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updatePerson.fulfilled, (state, action) => {
+                state.person = action.payload
+            })
+            .addCase(updatePerson.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })

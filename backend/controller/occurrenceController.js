@@ -175,11 +175,57 @@ const deleteOccurrence = asyncHandler(async (req, res) => {
     await Occurrence.findByIdAndDelete(occurrenceId);
 });
 
+// @desc    Update Occurrence
+// @route   PATCH /api/v1/occurrence/update
+// @access  Private
+const updateOccurrence = asyncHandler(async (req, res) => {
+    const {occurrenceID, fileNumber, summary, person, busOrg, property, vehicle, telephone, officerUnit, address} = req.body;
+
+    // Validation
+    if(!fileNumber || !summary){
+        res.status(400);
+        throw new Error('Please include fileNumber and summary');
+    }
+
+     // Update Occurrence
+     const updatedOccurrence = await Occurrence.findByIdAndUpdate( occurrenceID ,{
+        fileNumber,
+        summary,
+        person,
+        busOrg,
+        property,
+        vehicle,
+        telephone,
+        officerUnit,
+        address,
+     })
+
+    if(updatedOccurrence){
+        res.status(201).json({
+            _id: updatedOccurrence._id,
+            fileNumber: updatedOccurrence.fileNumber,
+            summary: updatedOccurrence.summary,
+            person: updatedOccurrence.person,
+            busOrg: updatedOccurrence.busOrg,
+            property: updatedOccurrence.property,
+            vehicle: updatedOccurrence.vehicle,
+            telephone: updatedOccurrence.telephone,
+            officerUnit: updatedOccurrence.officerUnit,
+            address: updatedOccurrence.address,
+            occurrenceDBID: updatedOccurrence.occurrenceDBID
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedOccurrence data');
+    }
+})
+
 
 module.exports = {
     createOccurrence,
     getAllOccurrence,
     getOccurrence,
     searchOccurrence,
-    deleteOccurrence
+    deleteOccurrence,
+    updateOccurrence
 }

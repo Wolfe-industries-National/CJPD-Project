@@ -39,13 +39,21 @@ const deleteBusOrg = async (userData) => {
     return response.data;
 }
 
+// update BusOrg
+const updateBusOrg = async (busOrgData) => {
+    console.log('BusOrf DATA ON SERVICE:', busOrgData);
+    const response = await axios.patch(API_URI+'update', busOrgData);
+    return response.data;
+}
+
 const busOrgService = {
     createBusOrg,
     getAllBusOrg,
     getBusOrg,
     searchBusOrg,
     detailSearchBusOrg,
-    deleteBusOrg
+    deleteBusOrg,
+    updateBusOrg
 }
 
 export default busOrgService;

@@ -189,6 +189,67 @@ const deletePerson = asyncHandler(async (req, res) => {
     await Person.findByIdAndDelete(personId);
 });
 
+// @desc    Update Person
+// @route   PATCH /api/v1/person/update
+// @access  Private
+const updatePerson = asyncHandler(async (req, res) => {
+    console.log('UPDATE PERSON CALLED');
+    const {personID, name, dateOfBirth, telephone, address, fps, height, weight, race, gender, aliases, associatedVehicles, associates, flags, tattoos, hairColour, eyeColour} = req.body;
+    console.log('PERSON:', req.body);
+    // Validation
+    if(!name){
+        res.status(400);
+        throw new Error('Please include name');
+    }
+
+     // Update Person
+     const updatedPerson = await Person.findByIdAndUpdate( personID ,{
+        name: name ? name.toLowerCase() : '',
+        dateOfBirth: dateOfBirth ? dateOfBirth : '',
+        telephone: telephone ? telephone : '',
+        address: address ? address : '',
+        fps: fps ? fps.toLowerCase() : '',
+        height: height ? height : '',
+        weight: weight ? weight : '',
+        race: race ? race : '',
+        gender: gender ? gender : '',
+        aliases: (aliases) ? aliases.toLowerCase() : '',
+        associatedVehicles: (associatedVehicles) ? associatedVehicles.toLowerCase() : '',
+        associates: (associates) ? associates.toLowerCase() : '',
+        flags: flags ? flags : '',
+        tattoos: tattoos ? tattoos.toLowerCase() : '',
+        hairColour: hairColour ? hairColour : '',
+        eyeColour: eyeColour ? eyeColour : '',
+     })
+
+    if(updatedPerson){
+        console.log("UPDATED PERSON CREATED");
+        res.status(201).json({
+            _id: updatedPerson._id,
+            name: updatedPerson.name,
+            dateOfBirth: updatedPerson.dateOfBirth,
+            telephone: updatedPerson.telephone,
+            address: updatedPerson.address,
+            fps: updatedPerson.fps,
+            height: updatedPerson.height,
+            weight: updatedPerson.weight,
+            race: updatedPerson.race,
+            gender: updatedPerson.gender,
+            aliases: updatedPerson.aliases,
+            associatedVehicles: updatedPerson.associatedVehicles,
+            associates: updatedPerson.associates,
+            flags: updatedPerson.flags,
+            tattoos: updatedPerson.tattoos,
+            hairColour: updatedPerson.hairColour,
+            eyeColour: updatedPerson.eyeColour,
+            personDBID: updatedPerson.personDBID,
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedPerson data');
+    }
+})
+
 
 module.exports = {
     createPerson,
@@ -196,5 +257,6 @@ module.exports = {
     getPerson,
     searchPerson,
     detailSearchPerson,
-    deletePerson
+    deletePerson,
+    updatePerson
 }

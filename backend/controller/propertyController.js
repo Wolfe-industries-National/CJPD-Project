@@ -131,6 +131,46 @@ const deleteProperty = asyncHandler(async (req, res) => {
     await Property.findByIdAndDelete(propertyId);
 });
 
+// @desc    Update Property
+// @route   PATCH /api/v1/property/update
+// @access  Private
+const updateProperty = asyncHandler(async (req, res) => {
+    console.log('UPDATE PROPERTY CONTROLLER');
+    console.log('PROPERTY CONTROLLER DATA:', req.body);
+    const {propertyID, owner, typeOfProperty, vinOfProperty, valueOfProperty, descriptionOfProperty} = req.body;
+
+    // Validation
+    if(!typeOfProperty){
+        res.status(400);
+        throw new Error('Please include Type of property');
+    }
+
+     // Update Property
+     const updatedProperty = await Property.findByIdAndUpdate( propertyID ,{
+        owner: owner ? owner.toLowerCase() : '',
+        typeOfProperty: typeOfProperty ? typeOfProperty.toLowerCase() : '',
+        vinOfProperty: vinOfProperty ? vinOfProperty : '',
+        valueOfProperty: valueOfProperty ? valueOfProperty : '',
+        descriptionOfProperty: descriptionOfProperty ? descriptionOfProperty.toLowerCase() : '',
+     })
+
+    if(updatedProperty){
+        console.log('UPDATED PROPERTY CREATED');
+        res.status(201).json({
+            _id: updatedProperty._id,
+            owner: updatedProperty.owner,
+            typeOfProperty: updatedProperty.typeOfProperty,
+            vinOfProperty: updatedProperty.vinOfProperty,
+            valueOfProperty: updatedProperty.valueOfProperty,
+            descriptionOfProperty: updatedProperty.descriptionOfProperty,
+            propertyDBID: updatedProperty.propertyDBID,
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedProperty data');
+    }
+})
+
 
 module.exports = {
     createProperty,
@@ -138,5 +178,6 @@ module.exports = {
     getProperty,
     searchProperty,
     detailSearchProperty,
-    deleteProperty
+    deleteProperty,
+    updateProperty
 }

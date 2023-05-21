@@ -169,6 +169,46 @@ const deleteAddress = asyncHandler(async (req, res) => {
     await Address.findByIdAndDelete(addressId);
 });
 
+// @desc    Update Address
+// @route   PATCH /api/v1/address/update
+// @access  Private
+const updateAddress = asyncHandler(async (req, res) => {
+    const {addressID, owner, typeOfBuilding, vacant, country, province, city, address} = req.body;
+
+    // Validation
+    if(!address){
+        res.status(400);
+        throw new Error('Please include address');
+    }
+
+     // Update Address
+     const updatedAddress = await Address.findByIdAndUpdate( addressID ,{
+        owner: owner.toLowerCase(),
+        typeOfBuilding: typeOfBuilding.toLowerCase(),
+        vacant,
+        country: country.toLowerCase(),
+        province: province.toLowerCase(),
+        city: city.toLowerCase(),
+        address: address.toLowerCase(),
+     })
+
+    if(updatedAddress){
+        res.status(201).json({
+            _id: updatedAddress._id,
+            owner: updatedAddress.owner,
+            typeOfBuilding: updatedAddress.typeOfBuilding,
+            vacant: updatedAddress.vacant,
+            country: updatedAddress.country,
+            province: updatedAddress.province,
+            city: updatedAddress.city,
+            address: updatedAddress.address,
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedAddress data');
+    }
+})
+
 
 module.exports = {
     createAddress,
@@ -176,5 +216,6 @@ module.exports = {
     getAddress,
     searchAddress,
     detailSearchAddress,
-    deleteAddress
+    deleteAddress,
+    updateAddress
 }

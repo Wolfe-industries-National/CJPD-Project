@@ -39,13 +39,21 @@ const deleteProperty = async (userData) => {
     return response.data;
 }
 
+// update Property
+const updateProperty = async (propertyData) => {
+    console.log('Property DATA ON SERVICE:', propertyData);
+    const response = await axios.patch(API_URI+'update', propertyData);
+    return response.data;
+}
+
 const propertyService = {
     createProperty,
     getAllProperties,
     getProperty,
     searchProperty,
     detailSearchProperty,
-    deleteProperty
+    deleteProperty,
+    updateProperty
 }
 
 export default propertyService;

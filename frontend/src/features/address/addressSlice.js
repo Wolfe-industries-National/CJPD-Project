@@ -68,6 +68,16 @@ export const deleteAddress = createAsyncThunk('address/delete', async (userData,
     }
 });
 
+export const updateAddress = createAsyncThunk('address/update', async (addressData, thunkAPI) => {
+    try {
+        console.log('Address DATA ON SLICE:', addressData);
+        return await addressService.updateAddress(addressData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+})
+
 
 
 export const addressSlice = createSlice({
@@ -156,6 +166,17 @@ export const addressSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.addresses = null
+            })
+            .addCase(updateAddress.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateAddress.fulfilled, (state, action) => {
+                state.address = action.payload
+            })
+            .addCase(updateAddress.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })

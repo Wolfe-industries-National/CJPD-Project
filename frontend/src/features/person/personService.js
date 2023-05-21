@@ -39,13 +39,21 @@ const deletePerson = async (userData) => {
     return response.data;
 }
 
+// update Person
+const updatePerson = async (personData) => {
+    console.log('Person DATA ON SERVICE:', personData);
+    const response = await axios.patch(API_URI+'update', personData);
+    return response.data;
+}
+
 const personService = {
     createPerson,
     getAllPerson,
     getPerson,
     searchPerson,
     detailSearchPerson,
-    deletePerson
+    deletePerson,
+    updatePerson
 }
 
 export default personService;

@@ -60,6 +60,16 @@ export const deleteOccurrence = createAsyncThunk('occurrence/delete', async (use
     }
 });
 
+export const updateOccurrence = createAsyncThunk('occurrence/update', async (occurrenceData, thunkAPI) => {
+    try {
+        console.log('occurrence DATA ON SLICE:', occurrenceData);
+        return await occurrenceService.updateOccurrence(occurrenceData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const occurrenceSlice = createSlice({
     name: 'occurrence',
     initialState,
@@ -133,6 +143,17 @@ export const occurrenceSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.occurrences = null
+            })
+            .addCase(updateOccurrence.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateOccurrence.fulfilled, (state, action) => {
+                state.occurrence = action.payload
+            })
+            .addCase(updateOccurrence.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })

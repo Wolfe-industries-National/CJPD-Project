@@ -159,6 +159,46 @@ const deleteVehicle = asyncHandler(async (req, res) => {
     await Vehicle.findByIdAndDelete(vehicleId);
 });
 
+// @desc    Update vehicle
+// @route   PATCH /api/v1/vehicle/delete
+// @access  Private
+const updateVehicle = asyncHandler(async (req, res) => {
+    const {vehicleID, owner, makeOfVehicle, modelOfVehicle, yearOfVehicle, colourOfVehicle, vinOfVehicle, plateOfVehicle} = req.body;
+
+    // Validation
+    if(!plateOfVehicle){
+        res.status(400);
+        throw new Error('Please include plate');
+    }
+
+     // Update Vehicle
+     const updatedVehicle = await Vehicle.findByIdAndUpdate( vehicleID ,{
+        owner: owner.toLowerCase(),
+        makeOfVehicle: makeOfVehicle.toLowerCase(),
+        modelOfVehicle: modelOfVehicle.toLowerCase(),
+        yearOfVehicle,
+        colourOfVehicle: colourOfVehicle.toLowerCase(),
+        vinOfVehicle,
+        plateOfVehicle: plateOfVehicle.toLowerCase(),
+     })
+
+    if(updatedVehicle){
+        res.status(201).json({
+            _id: updatedVehicle._id,
+            owner: updatedVehicle.owner,
+            makeOfVehicle: updatedVehicle.makeOfVehicle,
+            modelOfVehicle: updatedVehicle.modelOfVehicle,
+            yearOfVehicle: updatedVehicle.yearOfVehicle,
+            colourOfVehicle: updatedVehicle.colourOfVehicle,
+            vinOfVehicle: updatedVehicle.vinOfVehicle,
+            plateOfVehicle: updatedVehicle.plateOfVehicle,
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedVehicle data');
+    }
+})
+
 
 module.exports = {
     createVehicle,
@@ -166,5 +206,6 @@ module.exports = {
     getVehicle,
     searchVehicle,
     detailSearchVehicle,
-    deleteVehicle
+    deleteVehicle,
+    updateVehicle
 }

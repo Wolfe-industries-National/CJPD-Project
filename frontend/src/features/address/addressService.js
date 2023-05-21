@@ -42,13 +42,21 @@ const deleteAddress = async (userData) => {
     return response.data;
 }
 
+// update address
+const updateAddress = async (addressData) => {
+    console.log('Address DATA ON SERVICE:', addressData);
+    const response = await axios.patch(API_URI+'update', addressData);
+    return response.data;
+}
+
 const addressService = {
     createNewAddress,
     getAllAddresses,
     getAddress,
     searchAddress,
     detailSearchAddress,
-    deleteAddress
+    deleteAddress,
+    updateAddress
 }
 
 export default addressService;

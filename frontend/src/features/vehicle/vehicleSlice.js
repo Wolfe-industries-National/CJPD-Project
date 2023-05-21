@@ -69,6 +69,16 @@ export const deleteVehicle = createAsyncThunk('vehicle/delete', async (userData,
     }
 });
 
+export const updateVehicle = createAsyncThunk('vehicle/update', async (vehicleData, thunkAPI) => {
+    try {
+        console.log('VEHICLE DATA ON SLICE:', vehicleData);
+        return await vehicleService.updateVehicle(vehicleData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+})
+
 export const vehicleSlice = createSlice({
     name: 'vehicle',
     initialState,
@@ -150,6 +160,18 @@ export const vehicleSlice = createSlice({
                 state.isSuccess = true
             })
             .addCase(deleteVehicle.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
+                state.vehicles = null
+            })
+            .addCase(updateVehicle.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateVehicle.fulfilled, (state, action) => {
+                state.vehicle = action.payload
+            })
+            .addCase(updateVehicle.rejected, (state, action) => {
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload

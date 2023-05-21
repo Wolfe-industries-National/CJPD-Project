@@ -151,6 +151,45 @@ const deleteBusOrg = asyncHandler(async (req, res) => {
     await BusOrg.findByIdAndDelete(busOrgId);
 });
 
+// @desc    Update BusOrg
+// @route   PATCH /api/v1/BusOrg/update
+// @access  Private
+const updateBusOrg = asyncHandler(async (req, res) => {
+    const {busOrgID, owner, name, typeOfBusOrg, address, alarmCompany, telephoneNumber} = req.body;
+
+    // Validation
+    if(!name){
+        res.status(400);
+        throw new Error('Please include name');
+    }
+
+     // Update BusOrg
+     const updatedBusOrg = await BusOrg.findByIdAndUpdate( busOrgID ,{
+        owner: owner.toLowerCase(),
+        name: name.toLowerCase(),
+        typeOfBusOrg: typeOfBusOrg.toLowerCase(),
+        address: address.toLowerCase(),
+        alarmCompany: alarmCompany.toLowerCase(),
+        telephoneNumber,
+     })
+
+    if(updatedBusOrg){
+        res.status(201).json({
+            _id: updatedBusOrg._id,
+            owner: updatedBusOrg.owner,
+            name: updatedBusOrg.name,
+            typeOfBusOrg: updatedBusOrg.typeOfBusOrg,
+            address: updatedBusOrg.address,
+            alarmCompany: updatedBusOrg.alarmCompany,
+            telephoneNumber: updatedBusOrg.telephoneNumber,
+            busOrgDBID: updatedBusOrg.busOrgDBID
+        })
+    } else {
+        res.status(400);
+        throw new Error('Invalid updatedBusOrg data');
+    }
+})
+
 
 module.exports = {
     createBusOrg,
@@ -158,5 +197,6 @@ module.exports = {
     getBusOrg,
     searchBusOrg,
     detailSearchBusOrg,
-    deleteBusOrg
+    deleteBusOrg,
+    updateBusOrg
 }

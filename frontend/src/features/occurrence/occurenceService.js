@@ -33,12 +33,20 @@ const deleteOccurrence = async (userData) => {
     return response.data;
 }
 
+// update Occurrence
+const updateOccurrence = async (occurrenceData) => {
+    console.log('Occurrence DATA ON SERVICE:', occurrenceData);
+    const response = await axios.patch(API_URI+'update', occurrenceData);
+    return response.data;
+}
+
 const occurrenceService = {
     createOccurrence,
     getAllOccurrence,
     getOccurrence,
     searchOccurrence,
-    deleteOccurrence
+    deleteOccurrence,
+    updateOccurrence
 }
 
 export default occurrenceService;

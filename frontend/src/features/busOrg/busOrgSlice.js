@@ -66,6 +66,16 @@ export const deleteBusOrg = createAsyncThunk('busOrg/delete', async (userData, t
     }
 });
 
+export const updateBusOrg = createAsyncThunk('busOrg/update', async (busOrgData, thunkAPI) => {
+    try {
+        console.log('busOrg DATA ON SLICE:', busOrgData);
+        return await busOrgService.updateBusOrg(busOrgData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 
 export const busOrgSlice = createSlice({
     name: 'busOrg',
@@ -152,6 +162,17 @@ export const busOrgSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.busOrgs = null
+            })
+            .addCase(updateBusOrg.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateBusOrg.fulfilled, (state, action) => {
+                state.busOrg = action.payload
+            })
+            .addCase(updateBusOrg.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })

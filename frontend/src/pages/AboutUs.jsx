@@ -22,7 +22,7 @@ const AboutUs = () => {
             <div className="AboutRow">
                 <div className="AboutData" style={{borderRight: "3px solid #DDBA2C"}}>
                     <img src={Unknown} alt="Logo" height={"auto"} width={"40%"} />
-                    <h4 className="AboutName">Felipe Loba Ya Yunta</h4>
+                    <h4 className="AboutName">Felipe Loba La Yunta</h4>
                     <p className="AboutDescription">Project Manager / Lead Backend Developer</p>
                 </div>
                 <div className="AboutData">

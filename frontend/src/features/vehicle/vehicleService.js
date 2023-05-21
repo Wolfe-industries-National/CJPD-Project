@@ -39,13 +39,23 @@ const deleteVehicle = async (userData) => {
     return response.data;
 }
 
+
+// update vehicle
+const updateVehicle = async (vehicleData) => {
+    console.log('VEHICLE DATA ON SERVICE:', vehicleData);
+    const response = await axios.patch(API_URI+'update', vehicleData);
+    return response.data;
+}
+
+
 const vehicleService = {
     createVehicle,
     getAllVehicles,
     getVehicle,
     searchVehicle,
     detailSearchVehicle,
-    deleteVehicle
+    deleteVehicle,
+    updateVehicle
 }
 
 export default vehicleService;

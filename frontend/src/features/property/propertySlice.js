@@ -68,6 +68,16 @@ export const deleteProperty = createAsyncThunk('property/delete', async (userDat
     }
 });
 
+export const updateProperty = createAsyncThunk('property/update', async (propertyData, thunkAPI) => {
+    try {
+        console.log('Property DATA ON SLICE:', propertyData);
+        return await propertyService.updateProperty(propertyData);
+    } catch (error) {
+        const message = (error.message && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const propertySlice = createSlice({
     name: 'property',
     initialState,
@@ -153,6 +163,17 @@ export const propertySlice = createSlice({
                 state.isError = true
                 state.message = action.payload
                 state.properties = null
+            })
+            .addCase(updateProperty.pending, (state) => {
+                state.isLoading = true
+            })
+            .addCase(updateProperty.fulfilled, (state, action) => {
+                state.property = action.payload
+            })
+            .addCase(updateProperty.rejected, (state, action) => {
+                state.isLoading = false
+                state.isError = true
+                state.message = action.payload
             })
     }
 })
